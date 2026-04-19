@@ -353,7 +353,7 @@ AchievementsIndex:
   - _links
   - achievements
   type: object
-AuctionsCommodities:
+Commodities:
   properties:
     _links:
       properties:

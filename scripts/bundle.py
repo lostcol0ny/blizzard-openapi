@@ -81,30 +81,10 @@ def main() -> None:
             base["components"]["schemas"][name] = schema
             schema_count += 1
 
-    # Wire inferred schemas into path responses. If ``components.schemas`` has
-    # a schema named after the operation (PascalCase), replace the placeholder
-    # ``{type: object}`` in the 200 response with a ``$ref`` pointer.
-    component_schema_names = set(base["components"]["schemas"].keys())
-    wired = 0
-    for path, item in base["paths"].items():
-        op = item.get("get", {})
-        op_id = op.get("operationId")
-        if not op_id:
-            continue
-        target = schema_name(op_id)
-        if target not in component_schema_names:
-            continue
-        ok = op.get("responses", {}).get("200", {}).get("content", {}).get("application/json", {})
-        if not ok:
-            continue
-        ok["schema"] = {"$ref": f"#/components/schemas/{target}"}
-        wired += 1
-    if wired:
-        print(f"[ok] wired {wired} path responses to component schemas")
-
     # Disambiguate operationId collisions across different paths. Python class
     # scope hid these — e.g. ``get_auctions`` exists on both WowGameData (retail)
     # and WowClassic classes, but the endpoints and signatures differ.
+    # Must run BEFORE schema wiring so renamed operations get the right refs.
     seen: dict[str, str] = {}  # operationId -> path
     for path, item in base["paths"].items():
         op = item.get("get", {})
@@ -122,10 +102,44 @@ def main() -> None:
         else:
             seen[op_id] = path
 
+    # Wire inferred schemas into path responses. If ``components.schemas`` has
+    # a schema named after the operation (PascalCase), replace the placeholder
+    # ``{type: object}`` in the 200 response with a ``$ref`` pointer.
+    component_schema_names = set(base["components"]["schemas"].keys())
+    used_schemas: set[str] = set()
+    wired = 0
+    for path, item in base["paths"].items():
+        op = item.get("get", {})
+        op_id = op.get("operationId")
+        if not op_id:
+            continue
+        target = schema_name(op_id)
+        if target not in component_schema_names:
+            continue
+        ok = op.get("responses", {}).get("200", {}).get("content", {}).get("application/json", {})
+        if not ok:
+            continue
+        ok["schema"] = {"$ref": f"#/components/schemas/{target}"}
+        used_schemas.add(target)
+        wired += 1
+    if wired:
+        print(f"[ok] wired {wired} path responses to component schemas")
+
+    # Drop orphan schemas — anything not referenced by a path. Keeps the bundled
+    # output tight and avoids the ``no-unused-components`` lint noise. A schema
+    # becomes orphaned when the capture script's operation_id doesn't match any
+    # real blizzardapi3 method, or when path-merging collapsed two operations
+    # into one (e.g. Classic paths fold into retail).
+    orphans = sorted(component_schema_names - used_schemas)
+    if orphans:
+        for name in orphans:
+            del base["components"]["schemas"][name]
+        print(f"[info] dropped {len(orphans)} orphan schemas: {', '.join(orphans[:5])}{'...' if len(orphans) > 5 else ''}")
+
     DIST.parent.mkdir(parents=True, exist_ok=True)
     DIST.write_text(yaml.safe_dump(base, sort_keys=False, width=120))
 
-    print(f"[ok] bundled {path_count} paths + {schema_count} schemas -> {DIST.relative_to(ROOT)}")
+    print(f"[ok] bundled {path_count} paths + {len(base['components']['schemas'])} schemas -> {DIST.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

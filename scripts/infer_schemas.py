@@ -174,9 +174,12 @@ def main() -> None:
             name = schema_name(data["request"]["operation_id"])
             schemas[name] = infer(body)
 
+        if not schemas:
+            print(f"[skip] {domain_dir.name}: no samples -> not writing file")
+            continue
         out = SCHEMAS_DIR / f"{domain_dir.name}.yaml"
         out.write_text(yaml.safe_dump(schemas, sort_keys=True, width=120, allow_unicode=True))
-        print(f"[ok] {domain_dir.name}: {len(schemas)} schemas -> schemas/{domain_dir.name}.yaml")
+        print(f"[ok]   {domain_dir.name}: {len(schemas)} schemas -> schemas/{domain_dir.name}.yaml")
         total_schemas += len(schemas)
 
     print(f"\nTotal: {total_schemas} schemas")

@@ -401,7 +401,7 @@ Metadata:
   - spellSchools
   - types
   type: object
-MetadataSets:
+MetadataType:
   items:
     properties:
       aliasSetIds:

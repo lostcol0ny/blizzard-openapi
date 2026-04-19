@@ -1,0 +1,8 @@
+extends:
+  - recommended
+
+rules:
+  # Blizzard's D3 API genuinely requires trailing slashes on these endpoints
+  # (e.g. /d3/profile/{battletag}/ returns 404 without the slash). The spec
+  # must reflect what the API actually accepts.
+  no-path-trailing-slash: off

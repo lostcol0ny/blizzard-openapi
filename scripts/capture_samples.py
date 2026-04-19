@@ -79,7 +79,7 @@ WOW_GAME_DATA_SAMPLES: list[Sample] = [
     Sample("get_pets_index", "/data/wow/pet/index", "static-us"),
     Sample("get_pet", "/data/wow/pet/39", "static-us"),
     Sample("get_token_index", "/data/wow/token/index", "dynamic-us"),
-    Sample("get_auctions_commodities", "/data/wow/auctions/commodities", "dynamic-us"),
+    Sample("get_commodities", "/data/wow/auctions/commodities", "dynamic-us"),
 ]
 
 WOW_PROFILE_SAMPLES: list[Sample] = [
@@ -120,17 +120,17 @@ WOW_PROFILE_SAMPLES: list[Sample] = [
         "profile-us",
     ),
     Sample(
-        "get_character_collections_summary",
+        "get_character_collections_index",
         f"/profile/wow/character/{TEST_CHARACTER_REALM}/{TEST_CHARACTER_NAME}/collections",
         "profile-us",
     ),
     Sample(
-        "get_character_mounts",
+        "get_character_mounts_collection_summary",
         f"/profile/wow/character/{TEST_CHARACTER_REALM}/{TEST_CHARACTER_NAME}/collections/mounts",
         "profile-us",
     ),
     Sample(
-        "get_character_pets",
+        "get_character_pets_collection_summary",
         f"/profile/wow/character/{TEST_CHARACTER_REALM}/{TEST_CHARACTER_NAME}/collections/pets",
         "profile-us",
     ),
@@ -142,14 +142,11 @@ WOW_PROFILE_SAMPLES: list[Sample] = [
 ]
 
 WOW_CLASSIC_SAMPLES: list[Sample] = [
-    # Use classic-us namespace. Paths same as retail, different data.
-    Sample("classic_get_achievements_index", "/data/wow/achievement/index", "static-classic-us"),
-    Sample("classic_get_achievement", "/data/wow/achievement/6", "static-classic-us"),
-    Sample("classic_get_realms_index", "/data/wow/realm/index", "dynamic-classic-us"),
-    Sample("classic_get_playable_classes_index", "/data/wow/playable-class/index", "static-classic-us"),
-    Sample("classic_get_playable_class", "/data/wow/playable-class/1", "static-classic-us"),  # Warrior
-    Sample("classic_get_item_classes_index", "/data/wow/item-class/index", "static-classic-us"),
-    Sample("classic_get_connected_realms_index", "/data/wow/connected-realm/index", "dynamic-classic-us"),
+    # Intentionally empty: Classic shares URL paths with retail, distinguished only
+    # by namespace value. The bundler merges those paths into one OpenAPI operation
+    # tagged for both domains — a separate Classic schema would orphan because
+    # no path carries a Classic-specific operationId. Classic responses conform
+    # to the same shapes as retail for the endpoints we cover.
 ]
 
 D3_SAMPLES: list[Sample] = [
@@ -172,7 +169,8 @@ HEARTHSTONE_SAMPLES: list[Sample] = [
     Sample("get_card", "/hearthstone/cards/52119-arch-villain-rafaam", None),
     Sample("search_card_backs", "/hearthstone/cardbacks", None, params={"page": "1", "pageSize": "5"}),
     Sample("get_metadata", "/hearthstone/metadata", None),
-    Sample("get_metadata_sets", "/hearthstone/metadata/sets", None),
+    # /hearthstone/metadata/{metadata_type} — ``sets`` is representative.
+    Sample("get_metadata_type", "/hearthstone/metadata/sets", None),
 ]
 
 

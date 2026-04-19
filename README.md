@@ -46,15 +46,35 @@ dist/                # bundled output (committed, for direct consumption via raw
 ## Build
 
 ```bash
-# Regenerate paths/*.yaml from blizzardapi3 source
+# 1. Regenerate paths/*.yaml from blizzardapi3 source
 uv run --with pyyaml python scripts/scaffold_paths.py
 
-# Bundle into dist/openapi.yaml
+# 2. Cross-check coverage against Blizzard's HTML docs
+uv run --with pyyaml python scripts/coverage_report.py
+
+# 3. Capture live response samples (requires BLIZZARD_CLIENT_ID / _SECRET)
+uv run --with httpx python scripts/capture_samples.py
+
+# 4. Infer JSON Schemas from samples/
+uv run --with pyyaml python scripts/infer_schemas.py
+
+# 5. Bundle into dist/openapi.yaml (wires schemas into path responses)
 uv run --with pyyaml python scripts/bundle.py
 
-# Validate
-uv run --with openapi-spec-validator openapi-spec-validator dist/openapi.yaml
+# 6. Validate
+uv run --with openapi-spec-validator python -c \
+  "from openapi_spec_validator import validate; \
+   from openapi_spec_validator.readers import read_from_filename; \
+   spec, _ = read_from_filename('dist/openapi.yaml'); validate(spec); print('ok')"
+
+# 7. Lint with Redocly (honors redocly.yaml)
+npx --yes @redocly/cli lint dist/openapi.yaml
+
+# 8. Render HTML preview
+npx --yes @redocly/cli build-docs dist/openapi.yaml -o redoc-static.html
 ```
+
+Steps 1 and 5 are the minimum to regenerate the spec from source. Steps 3 and 4 are needed when blizzardapi3 adds new endpoints or when we want to refresh response schemas.
 
 ## License
 
