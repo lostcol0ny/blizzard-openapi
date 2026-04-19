@@ -1,3 +1,571 @@
+Act:
+  properties:
+    name:
+      type: string
+    number:
+      type: integer
+    quests:
+      items:
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          slug:
+            type: string
+        required:
+        - id
+        - name
+        - slug
+        type: object
+      type: array
+    slug:
+      type: string
+  required:
+  - name
+  - number
+  - quests
+  - slug
+  type: object
+ActIndex:
+  properties:
+    acts:
+      items:
+        properties:
+          name:
+            type: string
+          number:
+            type: integer
+          quests:
+            items:
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                slug:
+                  type: string
+              required:
+              - id
+              - name
+              - slug
+              type: object
+            type: array
+          slug:
+            type: string
+        required:
+        - name
+        - number
+        - quests
+        - slug
+        type: object
+      type: array
+  required:
+  - acts
+  type: object
+ApiSkill:
+  properties:
+    runes:
+      items:
+        properties:
+          description:
+            type: string
+          descriptionHtml:
+            type: string
+          level:
+            type: integer
+          name:
+            type: string
+          slug:
+            type: string
+          type:
+            type: string
+        required:
+        - description
+        - descriptionHtml
+        - level
+        - name
+        - slug
+        - type
+        type: object
+      type: array
+    skill:
+      properties:
+        description:
+          type: string
+        descriptionHtml:
+          type: string
+        icon:
+          type: string
+        level:
+          type: integer
+        name:
+          type: string
+        slug:
+          type: string
+        tooltipUrl:
+          type: string
+      required:
+      - description
+      - descriptionHtml
+      - icon
+      - level
+      - name
+      - slug
+      - tooltipUrl
+      type: object
+  required:
+  - runes
+  - skill
+  type: object
+Artisan:
+  properties:
+    name:
+      type: string
+    portrait:
+      type: string
+    slug:
+      type: string
+    training:
+      properties:
+        tiers:
+          items:
+            properties:
+              taughtRecipes:
+                items:
+                  oneOf:
+                  - properties:
+                      cost:
+                        type: integer
+                      id:
+                        type: string
+                      itemProduced:
+                        properties:
+                          icon:
+                            type: string
+                          id:
+                            type: string
+                          name:
+                            type: string
+                          path:
+                            type: string
+                          slug:
+                            type: string
+                        required:
+                        - icon
+                        - id
+                        - name
+                        - path
+                        - slug
+                        type: object
+                      name:
+                        type: string
+                      reagents:
+                        items:
+                          oneOf:
+                          - properties:
+                              item:
+                                properties:
+                                  icon:
+                                    type: string
+                                  id:
+                                    type: string
+                                  name:
+                                    type: string
+                                  path:
+                                    type: string
+                                  slug:
+                                    type: string
+                                required:
+                                - icon
+                                - id
+                                - name
+                                - path
+                                - slug
+                                type: object
+                              quantity:
+                                type: integer
+                            required:
+                            - item
+                            - quantity
+                            type: object
+                          - {}
+                        type: array
+                      slug:
+                        type: string
+                    required:
+                    - cost
+                    - id
+                    - itemProduced
+                    - name
+                    - reagents
+                    - slug
+                    type: object
+                  - {}
+                  - properties:
+                      cost:
+                        type: integer
+                      id:
+                        type: string
+                      itemProduced:
+                        properties:
+                          icon:
+                            type: string
+                          id:
+                            type: string
+                          name:
+                            type: string
+                          path:
+                            type: string
+                          slug:
+                            type: string
+                        required:
+                        - icon
+                        - id
+                        - name
+                        - path
+                        - slug
+                        type: object
+                      name:
+                        type: string
+                      reagents:
+                        items:
+                          properties:
+                            item:
+                              properties:
+                                icon:
+                                  type: string
+                                id:
+                                  type: string
+                                name:
+                                  type: string
+                                path:
+                                  type: string
+                                slug:
+                                  type: string
+                              required:
+                              - icon
+                              - id
+                              - name
+                              - path
+                              - slug
+                              type: object
+                            quantity:
+                              type: integer
+                          required:
+                          - item
+                          - quantity
+                          type: object
+                        type: array
+                      slug:
+                        type: string
+                    required:
+                    - cost
+                    - id
+                    - itemProduced
+                    - name
+                    - reagents
+                    - slug
+                    type: object
+                type: array
+              tier:
+                type: integer
+              trainedRecipes:
+                items:
+                  properties:
+                    cost:
+                      type: integer
+                    id:
+                      type: string
+                    itemProduced:
+                      properties:
+                        icon:
+                          type: string
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        path:
+                          type: string
+                        slug:
+                          type: string
+                      required:
+                      - icon
+                      - id
+                      - name
+                      - path
+                      - slug
+                      type: object
+                    name:
+                      type: string
+                    reagents:
+                      items:
+                        properties:
+                          item:
+                            properties:
+                              icon:
+                                type: string
+                              id:
+                                type: string
+                              name:
+                                type: string
+                              path:
+                                type: string
+                              slug:
+                                type: string
+                            required:
+                            - icon
+                            - id
+                            - name
+                            - path
+                            - slug
+                            type: object
+                          quantity:
+                            type: integer
+                        required:
+                        - item
+                        - quantity
+                        type: object
+                      type: array
+                    slug:
+                      type: string
+                  required:
+                  - cost
+                  - id
+                  - itemProduced
+                  - name
+                  - reagents
+                  - slug
+                  type: object
+                type: array
+            required:
+            - taughtRecipes
+            - tier
+            - trainedRecipes
+            type: object
+          type: array
+      required:
+      - tiers
+      type: object
+  required:
+  - name
+  - portrait
+  - slug
+  - training
+  type: object
+CharacterClass:
+  properties:
+    femaleName:
+      type: string
+    icon:
+      type: string
+    maleName:
+      type: string
+    name:
+      type: string
+    skillCategories:
+      items:
+        properties:
+          name:
+            type: string
+          slug:
+            type: string
+        required:
+        - name
+        - slug
+        type: object
+      type: array
+    skills:
+      properties:
+        active:
+          items:
+            properties:
+              description:
+                type: string
+              descriptionHtml:
+                type: string
+              icon:
+                type: string
+              level:
+                type: integer
+              name:
+                type: string
+              slug:
+                type: string
+              tooltipUrl:
+                type: string
+            required:
+            - description
+            - descriptionHtml
+            - icon
+            - level
+            - name
+            - slug
+            - tooltipUrl
+            type: object
+          type: array
+        passive:
+          items:
+            properties:
+              description:
+                type: string
+              descriptionHtml:
+                type: string
+              flavorText:
+                type: string
+              icon:
+                type: string
+              level:
+                type: integer
+              name:
+                type: string
+              slug:
+                type: string
+              tooltipUrl:
+                type: string
+            required:
+            - description
+            - descriptionHtml
+            - flavorText
+            - icon
+            - level
+            - name
+            - slug
+            - tooltipUrl
+            type: object
+          type: array
+      required:
+      - active
+      - passive
+      type: object
+    slug:
+      type: string
+  required:
+  - femaleName
+  - icon
+  - maleName
+  - name
+  - skillCategories
+  - skills
+  - slug
+  type: object
+Diablo3GetRecipe:
+  properties:
+    cost:
+      type: integer
+    id:
+      type: string
+    itemProduced:
+      properties:
+        icon:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        path:
+          type: string
+        slug:
+          type: string
+      required:
+      - icon
+      - id
+      - name
+      - path
+      - slug
+      type: object
+    name:
+      type: string
+    reagents:
+      items:
+        properties:
+          item:
+            properties:
+              icon:
+                type: string
+              id:
+                type: string
+              name:
+                type: string
+              path:
+                type: string
+              slug:
+                type: string
+            required:
+            - icon
+            - id
+            - name
+            - path
+            - slug
+            type: object
+          quantity:
+            type: integer
+        required:
+        - item
+        - quantity
+        type: object
+      type: array
+    slug:
+      type: string
+  required:
+  - cost
+  - id
+  - itemProduced
+  - name
+  - reagents
+  - slug
+  type: object
+Era:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    era_id:
+      type: integer
+    era_start_date:
+      type: integer
+    generated_by:
+      type: string
+    last_update_time:
+      type: string
+    leaderboard:
+      items:
+        properties:
+          hardcore:
+            type: boolean
+          hero_class_string:
+            type: string
+          ladder:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          team_size:
+            type: integer
+        required:
+        - ladder
+        - team_size
+        type: object
+      type: array
+  required:
+  - _links
+  - era_id
+  - era_start_date
+  - generated_by
+  - last_update_time
+  - leaderboard
+  type: object
 EraIndex:
   properties:
     _links:
@@ -34,6 +602,198 @@ EraIndex:
   - generated_by
   - last_update_time
   type: object
+EraLeaderboard:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    column:
+      items:
+        properties:
+          hidden:
+            type: boolean
+          id:
+            type: string
+          label:
+            type: string
+          order:
+            type: integer
+          type:
+            type: string
+        required:
+        - hidden
+        - id
+        - label
+        - type
+        type: object
+      type: array
+    era:
+      type: integer
+    generated_by:
+      type: string
+    greater_rift:
+      type: boolean
+    greater_rift_solo_class:
+      type: string
+    key:
+      type: string
+    last_update_time:
+      type: string
+    row:
+      items:
+        properties:
+          data:
+            items:
+              properties:
+                id:
+                  type: string
+                number:
+                  type: integer
+                string:
+                  type: string
+                timestamp:
+                  type: integer
+              required:
+              - id
+              type: object
+            type: array
+          order:
+            type: integer
+          player:
+            items:
+              properties:
+                accountId:
+                  type: integer
+                data:
+                  items:
+                    properties:
+                      id:
+                        type: string
+                      number:
+                        type: integer
+                      string:
+                        type: string
+                    required:
+                    - id
+                    type: object
+                  type: array
+                key:
+                  type: string
+              required:
+              - accountId
+              - data
+              - key
+              type: object
+            type: array
+        required:
+        - data
+        - order
+        - player
+        type: object
+      type: array
+    title:
+      type: string
+  required:
+  - _links
+  - column
+  - era
+  - generated_by
+  - greater_rift
+  - greater_rift_solo_class
+  - key
+  - last_update_time
+  - row
+  - title
+  type: object
+Follower:
+  properties:
+    name:
+      type: string
+    portrait:
+      type: string
+    realName:
+      type: string
+    skills:
+      items:
+        properties:
+          description:
+            type: string
+          descriptionHtml:
+            type: string
+          icon:
+            type: string
+          level:
+            type: integer
+          name:
+            type: string
+          slug:
+            type: string
+          tooltipUrl:
+            type: string
+        required:
+        - description
+        - descriptionHtml
+        - icon
+        - level
+        - name
+        - slug
+        - tooltipUrl
+        type: object
+      type: array
+    slug:
+      type: string
+  required:
+  - name
+  - portrait
+  - realName
+  - skills
+  - slug
+  type: object
+ItemType:
+  items:
+    properties:
+      icon:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      path:
+        type: string
+      slug:
+        type: string
+    required:
+    - icon
+    - id
+    - name
+    - path
+    - slug
+    type: object
+  type: array
+ItemTypeIndex:
+  items:
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      path:
+        type: string
+    required:
+    - id
+    - name
+    - path
+    type: object
+  type: array
 Season:
   properties:
     _links:
@@ -122,4 +882,116 @@ SeasonIndex:
   - season
   - service_current_season
   - service_season_state
+  type: object
+SeasonLeaderboard:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    column:
+      items:
+        properties:
+          hidden:
+            type: boolean
+          id:
+            type: string
+          label:
+            type: string
+          order:
+            type: integer
+          type:
+            type: string
+        required:
+        - hidden
+        - id
+        - label
+        - type
+        type: object
+      type: array
+    generated_by:
+      type: string
+    greater_rift:
+      type: boolean
+    greater_rift_solo_class:
+      type: string
+    key:
+      type: string
+    last_update_time:
+      type: string
+    row:
+      items:
+        properties:
+          data:
+            items:
+              properties:
+                id:
+                  type: string
+                number:
+                  type: integer
+                string:
+                  type: string
+                timestamp:
+                  type: integer
+              required:
+              - id
+              type: object
+            type: array
+          order:
+            type: integer
+          player:
+            items:
+              properties:
+                accountId:
+                  type: integer
+                data:
+                  items:
+                    properties:
+                      id:
+                        type: string
+                      number:
+                        type: integer
+                      string:
+                        type: string
+                    required:
+                    - id
+                    type: object
+                  type: array
+                key:
+                  type: string
+              required:
+              - accountId
+              - data
+              - key
+              type: object
+            type: array
+        required:
+        - data
+        - order
+        - player
+        type: object
+      type: array
+    season:
+      type: integer
+    title:
+      type: string
+  required:
+  - _links
+  - column
+  - generated_by
+  - greater_rift
+  - greater_rift_solo_class
+  - key
+  - last_update_time
+  - row
+  - season
+  - title
   type: object

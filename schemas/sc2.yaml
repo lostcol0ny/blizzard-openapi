@@ -109,6 +109,330 @@ LeagueData:
   - key
   - tier
   type: object
+LegacyAchievements:
+  properties:
+    achievements:
+      items:
+        properties:
+          achievementId:
+            type: string
+          categoryId:
+            type: string
+          description:
+            type: string
+          icon:
+            properties:
+              h:
+                type: integer
+              offset:
+                type: integer
+              url:
+                type: string
+              w:
+                type: integer
+              x:
+                type: integer
+              y:
+                type: integer
+            required:
+            - h
+            - offset
+            - url
+            - w
+            - x
+            - y
+            type: object
+          points:
+            type: integer
+          title:
+            type: string
+        required:
+        - achievementId
+        - categoryId
+        - description
+        - icon
+        - points
+        - title
+        type: object
+      type: array
+    categories:
+      items:
+        properties:
+          categoryId:
+            type: string
+          children:
+            items:
+              properties:
+                categoryId:
+                  type: string
+                featuredAchievementId:
+                  type: string
+                title:
+                  type: string
+              required:
+              - categoryId
+              - featuredAchievementId
+              - title
+              type: object
+            type: array
+          featuredAchievementId:
+            type: string
+          title:
+            type: string
+        required:
+        - categoryId
+        - featuredAchievementId
+        - title
+        type: object
+      type: array
+  required:
+  - achievements
+  - categories
+  type: object
+LegacyRewards:
+  properties:
+    animations:
+      items:
+        properties:
+          achievementId:
+            type: string
+          command:
+            type: string
+          icon:
+            properties:
+              h:
+                type: integer
+              offset:
+                type: integer
+              url:
+                type: string
+              w:
+                type: integer
+              x:
+                type: integer
+              y:
+                type: integer
+            required:
+            - h
+            - offset
+            - url
+            - w
+            - x
+            - y
+            type: object
+          id:
+            type: string
+          title:
+            type: string
+        required:
+        - achievementId
+        - command
+        - icon
+        - id
+        - title
+        type: object
+      type: array
+    portraits:
+      items:
+        properties:
+          achievementId:
+            type: string
+          icon:
+            properties:
+              h:
+                type: integer
+              offset:
+                type: integer
+              url:
+                type: string
+              w:
+                type: integer
+              x:
+                type: integer
+              y:
+                type: integer
+            required:
+            - h
+            - offset
+            - url
+            - w
+            - x
+            - y
+            type: object
+          id:
+            type: string
+          title:
+            type: string
+        required:
+        - achievementId
+        - icon
+        - id
+        - title
+        type: object
+      type: array
+    protossDecals:
+      items:
+        properties:
+          achievementId:
+            type: string
+          icon:
+            properties:
+              h:
+                type: integer
+              offset:
+                type: integer
+              url:
+                type: string
+              w:
+                type: integer
+              x:
+                type: integer
+              y:
+                type: integer
+            required:
+            - h
+            - offset
+            - url
+            - w
+            - x
+            - y
+            type: object
+          id:
+            type: string
+          title:
+            type: string
+        required:
+        - achievementId
+        - icon
+        - id
+        - title
+        type: object
+      type: array
+    skins:
+      items:
+        properties:
+          achievementId:
+            type: string
+          icon:
+            properties:
+              h:
+                type: integer
+              offset:
+                type: integer
+              url:
+                type: string
+              w:
+                type: integer
+              x:
+                type: integer
+              y:
+                type: integer
+            required:
+            - h
+            - offset
+            - url
+            - w
+            - x
+            - y
+            type: object
+          id:
+            type: string
+          name:
+            type: string
+          title:
+            type: string
+        required:
+        - achievementId
+        - icon
+        - id
+        - name
+        - title
+        type: object
+      type: array
+    terranDecals:
+      items:
+        properties:
+          achievementId:
+            type: string
+          icon:
+            properties:
+              h:
+                type: integer
+              offset:
+                type: integer
+              url:
+                type: string
+              w:
+                type: integer
+              x:
+                type: integer
+              y:
+                type: integer
+            required:
+            - h
+            - offset
+            - url
+            - w
+            - x
+            - y
+            type: object
+          id:
+            type: string
+          title:
+            type: string
+        required:
+        - achievementId
+        - icon
+        - id
+        - title
+        type: object
+      type: array
+    zergDecals:
+      items:
+        properties:
+          achievementId:
+            type: string
+          icon:
+            properties:
+              h:
+                type: integer
+              offset:
+                type: integer
+              url:
+                type: string
+              w:
+                type: integer
+              x:
+                type: integer
+              y:
+                type: integer
+            required:
+            - h
+            - offset
+            - url
+            - w
+            - x
+            - y
+            type: object
+          id:
+            type: string
+          title:
+            type: string
+        required:
+        - achievementId
+        - icon
+        - id
+        - title
+        type: object
+      type: array
+  required:
+  - animations
+  - portraits
+  - protossDecals
+  - skins
+  - terranDecals
+  - zergDecals
+  type: object
 Sc2GetSeason:
   properties:
     endDate:
@@ -127,4 +451,154 @@ Sc2GetSeason:
   - seasonId
   - startDate
   - year
+  type: object
+StaticProfile:
+  properties:
+    achievements:
+      items:
+        properties:
+          categoryId:
+            type: string
+          chainAchievementIds:
+            items:
+              type: string
+            type: array
+          chainRewardSize:
+            type: integer
+          criteriaIds:
+            items:
+              oneOf:
+              - type: string
+              - {}
+            type: array
+          description:
+            type: string
+          flags:
+            type: integer
+          id:
+            type: string
+          imageUrl:
+            type: string
+          isChained:
+            type: boolean
+          points:
+            type: integer
+          title:
+            type: string
+          uiOrderHint:
+            type: integer
+        required:
+        - categoryId
+        - chainAchievementIds
+        - chainRewardSize
+        - description
+        - flags
+        - id
+        - imageUrl
+        - isChained
+        - points
+        - title
+        - uiOrderHint
+        type: object
+      type: array
+    categories:
+      items:
+        properties:
+          childrenCategoryIds:
+            items:
+              oneOf:
+              - {}
+              - type: string
+            type: array
+          featuredAchievementId:
+            type: string
+          id:
+            type: string
+          medalTiers:
+            items:
+              type: integer
+            type: array
+          name:
+            type: string
+          parentCategoryId:
+            type:
+            - 'null'
+            - string
+          points:
+            type: integer
+          uiOrderHint:
+            type: integer
+        required:
+        - childrenCategoryIds
+        - featuredAchievementId
+        - id
+        - name
+        - parentCategoryId
+        - points
+        - uiOrderHint
+        type: object
+      type: array
+    criteria:
+      items:
+        properties:
+          achievementId:
+            type: string
+          description:
+            type: string
+          evaluationClass:
+            type: string
+          flags:
+            type: integer
+          id:
+            type: string
+          necessaryQuantity:
+            type: integer
+          uiOrderHint:
+            type: integer
+        required:
+        - achievementId
+        - description
+        - evaluationClass
+        - flags
+        - id
+        - necessaryQuantity
+        - uiOrderHint
+        type: object
+      type: array
+    rewards:
+      items:
+        properties:
+          achievementId:
+            type: string
+          command:
+            type: string
+          flags:
+            type: integer
+          id:
+            type: string
+          imageUrl:
+            type: string
+          isSkin:
+            type: boolean
+          name:
+            type: string
+          uiOrderHint:
+            type: integer
+          unlockableType:
+            type: string
+        required:
+        - flags
+        - id
+        - imageUrl
+        - isSkin
+        - name
+        - uiOrderHint
+        - unlockableType
+        type: object
+      type: array
+  required:
+  - achievements
+  - categories
+  - criteria
+  - rewards
   type: object

@@ -73,6 +73,28 @@ Card:
   - slug
   - text
   type: object
+CardBack:
+  properties:
+    id:
+      type: integer
+    image:
+      type: string
+    name:
+      type: string
+    slug:
+      type: string
+    sortCategory:
+      type: integer
+    text:
+      type: string
+  required:
+  - id
+  - image
+  - name
+  - slug
+  - sortCategory
+  - text
+  type: object
 Metadata:
   properties:
     arenaIds:

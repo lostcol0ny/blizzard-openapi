@@ -168,7 +168,14 @@ def main() -> None:
         schemas: dict[str, dict[str, Any]] = {}
         for sample_file in sorted(domain_dir.glob("*.json")):
             data = json.loads(sample_file.read_text())
-            body = data.get("response", {}).get("body")
+            response = data.get("response", {}) or {}
+            status = response.get("status", 0)
+            # Skip non-2xx — those bodies are Blizzard's error envelope, not the
+            # endpoint's real response shape. Inferring from them would give every
+            # failed capture a {code, type, detail} schema and pollute the spec.
+            if not (200 <= status < 300):
+                continue
+            body = response.get("body")
             if body is None:
                 continue
             name = schema_name(data["request"]["operation_id"])

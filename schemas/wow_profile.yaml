@@ -1,3 +1,126 @@
+CharacterAchievementStatistics:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    categories:
+      items:
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          statistics:
+            items:
+              properties:
+                description:
+                  type: string
+                id:
+                  type: integer
+                last_updated_timestamp:
+                  type: integer
+                name:
+                  type: string
+                quantity:
+                  type: number
+              required:
+              - id
+              - last_updated_timestamp
+              - name
+              - quantity
+              type: object
+            type: array
+          sub_categories:
+            items:
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                statistics:
+                  items:
+                    properties:
+                      description:
+                        type: string
+                      id:
+                        type: integer
+                      last_updated_timestamp:
+                        type: integer
+                      name:
+                        type: string
+                      quantity:
+                        type: number
+                    required:
+                    - id
+                    - last_updated_timestamp
+                    - name
+                    - quantity
+                    type: object
+                  type: array
+              required:
+              - id
+              - name
+              - statistics
+              type: object
+            type: array
+        required:
+        - name
+        type: object
+      type: array
+    character:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+        realm:
+          properties:
+            id:
+              type: integer
+            key:
+              properties:
+                href:
+                  type: string
+              required:
+              - href
+              type: object
+            name:
+              type: string
+            slug:
+              type: string
+          required:
+          - id
+          - key
+          - name
+          - slug
+          type: object
+      required:
+      - id
+      - key
+      - name
+      - realm
+      type: object
+  required:
+  - _links
+  - categories
+  - character
+  type: object
 CharacterAchievementsSummary:
   properties:
     _links:
@@ -608,6 +731,343 @@ CharacterCollectionsIndex:
   - pets
   - toys
   - transmogs
+  type: object
+CharacterCompletedQuests:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    character:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+        realm:
+          properties:
+            id:
+              type: integer
+            key:
+              properties:
+                href:
+                  type: string
+              required:
+              - href
+              type: object
+            name:
+              type: string
+            slug:
+              type: string
+          required:
+          - id
+          - key
+          - name
+          - slug
+          type: object
+      required:
+      - id
+      - key
+      - name
+      - realm
+      type: object
+    quests:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+  required:
+  - _links
+  - character
+  - quests
+  type: object
+CharacterDecorCollection:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    decor_collected:
+      items:
+        properties:
+          decor:
+            properties:
+              id:
+                type: integer
+              key:
+                properties:
+                  href:
+                    type: string
+                required:
+                - href
+                type: object
+              name:
+                type: string
+            required:
+            - id
+            - key
+            - name
+            type: object
+          quantity:
+            type: integer
+        required:
+        - decor
+        - quantity
+        type: object
+      type: array
+  required:
+  - _links
+  - decor_collected
+  type: object
+CharacterDungeons:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    expansions:
+      items:
+        properties:
+          expansion:
+            properties:
+              id:
+                type: integer
+              key:
+                properties:
+                  href:
+                    type: string
+                required:
+                - href
+                type: object
+              name:
+                type: string
+            required:
+            - id
+            - key
+            - name
+            type: object
+          instances:
+            items:
+              properties:
+                instance:
+                  properties:
+                    id:
+                      type: integer
+                    key:
+                      properties:
+                        href:
+                          type: string
+                      required:
+                      - href
+                      type: object
+                    name:
+                      type: string
+                  required:
+                  - id
+                  - key
+                  - name
+                  type: object
+                modes:
+                  items:
+                    properties:
+                      difficulty:
+                        properties:
+                          name:
+                            type: string
+                          type:
+                            type: string
+                        type: object
+                      progress:
+                        properties:
+                          completed_count:
+                            type: integer
+                          encounters:
+                            items:
+                              properties:
+                                completed_count:
+                                  type: integer
+                                encounter:
+                                  properties:
+                                    id:
+                                      type: integer
+                                    key:
+                                      properties:
+                                        href:
+                                          type: string
+                                      required:
+                                      - href
+                                      type: object
+                                    name:
+                                      type: string
+                                  required:
+                                  - id
+                                  - key
+                                  - name
+                                  type: object
+                                last_kill_timestamp:
+                                  type: integer
+                              required:
+                              - completed_count
+                              - encounter
+                              - last_kill_timestamp
+                              type: object
+                            type: array
+                          total_count:
+                            type: integer
+                        required:
+                        - completed_count
+                        - encounters
+                        - total_count
+                        type: object
+                      status:
+                        properties:
+                          name:
+                            type: string
+                          type:
+                            type: string
+                        required:
+                        - name
+                        - type
+                        type: object
+                    required:
+                    - difficulty
+                    - progress
+                    - status
+                    type: object
+                  type: array
+              required:
+              - instance
+              - modes
+              type: object
+            type: array
+        required:
+        - expansion
+        - instances
+        type: object
+      type: array
+  required:
+  - _links
+  - expansions
+  type: object
+CharacterEncountersSummary:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    character:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+        realm:
+          properties:
+            id:
+              type: integer
+            key:
+              properties:
+                href:
+                  type: string
+              required:
+              - href
+              type: object
+            name:
+              type: string
+            slug:
+              type: string
+          required:
+          - id
+          - key
+          - name
+          - slug
+          type: object
+      required:
+      - id
+      - key
+      - name
+      - realm
+      type: object
+    dungeons:
+      properties:
+        href:
+          type: string
+      required:
+      - href
+      type: object
+    raids:
+      properties:
+        href:
+          type: string
+      required:
+      - href
+      type: object
+  required:
+  - _links
+  - character
+  - dungeons
+  - raids
   type: object
 CharacterEquipmentSummary:
   properties:
@@ -1400,6 +1860,57 @@ CharacterEquipmentSummary:
   - equipped_item_sets
   - equipped_items
   type: object
+CharacterHeirloomsCollectionSummary:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    heirlooms:
+      items:
+        properties:
+          heirloom:
+            properties:
+              id:
+                type: integer
+              key:
+                properties:
+                  href:
+                    type: string
+                required:
+                - href
+                type: object
+              name:
+                type: string
+            required:
+            - id
+            - key
+            - name
+            type: object
+          upgrade:
+            properties:
+              level:
+                type: integer
+            required:
+            - level
+            type: object
+        required:
+        - heirloom
+        - upgrade
+        type: object
+      type: array
+  required:
+  - _links
+  - heirlooms
+  type: object
 CharacterMediaSummary:
   properties:
     _links:
@@ -1521,6 +2032,576 @@ CharacterMountsCollectionSummary:
   - _links
   - mounts
   type: object
+CharacterMythicKeystoneProfileIndex:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    character:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+        realm:
+          properties:
+            id:
+              type: integer
+            key:
+              properties:
+                href:
+                  type: string
+              required:
+              - href
+              type: object
+            name:
+              type: string
+            slug:
+              type: string
+          required:
+          - id
+          - key
+          - name
+          - slug
+          type: object
+      required:
+      - id
+      - key
+      - name
+      - realm
+      type: object
+    current_mythic_rating:
+      properties:
+        color:
+          properties:
+            a:
+              type: number
+            b:
+              type: integer
+            g:
+              type: integer
+            r:
+              type: integer
+          required:
+          - a
+          - b
+          - g
+          - r
+          type: object
+        rating:
+          type: number
+      required:
+      - color
+      - rating
+      type: object
+    current_period:
+      properties:
+        best_runs:
+          items:
+            properties:
+              completed_timestamp:
+                type: integer
+              dungeon:
+                properties:
+                  id:
+                    type: integer
+                  key:
+                    properties:
+                      href:
+                        type: string
+                    required:
+                    - href
+                    type: object
+                  name:
+                    type: string
+                required:
+                - id
+                - key
+                - name
+                type: object
+              duration:
+                type: integer
+              is_completed_within_time:
+                type: boolean
+              keystone_affixes:
+                items:
+                  properties:
+                    id:
+                      type: integer
+                    key:
+                      properties:
+                        href:
+                          type: string
+                      required:
+                      - href
+                      type: object
+                    name:
+                      type: string
+                  required:
+                  - id
+                  - key
+                  - name
+                  type: object
+                type: array
+              keystone_level:
+                type: integer
+              map_rating:
+                properties:
+                  color:
+                    properties:
+                      a:
+                        type: number
+                      b:
+                        type: integer
+                      g:
+                        type: integer
+                      r:
+                        type: integer
+                    required:
+                    - a
+                    - b
+                    - g
+                    - r
+                    type: object
+                  rating:
+                    type: number
+                required:
+                - color
+                - rating
+                type: object
+              members:
+                items:
+                  properties:
+                    character:
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        realm:
+                          properties:
+                            id:
+                              type: integer
+                            key:
+                              properties:
+                                href:
+                                  type: string
+                              required:
+                              - href
+                              type: object
+                            slug:
+                              type: string
+                          required:
+                          - id
+                          - key
+                          - slug
+                          type: object
+                      required:
+                      - id
+                      - name
+                      - realm
+                      type: object
+                    equipped_item_level:
+                      type: integer
+                    race:
+                      properties:
+                        id:
+                          type: integer
+                        key:
+                          properties:
+                            href:
+                              type: string
+                          required:
+                          - href
+                          type: object
+                        name:
+                          type: string
+                      required:
+                      - id
+                      - key
+                      - name
+                      type: object
+                    specialization:
+                      properties:
+                        id:
+                          type: integer
+                        key:
+                          properties:
+                            href:
+                              type: string
+                          required:
+                          - href
+                          type: object
+                        name:
+                          type: string
+                      required:
+                      - id
+                      - key
+                      - name
+                      type: object
+                  required:
+                  - character
+                  - equipped_item_level
+                  - race
+                  - specialization
+                  type: object
+                type: array
+              mythic_rating:
+                properties:
+                  color:
+                    properties:
+                      a:
+                        type: number
+                      b:
+                        type: integer
+                      g:
+                        type: integer
+                      r:
+                        type: integer
+                    required:
+                    - a
+                    - b
+                    - g
+                    - r
+                    type: object
+                  rating:
+                    type: number
+                required:
+                - color
+                - rating
+                type: object
+            required:
+            - completed_timestamp
+            - dungeon
+            - duration
+            - is_completed_within_time
+            - keystone_affixes
+            - keystone_level
+            - map_rating
+            - members
+            - mythic_rating
+            type: object
+          type: array
+        period:
+          properties:
+            id:
+              type: integer
+            key:
+              properties:
+                href:
+                  type: string
+              required:
+              - href
+              type: object
+          required:
+          - id
+          - key
+          type: object
+      required:
+      - best_runs
+      - period
+      type: object
+    seasons:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+        required:
+        - id
+        - key
+        type: object
+      type: array
+  required:
+  - _links
+  - character
+  - current_mythic_rating
+  - current_period
+  - seasons
+  type: object
+CharacterMythicKeystoneSeasonDetails:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    best_runs:
+      items:
+        properties:
+          completed_timestamp:
+            type: integer
+          dungeon:
+            properties:
+              id:
+                type: integer
+              key:
+                properties:
+                  href:
+                    type: string
+                required:
+                - href
+                type: object
+              name:
+                type: string
+            required:
+            - id
+            - key
+            - name
+            type: object
+          duration:
+            type: integer
+          is_completed_within_time:
+            type: boolean
+          keystone_affixes:
+            items:
+              properties:
+                id:
+                  type: integer
+                key:
+                  properties:
+                    href:
+                      type: string
+                  required:
+                  - href
+                  type: object
+                name:
+                  type: string
+              required:
+              - id
+              - key
+              - name
+              type: object
+            type: array
+          keystone_level:
+            type: integer
+          members:
+            items:
+              properties:
+                character:
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    realm:
+                      properties:
+                        id:
+                          type: integer
+                        key:
+                          properties:
+                            href:
+                              type: string
+                          required:
+                          - href
+                          type: object
+                        slug:
+                          type: string
+                      required:
+                      - id
+                      - key
+                      - slug
+                      type: object
+                  required:
+                  - id
+                  - name
+                  - realm
+                  type: object
+                equipped_item_level:
+                  type: integer
+                race:
+                  properties:
+                    id:
+                      type: integer
+                    key:
+                      properties:
+                        href:
+                          type: string
+                      required:
+                      - href
+                      type: object
+                    name:
+                      type: string
+                  required:
+                  - id
+                  - key
+                  - name
+                  type: object
+                specialization:
+                  properties:
+                    id:
+                      type: integer
+                    key:
+                      properties:
+                        href:
+                          type: string
+                      required:
+                      - href
+                      type: object
+                    name:
+                      type: string
+                  required:
+                  - id
+                  - key
+                  - name
+                  type: object
+              required:
+              - character
+              - equipped_item_level
+              - race
+              - specialization
+              type: object
+            type: array
+          mythic_rating:
+            properties:
+              color:
+                properties:
+                  a:
+                    type: number
+                  b:
+                    type: integer
+                  g:
+                    type: integer
+                  r:
+                    type: integer
+                required:
+                - a
+                - b
+                - g
+                - r
+                type: object
+              rating:
+                type: number
+            required:
+            - color
+            - rating
+            type: object
+        required:
+        - completed_timestamp
+        - dungeon
+        - duration
+        - is_completed_within_time
+        - keystone_affixes
+        - keystone_level
+        - members
+        - mythic_rating
+        type: object
+      type: array
+    character:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+        realm:
+          properties:
+            id:
+              type: integer
+            key:
+              properties:
+                href:
+                  type: string
+              required:
+              - href
+              type: object
+            name:
+              type: string
+            slug:
+              type: string
+          required:
+          - id
+          - key
+          - name
+          - slug
+          type: object
+      required:
+      - id
+      - key
+      - name
+      - realm
+      type: object
+    mythic_rating:
+      properties:
+        color:
+          properties:
+            a:
+              type: number
+            b:
+              type: integer
+            g:
+              type: integer
+            r:
+              type: integer
+          required:
+          - a
+          - b
+          - g
+          - r
+          type: object
+        rating:
+          type: number
+      required:
+      - color
+      - rating
+      type: object
+    season:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - id
+      - key
+      type: object
+  required:
+  - _links
+  - best_runs
+  - character
+  - mythic_rating
+  - season
+  type: object
 CharacterPetsCollectionSummary:
   properties:
     _links:
@@ -1621,6 +2702,231 @@ CharacterPetsCollectionSummary:
   - _links
   - pets
   - unlocked_battle_pet_slots
+  type: object
+CharacterProfessionsSummary:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    character:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+        realm:
+          properties:
+            id:
+              type: integer
+            key:
+              properties:
+                href:
+                  type: string
+              required:
+              - href
+              type: object
+            name:
+              type: string
+            slug:
+              type: string
+          required:
+          - id
+          - key
+          - name
+          - slug
+          type: object
+      required:
+      - id
+      - key
+      - name
+      - realm
+      type: object
+    primaries:
+      items:
+        properties:
+          profession:
+            properties:
+              id:
+                type: integer
+              key:
+                properties:
+                  href:
+                    type: string
+                required:
+                - href
+                type: object
+              name:
+                type: string
+            required:
+            - id
+            - key
+            - name
+            type: object
+          tiers:
+            items:
+              properties:
+                known_recipes:
+                  items:
+                    properties:
+                      id:
+                        type: integer
+                      key:
+                        properties:
+                          href:
+                            type: string
+                        required:
+                        - href
+                        type: object
+                      name:
+                        type: string
+                    required:
+                    - id
+                    - key
+                    - name
+                    type: object
+                  type: array
+                max_skill_points:
+                  type: integer
+                skill_points:
+                  type: integer
+                tier:
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                  required:
+                  - id
+                  - name
+                  type: object
+              required:
+              - known_recipes
+              - max_skill_points
+              - skill_points
+              - tier
+              type: object
+            type: array
+        required:
+        - profession
+        - tiers
+        type: object
+      type: array
+    secondaries:
+      items:
+        properties:
+          max_skill_points:
+            type: integer
+          profession:
+            properties:
+              id:
+                type: integer
+              key:
+                properties:
+                  href:
+                    type: string
+                required:
+                - href
+                type: object
+              name:
+                type: string
+            required:
+            - id
+            - key
+            - name
+            type: object
+          skill_points:
+            type: integer
+          tiers:
+            items:
+              properties:
+                known_recipes:
+                  items:
+                    properties:
+                      id:
+                        type: integer
+                      key:
+                        properties:
+                          href:
+                            type: string
+                        required:
+                        - href
+                        type: object
+                      name:
+                        type: string
+                    required:
+                    - id
+                    - key
+                    - name
+                    type: object
+                  type: array
+                max_skill_points:
+                  type: integer
+                skill_points:
+                  type: integer
+                tier:
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                  required:
+                  - id
+                  - name
+                  type: object
+              required:
+              - max_skill_points
+              - skill_points
+              - tier
+              type: object
+            type: array
+        required:
+        - profession
+        type: object
+      type: array
+  required:
+  - _links
+  - character
+  - primaries
+  - secondaries
+  type: object
+CharacterProfileStatus:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    id:
+      type: integer
+    is_valid:
+      type: boolean
+  required:
+  - _links
+  - id
+  - is_valid
   type: object
 CharacterProfileSummary:
   properties:
@@ -2008,6 +3314,569 @@ CharacterProfileSummary:
   - specializations
   - statistics
   - titles
+  type: object
+CharacterPvpSummary:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    character:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+        realm:
+          properties:
+            id:
+              type: integer
+            key:
+              properties:
+                href:
+                  type: string
+              required:
+              - href
+              type: object
+            name:
+              type: string
+            slug:
+              type: string
+          required:
+          - id
+          - key
+          - name
+          - slug
+          type: object
+      required:
+      - id
+      - key
+      - name
+      - realm
+      type: object
+    honor_level:
+      type: integer
+    honorable_kills:
+      type: integer
+    pvp_map_statistics:
+      items:
+        properties:
+          match_statistics:
+            properties:
+              lost:
+                type: integer
+              played:
+                type: integer
+              won:
+                type: integer
+            required:
+            - lost
+            - played
+            - won
+            type: object
+          world_map:
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+            required:
+            - id
+            - name
+            type: object
+        required:
+        - match_statistics
+        - world_map
+        type: object
+      type: array
+  required:
+  - _links
+  - character
+  - honor_level
+  - honorable_kills
+  - pvp_map_statistics
+  type: object
+CharacterQuests:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    character:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+        realm:
+          properties:
+            id:
+              type: integer
+            key:
+              properties:
+                href:
+                  type: string
+              required:
+              - href
+              type: object
+            name:
+              type: string
+            slug:
+              type: string
+          required:
+          - id
+          - key
+          - name
+          - slug
+          type: object
+      required:
+      - id
+      - key
+      - name
+      - realm
+      type: object
+    completed:
+      properties:
+        href:
+          type: string
+      required:
+      - href
+      type: object
+    in_progress:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+  required:
+  - _links
+  - character
+  - completed
+  - in_progress
+  type: object
+CharacterRaids:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    character:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+        realm:
+          properties:
+            id:
+              type: integer
+            key:
+              properties:
+                href:
+                  type: string
+              required:
+              - href
+              type: object
+            name:
+              type: string
+            slug:
+              type: string
+          required:
+          - id
+          - key
+          - name
+          - slug
+          type: object
+      required:
+      - id
+      - key
+      - name
+      - realm
+      type: object
+    expansions:
+      items:
+        properties:
+          expansion:
+            properties:
+              id:
+                type: integer
+              key:
+                properties:
+                  href:
+                    type: string
+                required:
+                - href
+                type: object
+              name:
+                type: string
+            required:
+            - id
+            - key
+            - name
+            type: object
+          instances:
+            items:
+              properties:
+                instance:
+                  properties:
+                    id:
+                      type: integer
+                    key:
+                      properties:
+                        href:
+                          type: string
+                      required:
+                      - href
+                      type: object
+                    name:
+                      type: string
+                  required:
+                  - id
+                  - key
+                  - name
+                  type: object
+                modes:
+                  items:
+                    properties:
+                      difficulty:
+                        properties:
+                          name:
+                            type: string
+                          type:
+                            type: string
+                        required:
+                        - name
+                        - type
+                        type: object
+                      progress:
+                        properties:
+                          completed_count:
+                            type: integer
+                          encounters:
+                            items:
+                              properties:
+                                completed_count:
+                                  type: integer
+                                encounter:
+                                  properties:
+                                    id:
+                                      type: integer
+                                    key:
+                                      properties:
+                                        href:
+                                          type: string
+                                      required:
+                                      - href
+                                      type: object
+                                    name:
+                                      type: string
+                                  required:
+                                  - id
+                                  - key
+                                  - name
+                                  type: object
+                                last_kill_timestamp:
+                                  type: integer
+                              required:
+                              - completed_count
+                              - encounter
+                              - last_kill_timestamp
+                              type: object
+                            type: array
+                          total_count:
+                            type: integer
+                        required:
+                        - completed_count
+                        - encounters
+                        - total_count
+                        type: object
+                      status:
+                        properties:
+                          name:
+                            type: string
+                          type:
+                            type: string
+                        required:
+                        - name
+                        - type
+                        type: object
+                    required:
+                    - difficulty
+                    - progress
+                    - status
+                    type: object
+                  type: array
+              required:
+              - instance
+              - modes
+              type: object
+            type: array
+        required:
+        - expansion
+        - instances
+        type: object
+      type: array
+  required:
+  - _links
+  - character
+  - expansions
+  type: object
+CharacterReputationsSummary:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    character:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+        realm:
+          properties:
+            id:
+              type: integer
+            key:
+              properties:
+                href:
+                  type: string
+              required:
+              - href
+              type: object
+            name:
+              type: string
+            slug:
+              type: string
+          required:
+          - id
+          - key
+          - name
+          - slug
+          type: object
+      required:
+      - id
+      - key
+      - name
+      - realm
+      type: object
+    reputations:
+      items:
+        properties:
+          faction:
+            properties:
+              id:
+                type: integer
+              key:
+                properties:
+                  href:
+                    type: string
+                required:
+                - href
+                type: object
+              name:
+                type: string
+            required:
+            - id
+            - key
+            - name
+            type: object
+          paragon:
+            properties:
+              max:
+                type: integer
+              raw:
+                type: integer
+              value:
+                type: integer
+            required:
+            - max
+            - raw
+            - value
+            type: object
+          standing:
+            properties:
+              max:
+                type: integer
+              name:
+                type: string
+              raw:
+                type: integer
+              renown_level:
+                type: integer
+              tier:
+                type: integer
+              value:
+                type: integer
+            required:
+            - max
+            - name
+            - raw
+            - value
+            type: object
+        required:
+        - faction
+        - standing
+        type: object
+      type: array
+  required:
+  - _links
+  - character
+  - reputations
+  type: object
+CharacterSoulbinds:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    character:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+        realm:
+          properties:
+            id:
+              type: integer
+            key:
+              properties:
+                href:
+                  type: string
+              required:
+              - href
+              type: object
+            name:
+              type: string
+            slug:
+              type: string
+          required:
+          - id
+          - key
+          - name
+          - slug
+          type: object
+      required:
+      - id
+      - key
+      - name
+      - realm
+      type: object
+    chosen_covenant:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+      required:
+      - id
+      - key
+      - name
+      type: object
+    renown_level:
+      type: integer
+  required:
+  - _links
+  - character
+  - chosen_covenant
+  - renown_level
   type: object
 CharacterSpecializationsSummary:
   properties:
@@ -2870,6 +4739,224 @@ CharacterStatisticsSummary:
   - versatility_damage_taken_bonus
   - versatility_healing_done_bonus
   type: object
+CharacterTitlesSummary:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    active_title:
+      properties:
+        display_string:
+          type: string
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+      required:
+      - display_string
+      - id
+      - key
+      - name
+      type: object
+    character:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+        realm:
+          properties:
+            id:
+              type: integer
+            key:
+              properties:
+                href:
+                  type: string
+              required:
+              - href
+              type: object
+            name:
+              type: string
+            slug:
+              type: string
+          required:
+          - id
+          - key
+          - name
+          - slug
+          type: object
+      required:
+      - id
+      - key
+      - name
+      - realm
+      type: object
+    titles:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+  required:
+  - _links
+  - active_title
+  - character
+  - titles
+  type: object
+CharacterToysCollectionSummary:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    toys:
+      items:
+        properties:
+          toy:
+            properties:
+              id:
+                type: integer
+              key:
+                properties:
+                  href:
+                    type: string
+                required:
+                - href
+                type: object
+              name:
+                type: string
+            required:
+            - id
+            - key
+            - name
+            type: object
+        required:
+        - toy
+        type: object
+      type: array
+  required:
+  - _links
+  - toys
+  type: object
+CharacterTransmogCollectionSummary:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    appearance_sets:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+    slots:
+      items:
+        properties:
+          appearances:
+            items:
+              properties:
+                id:
+                  type: integer
+                key:
+                  properties:
+                    href:
+                      type: string
+                  required:
+                  - href
+                  type: object
+              required:
+              - id
+              - key
+              type: object
+            type: array
+          slot:
+            properties:
+              name:
+                type: string
+              type:
+                type: string
+            required:
+            - name
+            - type
+            type: object
+        required:
+        - appearances
+        - slot
+        type: object
+      type: array
+  required:
+  - _links
+  - appearance_sets
+  - slots
+  type: object
 Guild:
   properties:
     _links:
@@ -3094,4 +5181,510 @@ Guild:
   - name_search
   - realm
   - roster
+  type: object
+GuildAchievements:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    achievements:
+      items:
+        properties:
+          achievement:
+            properties:
+              id:
+                type: integer
+              key:
+                properties:
+                  href:
+                    type: string
+                required:
+                - href
+                type: object
+              name:
+                type: string
+            required:
+            - id
+            - key
+            - name
+            type: object
+          completed_timestamp:
+            type: integer
+          criteria:
+            properties:
+              amount:
+                type: integer
+              child_criteria:
+                items:
+                  properties:
+                    amount:
+                      type: integer
+                    id:
+                      type: integer
+                    is_completed:
+                      type: boolean
+                  required:
+                  - amount
+                  - id
+                  - is_completed
+                  type: object
+                type: array
+              id:
+                type: integer
+              is_completed:
+                type: boolean
+            required:
+            - id
+            - is_completed
+            type: object
+          id:
+            type: integer
+        required:
+        - achievement
+        - id
+        type: object
+      type: array
+    category_progress:
+      items:
+        properties:
+          category:
+            properties:
+              id:
+                type: integer
+              key:
+                properties:
+                  href:
+                    type: string
+                required:
+                - href
+                type: object
+              name:
+                type: string
+            required:
+            - id
+            - key
+            - name
+            type: object
+          points:
+            type: integer
+          quantity:
+            type: integer
+        required:
+        - category
+        - points
+        - quantity
+        type: object
+      type: array
+    guild:
+      properties:
+        faction:
+          properties:
+            name:
+              type: string
+            type:
+              type: string
+          required:
+          - name
+          - type
+          type: object
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+        realm:
+          properties:
+            id:
+              type: integer
+            key:
+              properties:
+                href:
+                  type: string
+              required:
+              - href
+              type: object
+            name:
+              type: string
+            slug:
+              type: string
+          required:
+          - id
+          - key
+          - name
+          - slug
+          type: object
+      required:
+      - faction
+      - id
+      - key
+      - name
+      - realm
+      type: object
+    recent_events:
+      items:
+        properties:
+          achievement:
+            properties:
+              id:
+                type: integer
+              key:
+                properties:
+                  href:
+                    type: string
+                required:
+                - href
+                type: object
+              name:
+                type: string
+            required:
+            - id
+            - key
+            - name
+            type: object
+          timestamp:
+            type: integer
+        required:
+        - achievement
+        - timestamp
+        type: object
+      type: array
+    total_points:
+      type: integer
+    total_quantity:
+      type: integer
+  required:
+  - _links
+  - achievements
+  - category_progress
+  - guild
+  - recent_events
+  - total_points
+  - total_quantity
+  type: object
+GuildActivity:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    activities:
+      items:
+        properties:
+          activity:
+            properties:
+              type:
+                type: string
+            required:
+            - type
+            type: object
+          character_achievement:
+            properties:
+              achievement:
+                properties:
+                  id:
+                    type: integer
+                  key:
+                    properties:
+                      href:
+                        type: string
+                    required:
+                    - href
+                    type: object
+                  name:
+                    type: string
+                required:
+                - id
+                - key
+                - name
+                type: object
+              character:
+                properties:
+                  id:
+                    type: integer
+                  key:
+                    properties:
+                      href:
+                        type: string
+                    required:
+                    - href
+                    type: object
+                  name:
+                    type: string
+                  realm:
+                    properties:
+                      id:
+                        type: integer
+                      key:
+                        properties:
+                          href:
+                            type: string
+                        required:
+                        - href
+                        type: object
+                      name:
+                        type: string
+                      slug:
+                        type: string
+                    required:
+                    - id
+                    - key
+                    - name
+                    - slug
+                    type: object
+                required:
+                - id
+                - key
+                - name
+                - realm
+                type: object
+            required:
+            - achievement
+            - character
+            type: object
+          timestamp:
+            type: integer
+        required:
+        - activity
+        - character_achievement
+        - timestamp
+        type: object
+      type: array
+    guild:
+      properties:
+        faction:
+          properties:
+            name:
+              type: string
+            type:
+              type: string
+          required:
+          - name
+          - type
+          type: object
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+        realm:
+          properties:
+            id:
+              type: integer
+            key:
+              properties:
+                href:
+                  type: string
+              required:
+              - href
+              type: object
+            name:
+              type: string
+            slug:
+              type: string
+          required:
+          - id
+          - key
+          - name
+          - slug
+          type: object
+      required:
+      - faction
+      - id
+      - key
+      - name
+      - realm
+      type: object
+  required:
+  - _links
+  - activities
+  - guild
+  type: object
+GuildRoster:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    guild:
+      properties:
+        faction:
+          properties:
+            name:
+              type: string
+            type:
+              type: string
+          required:
+          - name
+          - type
+          type: object
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+        realm:
+          properties:
+            id:
+              type: integer
+            key:
+              properties:
+                href:
+                  type: string
+              required:
+              - href
+              type: object
+            name:
+              type: string
+            slug:
+              type: string
+          required:
+          - id
+          - key
+          - name
+          - slug
+          type: object
+      required:
+      - faction
+      - id
+      - key
+      - name
+      - realm
+      type: object
+    members:
+      items:
+        properties:
+          character:
+            properties:
+              faction:
+                properties:
+                  type:
+                    type: string
+                required:
+                - type
+                type: object
+              id:
+                type: integer
+              key:
+                properties:
+                  href:
+                    type: string
+                required:
+                - href
+                type: object
+              level:
+                type: integer
+              name:
+                type: string
+              playable_class:
+                properties:
+                  id:
+                    type: integer
+                  key:
+                    properties:
+                      href:
+                        type: string
+                    required:
+                    - href
+                    type: object
+                required:
+                - id
+                - key
+                type: object
+              playable_race:
+                properties:
+                  id:
+                    type: integer
+                  key:
+                    properties:
+                      href:
+                        type: string
+                    required:
+                    - href
+                    type: object
+                required:
+                - id
+                - key
+                type: object
+              realm:
+                properties:
+                  id:
+                    type: integer
+                  key:
+                    properties:
+                      href:
+                        type: string
+                    required:
+                    - href
+                    type: object
+                  slug:
+                    type: string
+                required:
+                - id
+                - key
+                - slug
+                type: object
+            required:
+            - faction
+            - id
+            - key
+            - level
+            - name
+            - playable_class
+            - playable_race
+            - realm
+            type: object
+          rank:
+            type: integer
+        required:
+        - character
+        - rank
+        type: object
+      type: array
+  required:
+  - _links
+  - guild
+  - members
   type: object
