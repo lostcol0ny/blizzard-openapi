@@ -1,0 +1,1388 @@
+paths:
+  /profile/user/wow:
+    get:
+      operationId: get_account_profile_summary
+      summary: Get the authenticated account's WoW profile summary.
+      tags:
+      - wow-profile
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/user/wow/protected-character/{realm_id}-{character_id}:
+    get:
+      operationId: get_protected_character_profile_summary
+      summary: Get a protected character profile summary.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: character_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/user/wow/collections:
+    get:
+      operationId: get_account_collections_index
+      summary: Get the authenticated account's collections index.
+      tags:
+      - wow-profile
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/user/wow/collections/decor:
+    get:
+      operationId: get_account_decor_collection_summary
+      summary: Get the authenticated account's decor collection.
+      tags:
+      - wow-profile
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/user/wow/collections/mounts:
+    get:
+      operationId: get_account_mounts_collection_summary
+      summary: Get the authenticated account's mounts collection.
+      tags:
+      - wow-profile
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/user/wow/collections/pets:
+    get:
+      operationId: get_account_pets_collection_summary
+      summary: Get the authenticated account's battle pets collection.
+      tags:
+      - wow-profile
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/user/wow/collections/heirlooms:
+    get:
+      operationId: get_account_heirlooms_collection_summary
+      summary: Get the authenticated account's heirlooms collection.
+      tags:
+      - wow-profile
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/user/wow/collections/toys:
+    get:
+      operationId: get_account_toys_collection_summary
+      summary: Get the authenticated account's toys collection.
+      tags:
+      - wow-profile
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/user/wow/collections/transmogs:
+    get:
+      operationId: get_account_transmog_collection_summary
+      summary: Get the authenticated account's transmog collection.
+      tags:
+      - wow-profile
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}:
+    get:
+      operationId: get_character_profile_summary
+      summary: Get a character profile summary.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/status:
+    get:
+      operationId: get_character_profile_status
+      summary: Get a character profile status.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/achievements:
+    get:
+      operationId: get_character_achievements_summary
+      summary: Get a character's achievements summary.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/achievements/statistics:
+    get:
+      operationId: get_character_achievement_statistics
+      summary: Get a character's achievement statistics.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/appearance:
+    get:
+      operationId: get_character_appearance_summary
+      summary: Get a character's appearance summary.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/collections:
+    get:
+      operationId: get_character_collections_index
+      summary: Get a character's collections index.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/collections/decor:
+    get:
+      operationId: get_character_decor_collection
+      summary: Get a character's decor collection (new in Midnight).
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/collections/mounts:
+    get:
+      operationId: get_character_mounts_collection_summary
+      summary: Get a character's mounts collection.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/collections/pets:
+    get:
+      operationId: get_character_pets_collection_summary
+      summary: Get a character's battle pets collection.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/collections/heirlooms:
+    get:
+      operationId: get_character_heirlooms_collection_summary
+      summary: Get a character's heirlooms collection.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/collections/toys:
+    get:
+      operationId: get_character_toys_collection_summary
+      summary: Get a character's toys collection.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/collections/transmogs:
+    get:
+      operationId: get_character_transmog_collection_summary
+      summary: Get a character's transmog collection.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/encounters:
+    get:
+      operationId: get_character_encounters_summary
+      summary: Get a character's encounters summary.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/encounters/dungeons:
+    get:
+      operationId: get_character_dungeons
+      summary: Get a character's dungeon encounters.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/encounters/raids:
+    get:
+      operationId: get_character_raids
+      summary: Get a character's raid encounters.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/equipment:
+    get:
+      operationId: get_character_equipment_summary
+      summary: Get a character's equipment summary.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/hunter-pets:
+    get:
+      operationId: get_character_hunter_pets_summary
+      summary: Get a character's hunter pets summary.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/character-media:
+    get:
+      operationId: get_character_media_summary
+      summary: Get a character's media (avatar, portrait, etc.).
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/mythic-keystone-profile:
+    get:
+      operationId: get_character_mythic_keystone_profile_index
+      summary: Get a character's mythic keystone profile index.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/mythic-keystone-profile/season/{season_id}:
+    get:
+      operationId: get_character_mythic_keystone_season_details
+      summary: Get a character's mythic keystone season details.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: season_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/professions:
+    get:
+      operationId: get_character_professions_summary
+      summary: Get a character's professions summary.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/pvp-bracket/{pvp_bracket}:
+    get:
+      operationId: get_character_pvp_bracket_statistics
+      summary: Get a character's PvP bracket statistics.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: pvp_bracket
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/pvp-summary:
+    get:
+      operationId: get_character_pvp_summary
+      summary: Get a character's PvP summary.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/quests:
+    get:
+      operationId: get_character_quests
+      summary: Get a character's quests.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/quests/completed:
+    get:
+      operationId: get_character_completed_quests
+      summary: Get a character's completed quests.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/reputations:
+    get:
+      operationId: get_character_reputations_summary
+      summary: Get a character's reputations summary.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/soulbinds:
+    get:
+      operationId: get_character_soulbinds
+      summary: Get a character's soulbinds.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/specializations:
+    get:
+      operationId: get_character_specializations_summary
+      summary: Get a character's specializations summary.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/statistics:
+    get:
+      operationId: get_character_statistics_summary
+      summary: Get a character's statistics summary.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/titles:
+    get:
+      operationId: get_character_titles_summary
+      summary: Get a character's titles summary.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/house/house-{house_number}:
+    get:
+      operationId: get_character_house
+      summary: Get a character's house by house number (new in Midnight).
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: house_number
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /data/wow/guild/{realm_slug}/{name_slug}:
+    get:
+      operationId: get_guild
+      summary: Get a guild by realm and name slugs.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: name_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /data/wow/guild/{realm_slug}/{name_slug}/activity:
+    get:
+      operationId: get_guild_activity
+      summary: Get guild activity.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: name_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /data/wow/guild/{realm_slug}/{name_slug}/achievements:
+    get:
+      operationId: get_guild_achievements
+      summary: Get guild achievements.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: name_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /data/wow/guild/{realm_slug}/{name_slug}/roster:
+    get:
+      operationId: get_guild_roster
+      summary: Get guild roster.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: name_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile

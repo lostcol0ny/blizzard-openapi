@@ -1,0 +1,6464 @@
+openapi: 3.1.0
+info:
+  title: Blizzard Battle.net API
+  version: 0.1.0
+  description: 'Unofficial OpenAPI 3.1 specification for Blizzard''s Battle.net APIs.
+
+    This specification is not affiliated with or endorsed by Blizzard Entertainment.
+
+    '
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  contact:
+    name: blizzard-openapi
+    url: https://github.com/lostcol0ny/blizzard-openapi
+servers:
+- url: https://us.api.blizzard.com
+  description: US region
+- url: https://eu.api.blizzard.com
+  description: EU region
+- url: https://kr.api.blizzard.com
+  description: Korea region
+- url: https://tw.api.blizzard.com
+  description: Taiwan region
+- url: https://gateway.battlenet.com.cn
+  description: China region (separate infrastructure)
+tags:
+- name: wow-game-data
+  description: World of Warcraft Game Data APIs
+- name: wow-profile
+  description: World of Warcraft Profile APIs (requires user token)
+- name: wow-classic
+  description: World of Warcraft Classic Game Data APIs
+- name: diablo3-game-data
+  description: Diablo 3 Game Data APIs
+- name: diablo3-community
+  description: Diablo 3 Community APIs
+- name: sc2-game-data
+  description: StarCraft 2 Game Data APIs
+- name: sc2-community
+  description: StarCraft 2 Community APIs
+- name: hearthstone
+  description: Hearthstone Game Data APIs
+- name: oauth
+  description: OAuth 2.0 authentication flows
+security:
+- ClientCredentials: []
+paths:
+  /data/wow/achievement-category/index:
+    get:
+      operationId: get_achievement_categories_index
+      summary: Get an index of achievement categories.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/achievement-category/{category_id}:
+    get:
+      operationId: get_achievement_category
+      summary: Get an achievement category by ID.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - name: category_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/achievement/index:
+    get:
+      operationId: get_achievements_index
+      summary: Get an index of achievements.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/achievement/{achievement_id}:
+    get:
+      operationId: get_achievement
+      summary: Get an achievement by ID.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - name: achievement_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/media/achievement/{achievement_id}:
+    get:
+      operationId: get_achievement_media
+      summary: Get media for an achievement.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - name: achievement_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/connected-realm/{connected_realm_id}/auctions:
+    get:
+      operationId: get_auctions
+      summary: Get auction house data for a connected realm.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: connected_realm_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/auctions/commodities:
+    get:
+      operationId: get_commodities
+      summary: Get commodity auction data.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/azerite-essence/index:
+    get:
+      operationId: get_azerite_essences_index
+      summary: Get an index of azerite essences.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/azerite-essence/{essence_id}:
+    get:
+      operationId: get_azerite_essence
+      summary: Get an azerite essence by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: essence_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/search/azerite-essence:
+    get:
+      operationId: search_azerite_essence
+      summary: Search for azerite essences.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/media/azerite-essence/{essence_id}:
+    get:
+      operationId: get_azerite_essence_media
+      summary: Get media for an azerite essence.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: essence_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/connected-realm/index:
+    get:
+      operationId: get_connected_realms_index
+      summary: Get an index of connected realms.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/connected-realm/{connected_realm_id}:
+    get:
+      operationId: get_connected_realm
+      summary: Get a connected realm by ID.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - name: connected_realm_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/search/connected-realm:
+    get:
+      operationId: search_connected_realm
+      summary: Search for connected realms.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/covenant/index:
+    get:
+      operationId: get_covenant_index
+      summary: Get an index of covenants.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/covenant/{covenant_id}:
+    get:
+      operationId: get_covenant
+      summary: Get a covenant by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: covenant_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/media/covenant/{covenant_id}:
+    get:
+      operationId: get_covenant_media
+      summary: Get media for a covenant.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: covenant_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/covenant/soulbind/index:
+    get:
+      operationId: get_soulbind_index
+      summary: Get an index of soulbinds.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/covenant/soulbind/{soulbind_id}:
+    get:
+      operationId: get_soulbind
+      summary: Get a soulbind by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: soulbind_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/covenant/conduit/index:
+    get:
+      operationId: get_conduit_index
+      summary: Get an index of conduits.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/covenant/conduit/{conduit_id}:
+    get:
+      operationId: get_conduit
+      summary: Get a conduit by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: conduit_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/creature-family/index:
+    get:
+      operationId: get_creature_families_index
+      summary: Get an index of creature families.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/creature-family/{creature_family_id}:
+    get:
+      operationId: get_creature_family
+      summary: Get a creature family by ID.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - name: creature_family_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/media/creature-family/{creature_family_id}:
+    get:
+      operationId: get_creature_family_media
+      summary: Get media for a creature family.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - name: creature_family_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/creature-type/index:
+    get:
+      operationId: get_creature_types_index
+      summary: Get an index of creature types.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/creature-type/{creature_type_id}:
+    get:
+      operationId: get_creature_type
+      summary: Get a creature type by ID.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - name: creature_type_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/creature/{creature_id}:
+    get:
+      operationId: get_creature
+      summary: Get a creature by ID.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - name: creature_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/search/creature:
+    get:
+      operationId: search_creature
+      summary: Search for creatures.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/media/creature-display/{creature_display_id}:
+    get:
+      operationId: get_creature_display_media
+      summary: Get display media for a creature.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - name: creature_display_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/guild-crest/index:
+    get:
+      operationId: get_guild_crest_components_index
+      summary: Get an index of guild crest components.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/media/guild-crest/border/{border_id}:
+    get:
+      operationId: get_guild_crest_border_media
+      summary: Get media for a guild crest border.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - name: border_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/media/guild-crest/emblem/{emblem_id}:
+    get:
+      operationId: get_guild_crest_emblem_media
+      summary: Get media for a guild crest emblem.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - name: emblem_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/heirloom/index:
+    get:
+      operationId: get_heirloom_index
+      summary: Get an index of heirlooms.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/heirloom/{heirloom_id}:
+    get:
+      operationId: get_heirloom
+      summary: Get an heirloom by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: heirloom_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/decor/index:
+    get:
+      operationId: get_decor_index
+      summary: Get an index of decor items.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/decor/{decor_id}:
+    get:
+      operationId: get_decor
+      summary: Get a decor item by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: decor_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/search/decor:
+    get:
+      operationId: search_decor
+      summary: Search for decor items.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/fixture/index:
+    get:
+      operationId: get_fixture_index
+      summary: Get an index of fixtures.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/fixture/{fixture_id}:
+    get:
+      operationId: get_fixture
+      summary: Get a fixture by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: fixture_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/search/fixture:
+    get:
+      operationId: search_fixture
+      summary: Search for fixtures.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/fixture-hook/index:
+    get:
+      operationId: get_fixture_hook_index
+      summary: Get an index of fixture hooks.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/fixture-hook/{fixture_hook_id}:
+    get:
+      operationId: get_fixture_hook
+      summary: Get a fixture hook by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: fixture_hook_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/search/fixture-hook:
+    get:
+      operationId: search_fixture_hook
+      summary: Search for fixture hooks.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/room/index:
+    get:
+      operationId: get_room_index
+      summary: Get an index of rooms.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/room/{room_id}:
+    get:
+      operationId: get_room
+      summary: Get a room by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: room_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/search/room:
+    get:
+      operationId: search_room
+      summary: Search for rooms.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/item-appearance/{appearance_id}:
+    get:
+      operationId: get_item_appearance
+      summary: Get an item appearance by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: appearance_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/item-appearance/set/{appearance_set_id}:
+    get:
+      operationId: get_item_appearance_set
+      summary: Get an item appearance set by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: appearance_set_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/neighborhood-map/index:
+    get:
+      operationId: get_neighborhood_map_index
+      summary: Get an index of neighborhood maps.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/neighborhood-map/{neighborhood_map_id}:
+    get:
+      operationId: get_neighborhood_map
+      summary: Get a neighborhood map by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: neighborhood_map_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/item-class/index:
+    get:
+      operationId: get_item_classes_index
+      summary: Get an index of item classes.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/item-class/{class_id}:
+    get:
+      operationId: get_item_class
+      summary: Get an item class by ID.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - name: class_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/item-set/index:
+    get:
+      operationId: get_item_sets_index
+      summary: Get an index of item sets.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/item-set/{set_id}:
+    get:
+      operationId: get_item_set
+      summary: Get an item set by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: set_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/item-class/{class_id}/item-subclass/{subclass_id}:
+    get:
+      operationId: get_item_subclass
+      summary: Get an item subclass.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - name: class_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: subclass_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/item/{item_id}:
+    get:
+      operationId: get_item
+      summary: Get an item by ID.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - name: item_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/media/item/{item_id}:
+    get:
+      operationId: get_item_media
+      summary: Get media for an item.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - name: item_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/search/item:
+    get:
+      operationId: search_item
+      summary: Search for items.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/journal-expansion/index:
+    get:
+      operationId: get_journal_expansions_index
+      summary: Get an index of journal expansions.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/journal-expansion/{expansion_id}:
+    get:
+      operationId: get_journal_expansion
+      summary: Get a journal expansion by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: expansion_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/journal-encounter/index:
+    get:
+      operationId: get_journal_encounters_index
+      summary: Get an index of journal encounters.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/journal-encounter/{encounter_id}:
+    get:
+      operationId: get_journal_encounter
+      summary: Get a journal encounter by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: encounter_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/search/journal-encounter:
+    get:
+      operationId: search_journal_encounter
+      summary: Search for journal encounters.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/journal-instance/index:
+    get:
+      operationId: get_journal_instances_index
+      summary: Get an index of journal instances.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/journal-instance/{instance_id}:
+    get:
+      operationId: get_journal_instance
+      summary: Get a journal instance by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: instance_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/media/journal-instance/{instance_id}:
+    get:
+      operationId: get_journal_instance_media
+      summary: Get media for a journal instance.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: instance_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/search/media:
+    get:
+      operationId: search_media
+      summary: Search for media.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/modified-crafting/index:
+    get:
+      operationId: get_modified_crafting_index
+      summary: Get the modified crafting index.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/modified-crafting/category/index:
+    get:
+      operationId: get_modified_crafting_category_index
+      summary: Get an index of modified crafting categories.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/modified-crafting/category/{category_id}:
+    get:
+      operationId: get_modified_crafting_category
+      summary: Get a modified crafting category by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: category_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/modified-crafting/reagent-slot-type/index:
+    get:
+      operationId: get_modified_crafting_reagent_slot_type_index
+      summary: Get an index of modified crafting reagent slot types.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/modified-crafting/reagent-slot-type/{slot_type_id}:
+    get:
+      operationId: get_modified_crafting_reagent_slot_type
+      summary: Get a modified crafting reagent slot type by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: slot_type_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/mount/index:
+    get:
+      operationId: get_mounts_index
+      summary: Get an index of mounts.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/mount/{mount_id}:
+    get:
+      operationId: get_mount
+      summary: Get a mount by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: mount_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/search/mount:
+    get:
+      operationId: search_mount
+      summary: Search for mounts.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/keystone-affix/index:
+    get:
+      operationId: get_mythic_keystone_affixes_index
+      summary: Get an index of mythic keystone affixes.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/keystone-affix/{affix_id}:
+    get:
+      operationId: get_mythic_keystone_affix
+      summary: Get a mythic keystone affix by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: affix_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/media/keystone-affix/{affix_id}:
+    get:
+      operationId: get_mythic_keystone_affix_media
+      summary: Get media for a mythic keystone affix.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: affix_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/mythic-keystone/dungeon/index:
+    get:
+      operationId: get_mythic_keystone_dungeons_index
+      summary: Get an index of mythic keystone dungeons.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/mythic-keystone/dungeon/{dungeon_id}:
+    get:
+      operationId: get_mythic_keystone_dungeon
+      summary: Get a mythic keystone dungeon by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: dungeon_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/mythic-keystone/index:
+    get:
+      operationId: get_mythic_keystone_index
+      summary: Get the mythic keystone index.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/mythic-keystone/period/index:
+    get:
+      operationId: get_mythic_keystone_periods_index
+      summary: Get an index of mythic keystone periods.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/mythic-keystone/period/{period_id}:
+    get:
+      operationId: get_mythic_keystone_period
+      summary: Get a mythic keystone period by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: period_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/mythic-keystone/season/index:
+    get:
+      operationId: get_mythic_keystone_seasons_index
+      summary: Get an index of mythic keystone seasons.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/mythic-keystone/season/{season_id}:
+    get:
+      operationId: get_mythic_keystone_season
+      summary: Get a mythic keystone season by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: season_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/connected-realm/{connected_realm_id}/mythic-leaderboard/index:
+    get:
+      operationId: get_mythic_keystone_leaderboards_index
+      summary: Get an index of mythic keystone leaderboards for a connected realm.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: connected_realm_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/connected-realm/{connected_realm_id}/mythic-leaderboard/{dungeon_id}/period/{period_id}:
+    get:
+      operationId: get_mythic_keystone_leaderboard
+      summary: Get a mythic keystone leaderboard.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: connected_realm_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: dungeon_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: period_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/leaderboard/hall-of-fame/{raid}/{faction}:
+    get:
+      operationId: get_mythic_raid_leaderboard
+      summary: Get the mythic raid hall of fame leaderboard.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: raid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: faction
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/pet/index:
+    get:
+      operationId: get_pets_index
+      summary: Get an index of battle pets.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/pet/{pet_id}:
+    get:
+      operationId: get_pet
+      summary: Get a battle pet by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: pet_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/media/pet/{pet_id}:
+    get:
+      operationId: get_pet_media
+      summary: Get media for a battle pet.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: pet_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/pet-ability/index:
+    get:
+      operationId: get_pet_abilities_index
+      summary: Get an index of pet abilities.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/pet-ability/{ability_id}:
+    get:
+      operationId: get_pet_ability
+      summary: Get a pet ability by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: ability_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/media/pet-ability/{ability_id}:
+    get:
+      operationId: get_pet_ability_media
+      summary: Get media for a pet ability.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: ability_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/playable-class/index:
+    get:
+      operationId: get_playable_classes_index
+      summary: Get an index of playable classes.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/playable-class/{class_id}:
+    get:
+      operationId: get_playable_class
+      summary: Get a playable class by ID.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - name: class_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/media/playable-class/{class_id}:
+    get:
+      operationId: get_playable_class_media
+      summary: Get media for a playable class.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: class_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/playable-class/{class_id}/pvp-talent-slots:
+    get:
+      operationId: get_pvp_talent_slots
+      summary: Get PvP talent slots for a playable class.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: class_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/playable-race/index:
+    get:
+      operationId: get_playable_races_index
+      summary: Get an index of playable races.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/playable-race/{race_id}:
+    get:
+      operationId: get_playable_race
+      summary: Get a playable race by ID.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - name: race_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/playable-specialization/index:
+    get:
+      operationId: get_playable_specializations_index
+      summary: Get an index of playable specializations.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/playable-specialization/{spec_id}:
+    get:
+      operationId: get_playable_specialization
+      summary: Get a playable specialization by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: spec_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/media/playable-specialization/{spec_id}:
+    get:
+      operationId: get_playable_specialization_media
+      summary: Get media for a playable specialization.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: spec_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/power-type/index:
+    get:
+      operationId: get_power_types_index
+      summary: Get an index of power types.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/power-type/{power_type_id}:
+    get:
+      operationId: get_power_type
+      summary: Get a power type by ID.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - name: power_type_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/profession/index:
+    get:
+      operationId: get_professions_index
+      summary: Get an index of professions.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/profession/{profession_id}:
+    get:
+      operationId: get_profession
+      summary: Get a profession by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: profession_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/media/profession/{profession_id}:
+    get:
+      operationId: get_profession_media
+      summary: Get media for a profession.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: profession_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/profession/{profession_id}/skill-tier/{skill_tier_id}:
+    get:
+      operationId: get_profession_skill_tier
+      summary: Get a profession skill tier.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: profession_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: skill_tier_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/recipe/{recipe_id}:
+    get:
+      operationId: get_recipe
+      summary: Get a recipe by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: recipe_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/media/recipe/{recipe_id}:
+    get:
+      operationId: get_recipe_media
+      summary: Get media for a recipe.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: recipe_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/pvp-season/index:
+    get:
+      operationId: get_pvp_seasons_index
+      summary: Get an index of PvP seasons.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/pvp-season/{season_id}:
+    get:
+      operationId: get_pvp_season
+      summary: Get a PvP season by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: season_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/pvp-season/{season_id}/pvp-leaderboard/index:
+    get:
+      operationId: get_pvp_leaderboards_index
+      summary: Get an index of PvP leaderboards for a season.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: season_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/pvp-season/{season_id}/pvp-leaderboard/{bracket}:
+    get:
+      operationId: get_pvp_leaderboard
+      summary: Get a PvP leaderboard for a bracket.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: season_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: bracket
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/pvp-season/{season_id}/pvp-reward/index:
+    get:
+      operationId: get_pvp_rewards_index
+      summary: Get an index of PvP rewards for a season.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: season_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/pvp-tier/index:
+    get:
+      operationId: get_pvp_tiers_index
+      summary: Get an index of PvP tiers.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/pvp-tier/{tier_id}:
+    get:
+      operationId: get_pvp_tier
+      summary: Get a PvP tier by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: tier_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/media/pvp-tier/{tier_id}:
+    get:
+      operationId: get_pvp_tier_media
+      summary: Get media for a PvP tier.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: tier_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/quest/index:
+    get:
+      operationId: get_quests_index
+      summary: Get an index of quests.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/quest/{quest_id}:
+    get:
+      operationId: get_quest
+      summary: Get a quest by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: quest_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/quest/category/index:
+    get:
+      operationId: get_quest_categories_index
+      summary: Get an index of quest categories.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/quest/category/{category_id}:
+    get:
+      operationId: get_quest_category
+      summary: Get a quest category by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: category_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/quest/area/index:
+    get:
+      operationId: get_quest_areas_index
+      summary: Get an index of quest areas.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/quest/area/{area_id}:
+    get:
+      operationId: get_quest_area
+      summary: Get a quest area by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: area_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/quest/type/index:
+    get:
+      operationId: get_quest_types_index
+      summary: Get an index of quest types.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/quest/type/{type_id}:
+    get:
+      operationId: get_quest_type
+      summary: Get a quest type by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: type_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/realm/index:
+    get:
+      operationId: get_realms_index
+      summary: Get an index of realms.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/realm/{realm_slug}:
+    get:
+      operationId: get_realm
+      summary: Get a realm by slug.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/search/realm:
+    get:
+      operationId: search_realm
+      summary: Search for realms.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/region/index:
+    get:
+      operationId: get_regions_index
+      summary: Get an index of regions.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/region/{region_id}:
+    get:
+      operationId: get_region
+      summary: Get a region by ID.
+      tags:
+      - wow-classic
+      - wow-game-data
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/reputation-faction/index:
+    get:
+      operationId: get_reputation_factions_index
+      summary: Get an index of reputation factions.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/reputation-faction/{faction_id}:
+    get:
+      operationId: get_reputation_faction
+      summary: Get a reputation faction by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: faction_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/reputation-tiers/index:
+    get:
+      operationId: get_reputation_tiers_index
+      summary: Get an index of reputation tiers.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/reputation-tiers/{tiers_id}:
+    get:
+      operationId: get_reputation_tiers
+      summary: Get reputation tiers by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: tiers_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/spell/{spell_id}:
+    get:
+      operationId: get_spell
+      summary: Get a spell by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: spell_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/media/spell/{spell_id}:
+    get:
+      operationId: get_spell_media
+      summary: Get media for a spell.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: spell_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/search/spell:
+    get:
+      operationId: search_spell
+      summary: Search for spells.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/talent/index:
+    get:
+      operationId: get_talents_index
+      summary: Get an index of talents.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/talent/{talent_id}:
+    get:
+      operationId: get_talent
+      summary: Get a talent by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: talent_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/pvp-talent/index:
+    get:
+      operationId: get_pvp_talents_index
+      summary: Get an index of PvP talents.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/pvp-talent/{talent_id}:
+    get:
+      operationId: get_pvp_talent
+      summary: Get a PvP talent by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: talent_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/talent-tree/index:
+    get:
+      operationId: get_talent_tree_index
+      summary: Get an index of talent trees.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/talent-tree/{tree_id}/playable-specialization/{spec_id}:
+    get:
+      operationId: get_talent_tree
+      summary: Get a talent tree for a specialization.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: tree_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: spec_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/talent-tree/{tree_id}:
+    get:
+      operationId: get_talent_tree_nodes
+      summary: Get talent tree nodes.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: tree_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/tech-talent-tree/index:
+    get:
+      operationId: get_tech_talent_tree_index
+      summary: Get an index of tech talent trees.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/tech-talent-tree/{tree_id}:
+    get:
+      operationId: get_tech_talent_tree
+      summary: Get a tech talent tree by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: tree_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/tech-talent/index:
+    get:
+      operationId: get_tech_talent_index
+      summary: Get an index of tech talents.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/tech-talent/{talent_id}:
+    get:
+      operationId: get_tech_talent
+      summary: Get a tech talent by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: talent_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/media/tech-talent/{talent_id}:
+    get:
+      operationId: get_tech_talent_media
+      summary: Get media for a tech talent.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: talent_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/title/index:
+    get:
+      operationId: get_titles_index
+      summary: Get an index of titles.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/title/{title_id}:
+    get:
+      operationId: get_title
+      summary: Get a title by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: title_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/toy/index:
+    get:
+      operationId: get_toy_index
+      summary: Get an index of toys.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/toy/{toy_id}:
+    get:
+      operationId: get_toy
+      summary: Get a toy by ID.
+      tags:
+      - wow-game-data
+      parameters:
+      - name: toy_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/token/index:
+    get:
+      operationId: get_token_index
+      summary: Get the WoW token index.
+      tags:
+      - wow-game-data
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /profile/user/wow:
+    get:
+      operationId: get_account_profile_summary
+      summary: Get the authenticated account's WoW profile summary.
+      tags:
+      - wow-profile
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/user/wow/protected-character/{realm_id}-{character_id}:
+    get:
+      operationId: get_protected_character_profile_summary
+      summary: Get a protected character profile summary.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: character_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/user/wow/collections:
+    get:
+      operationId: get_account_collections_index
+      summary: Get the authenticated account's collections index.
+      tags:
+      - wow-profile
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/user/wow/collections/decor:
+    get:
+      operationId: get_account_decor_collection_summary
+      summary: Get the authenticated account's decor collection.
+      tags:
+      - wow-profile
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/user/wow/collections/mounts:
+    get:
+      operationId: get_account_mounts_collection_summary
+      summary: Get the authenticated account's mounts collection.
+      tags:
+      - wow-profile
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/user/wow/collections/pets:
+    get:
+      operationId: get_account_pets_collection_summary
+      summary: Get the authenticated account's battle pets collection.
+      tags:
+      - wow-profile
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/user/wow/collections/heirlooms:
+    get:
+      operationId: get_account_heirlooms_collection_summary
+      summary: Get the authenticated account's heirlooms collection.
+      tags:
+      - wow-profile
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/user/wow/collections/toys:
+    get:
+      operationId: get_account_toys_collection_summary
+      summary: Get the authenticated account's toys collection.
+      tags:
+      - wow-profile
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/user/wow/collections/transmogs:
+    get:
+      operationId: get_account_transmog_collection_summary
+      summary: Get the authenticated account's transmog collection.
+      tags:
+      - wow-profile
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}:
+    get:
+      operationId: get_character_profile_summary
+      summary: Get a character profile summary.
+      tags:
+      - wow-classic
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/status:
+    get:
+      operationId: get_character_profile_status
+      summary: Get a character profile status.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/achievements:
+    get:
+      operationId: get_character_achievements_summary
+      summary: Get a character's achievements summary.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/achievements/statistics:
+    get:
+      operationId: get_character_achievement_statistics
+      summary: Get a character's achievement statistics.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/appearance:
+    get:
+      operationId: get_character_appearance_summary
+      summary: Get a character's appearance summary.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/collections:
+    get:
+      operationId: get_character_collections_index
+      summary: Get a character's collections index.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/collections/decor:
+    get:
+      operationId: get_character_decor_collection
+      summary: Get a character's decor collection (new in Midnight).
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/collections/mounts:
+    get:
+      operationId: get_character_mounts_collection_summary
+      summary: Get a character's mounts collection.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/collections/pets:
+    get:
+      operationId: get_character_pets_collection_summary
+      summary: Get a character's battle pets collection.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/collections/heirlooms:
+    get:
+      operationId: get_character_heirlooms_collection_summary
+      summary: Get a character's heirlooms collection.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/collections/toys:
+    get:
+      operationId: get_character_toys_collection_summary
+      summary: Get a character's toys collection.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/collections/transmogs:
+    get:
+      operationId: get_character_transmog_collection_summary
+      summary: Get a character's transmog collection.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/encounters:
+    get:
+      operationId: get_character_encounters_summary
+      summary: Get a character's encounters summary.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/encounters/dungeons:
+    get:
+      operationId: get_character_dungeons
+      summary: Get a character's dungeon encounters.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/encounters/raids:
+    get:
+      operationId: get_character_raids
+      summary: Get a character's raid encounters.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/equipment:
+    get:
+      operationId: get_character_equipment_summary
+      summary: Get a character's equipment summary.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/hunter-pets:
+    get:
+      operationId: get_character_hunter_pets_summary
+      summary: Get a character's hunter pets summary.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/character-media:
+    get:
+      operationId: get_character_media_summary
+      summary: Get a character's media (avatar, portrait, etc.).
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/mythic-keystone-profile:
+    get:
+      operationId: get_character_mythic_keystone_profile_index
+      summary: Get a character's mythic keystone profile index.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/mythic-keystone-profile/season/{season_id}:
+    get:
+      operationId: get_character_mythic_keystone_season_details
+      summary: Get a character's mythic keystone season details.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: season_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/professions:
+    get:
+      operationId: get_character_professions_summary
+      summary: Get a character's professions summary.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/pvp-bracket/{pvp_bracket}:
+    get:
+      operationId: get_character_pvp_bracket_statistics
+      summary: Get a character's PvP bracket statistics.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: pvp_bracket
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/pvp-summary:
+    get:
+      operationId: get_character_pvp_summary
+      summary: Get a character's PvP summary.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/quests:
+    get:
+      operationId: get_character_quests
+      summary: Get a character's quests.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/quests/completed:
+    get:
+      operationId: get_character_completed_quests
+      summary: Get a character's completed quests.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/reputations:
+    get:
+      operationId: get_character_reputations_summary
+      summary: Get a character's reputations summary.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/soulbinds:
+    get:
+      operationId: get_character_soulbinds
+      summary: Get a character's soulbinds.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/specializations:
+    get:
+      operationId: get_character_specializations_summary
+      summary: Get a character's specializations summary.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/statistics:
+    get:
+      operationId: get_character_statistics_summary
+      summary: Get a character's statistics summary.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/titles:
+    get:
+      operationId: get_character_titles_summary
+      summary: Get a character's titles summary.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /profile/wow/character/{realm_slug}/{character_name}/house/house-{house_number}:
+    get:
+      operationId: get_character_house
+      summary: Get a character's house by house number (new in Midnight).
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: character_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: house_number
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /data/wow/guild/{realm_slug}/{name_slug}:
+    get:
+      operationId: get_guild
+      summary: Get a guild by realm and name slugs.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: name_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /data/wow/guild/{realm_slug}/{name_slug}/activity:
+    get:
+      operationId: get_guild_activity
+      summary: Get guild activity.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: name_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /data/wow/guild/{realm_slug}/{name_slug}/achievements:
+    get:
+      operationId: get_guild_achievements
+      summary: Get guild achievements.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: name_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /data/wow/guild/{realm_slug}/{name_slug}/roster:
+    get:
+      operationId: get_guild_roster
+      summary: Get guild roster.
+      tags:
+      - wow-profile
+      parameters:
+      - name: realm_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: name_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+      security:
+      - AuthorizationCode:
+        - wow.profile
+  /data/wow/connected-realm/{connected_realm_id}/auctions/index:
+    get:
+      operationId: get_auctions_index
+      summary: Get the index of auction houses for a Classic connected realm.
+      tags:
+      - wow-classic
+      parameters:
+      - name: connected_realm_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/connected-realm/{connected_realm_id}/auctions/{auction_house_id}:
+    get:
+      operationId: wow_classic_get_auctions
+      summary: Get a specific Classic auction house's data.
+      tags:
+      - wow-classic
+      parameters:
+      - name: connected_realm_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: auction_house_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/pvp-region/index:
+    get:
+      operationId: get_pvp_region_index
+      summary: Get the index of Classic PvP regions.
+      tags:
+      - wow-classic
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/pvp-region/{pvp_region_id}/pvp-season/index:
+    get:
+      operationId: get_pvp_regional_seasons_index
+      summary: Get the index of PvP seasons for a Classic PvP region.
+      tags:
+      - wow-classic
+      parameters:
+      - name: pvp_region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/pvp-region/{pvp_region_id}/pvp-season/{pvp_season_id}:
+    get:
+      operationId: get_pvp_regional_season
+      summary: Get a Classic PvP season in a specific PvP region.
+      tags:
+      - wow-classic
+      parameters:
+      - name: pvp_region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: pvp_season_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/pvp-region/{pvp_region_id}/pvp-season/{pvp_season_id}/pvp-leaderboard/index:
+    get:
+      operationId: get_pvp_regional_leaderboards_index
+      summary: Get the leaderboards index for a Classic regional PvP season.
+      tags:
+      - wow-classic
+      parameters:
+      - name: pvp_region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: pvp_season_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/pvp-region/{pvp_region_id}/pvp-season/{pvp_season_id}/pvp-leaderboard/{pvp_bracket}:
+    get:
+      operationId: get_pvp_regional_leaderboard
+      summary: Get a Classic PvP leaderboard for a bracket in a regional season.
+      tags:
+      - wow-classic
+      parameters:
+      - name: pvp_region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: pvp_season_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: pvp_bracket
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/wow/pvp-region/{pvp_region_id}/pvp-season/{pvp_season_id}/pvp-reward/index:
+    get:
+      operationId: get_pvp_regional_rewards_index
+      summary: Get the rewards index for a Classic regional PvP season.
+      tags:
+      - wow-classic
+      parameters:
+      - name: pvp_region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: pvp_season_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /d3/profile/{battletag}/:
+    get:
+      operationId: get_account
+      summary: Get a D3 account profile by BattleTag (``Name#1234``).
+      tags:
+      - diablo3
+      parameters:
+      - name: battletag
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /d3/profile/{battletag}/hero/{hero_id}:
+    get:
+      operationId: get_hero
+      summary: Get a hero by BattleTag and hero ID.
+      tags:
+      - diablo3
+      parameters:
+      - name: battletag
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: hero_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /d3/profile/{battletag}/hero/{hero_id}/items:
+    get:
+      operationId: get_hero_items
+      summary: Get items for a hero.
+      tags:
+      - diablo3
+      parameters:
+      - name: battletag
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: hero_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /d3/profile/{battletag}/hero/{hero_id}/follower-items:
+    get:
+      operationId: get_hero_follower_items
+      summary: Get follower items for a hero.
+      tags:
+      - diablo3
+      parameters:
+      - name: battletag
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: hero_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /d3/data/act:
+    get:
+      operationId: get_act_index
+      summary: Get an index of D3 acts.
+      tags:
+      - diablo3
+      parameters:
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /d3/data/act/{act_id}:
+    get:
+      operationId: get_act
+      summary: Get a D3 act by ID.
+      tags:
+      - diablo3
+      parameters:
+      - name: act_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /d3/data/artisan/{artisan_slug}:
+    get:
+      operationId: get_artisan
+      summary: Get a D3 artisan by slug.
+      tags:
+      - diablo3
+      parameters:
+      - name: artisan_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /d3/data/artisan/{artisan_slug}/recipe/{recipe_slug}:
+    get:
+      operationId: diablo3_get_recipe
+      summary: Get a D3 recipe for an artisan.
+      tags:
+      - diablo3
+      parameters:
+      - name: artisan_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: recipe_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /d3/data/follower/{follower_slug}:
+    get:
+      operationId: get_follower
+      summary: Get a D3 follower by slug.
+      tags:
+      - diablo3
+      parameters:
+      - name: follower_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /d3/data/hero/{class_slug}:
+    get:
+      operationId: get_character_class
+      summary: Get a D3 character class by slug.
+      tags:
+      - diablo3
+      parameters:
+      - name: class_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /d3/data/hero/{class_slug}/skill/{skill_slug}:
+    get:
+      operationId: get_api_skill
+      summary: Get a skill for a D3 character class.
+      tags:
+      - diablo3
+      parameters:
+      - name: class_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: skill_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /d3/data/item-type:
+    get:
+      operationId: get_item_type_index
+      summary: Get an index of D3 item types.
+      tags:
+      - diablo3
+      parameters:
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /d3/data/item-type/{item_type_slug}:
+    get:
+      operationId: get_item_type
+      summary: Get a D3 item type by slug.
+      tags:
+      - diablo3
+      parameters:
+      - name: item_type_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /d3/data/item/{item_slug_and_id}:
+    get:
+      operationId: diablo3_get_item
+      summary: Get a D3 item by combined slug and ID (``slug-12345``).
+      tags:
+      - diablo3
+      parameters:
+      - name: item_slug_and_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/d3/season/:
+    get:
+      operationId: get_season_index
+      summary: Get an index of D3 seasons.
+      tags:
+      - diablo3
+      parameters:
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/d3/season/{season_id}:
+    get:
+      operationId: get_season
+      summary: Get a D3 season by ID.
+      tags:
+      - diablo3
+      parameters:
+      - name: season_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/d3/season/{season_id}/leaderboard/{leaderboard}:
+    get:
+      operationId: get_season_leaderboard
+      summary: Get a D3 season leaderboard.
+      tags:
+      - diablo3
+      parameters:
+      - name: season_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: leaderboard
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/d3/era/:
+    get:
+      operationId: get_era_index
+      summary: Get an index of D3 eras.
+      tags:
+      - diablo3
+      parameters:
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/d3/era/{era_id}:
+    get:
+      operationId: get_era
+      summary: Get a D3 era by ID.
+      tags:
+      - diablo3
+      parameters:
+      - name: era_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/d3/era/{era_id}/leaderboard/{leaderboard}:
+    get:
+      operationId: get_era_leaderboard
+      summary: Get a D3 era leaderboard.
+      tags:
+      - diablo3
+      parameters:
+      - name: era_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: leaderboard
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sc2/static/profile/{region_id}:
+    get:
+      operationId: get_static_profile
+      summary: Get static profile data for a StarCraft 2 region.
+      tags:
+      - sc2
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sc2/metadata/profile/{region_id}/{realm_id}/{profile_id}:
+    get:
+      operationId: get_metadata_profile
+      summary: Get metadata for a StarCraft 2 profile.
+      tags:
+      - sc2
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: realm_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: profile_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sc2/profile/{region_id}/{realm_id}/{profile_id}:
+    get:
+      operationId: get_profile
+      summary: Get a StarCraft 2 profile.
+      tags:
+      - sc2
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: realm_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: profile_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sc2/profile/{region_id}/{realm_id}/{profile_id}/ladder/summary:
+    get:
+      operationId: get_profile_ladder_summary
+      summary: Get ladder summary for a StarCraft 2 profile.
+      tags:
+      - sc2
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: realm_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: profile_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sc2/profile/{region_id}/{realm_id}/{profile_id}/ladder/{ladder_id}:
+    get:
+      operationId: get_profile_ladder
+      summary: Get a ladder for a StarCraft 2 profile.
+      tags:
+      - sc2
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: realm_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: profile_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: ladder_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sc2/ladder/grandmaster/{region_id}:
+    get:
+      operationId: get_grandmaster_leaderboard
+      summary: Get grandmaster leaderboard for a region.
+      tags:
+      - sc2
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sc2/ladder/season/{region_id}:
+    get:
+      operationId: sc2_get_season
+      summary: Get current ladder season data for a region.
+      tags:
+      - sc2
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sc2/player/{account_id}:
+    get:
+      operationId: get_player
+      summary: Get a StarCraft 2 player by account ID.
+      tags:
+      - sc2
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sc2/legacy/profile/{region_id}/{realm_id}/{profile_id}:
+    get:
+      operationId: get_legacy_profile
+      summary: Get legacy profile data.
+      tags:
+      - sc2
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: realm_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: profile_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sc2/legacy/profile/{region_id}/{realm_id}/{profile_id}/ladders:
+    get:
+      operationId: get_legacy_profile_ladders
+      summary: Get legacy profile ladder data.
+      tags:
+      - sc2
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: realm_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: profile_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sc2/legacy/profile/{region_id}/{realm_id}/{profile_id}/matches:
+    get:
+      operationId: get_legacy_profile_matches
+      summary: Get legacy profile match history.
+      tags:
+      - sc2
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: realm_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: profile_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sc2/legacy/ladder/{region_id}/{ladder_id}:
+    get:
+      operationId: get_legacy_ladder
+      summary: Get legacy ladder data.
+      tags:
+      - sc2
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: ladder_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sc2/legacy/data/achievements/{region_id}:
+    get:
+      operationId: get_legacy_achievements
+      summary: Get legacy achievements data.
+      tags:
+      - sc2
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sc2/legacy/data/rewards/{region_id}:
+    get:
+      operationId: get_legacy_rewards
+      summary: Get legacy rewards data.
+      tags:
+      - sc2
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/sc2/league/{season_id}/{queue_id}/{team_type}/{league_id}:
+    get:
+      operationId: get_league_data
+      summary: Get league data for a specific season, queue, team type, and league.
+      tags:
+      - sc2
+      parameters:
+      - name: season_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: queue_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: team_type
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: league_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /hearthstone/cards:
+    get:
+      operationId: search_cards
+      summary: Search for Hearthstone cards.
+      tags:
+      - hearthstone
+      parameters:
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /hearthstone/cards/{id_or_slug}:
+    get:
+      operationId: get_card
+      summary: Get a Hearthstone card by ID or slug.
+      tags:
+      - hearthstone
+      parameters:
+      - name: id_or_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /hearthstone/cardbacks:
+    get:
+      operationId: search_card_backs
+      summary: Search for Hearthstone card backs (``cardBackCategory``,
+      tags:
+      - hearthstone
+      parameters:
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /hearthstone/cardbacks/{id_or_slug}:
+    get:
+      operationId: get_card_back
+      summary: Get a Hearthstone card back by ID or slug.
+      tags:
+      - hearthstone
+      parameters:
+      - name: id_or_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /hearthstone/deck/{deck_code}:
+    get:
+      operationId: get_deck
+      summary: Get a Hearthstone deck by full deck code (path form).
+      tags:
+      - hearthstone
+      parameters:
+      - name: deck_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /hearthstone/deck:
+    get:
+      operationId: get_deck_by_code
+      summary: Get a Hearthstone deck via the ``?code=`` query form.
+      tags:
+      - hearthstone
+      parameters:
+      - $ref: '#/components/parameters/Locale'
+      - name: code
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /hearthstone/metadata:
+    get:
+      operationId: get_metadata
+      summary: Get Hearthstone metadata (all types).
+      tags:
+      - hearthstone
+      parameters:
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /hearthstone/metadata/{metadata_type}:
+    get:
+      operationId: get_metadata_type
+      summary: Get Hearthstone metadata by type (``sets``, ``setGroups``,
+      tags:
+      - hearthstone
+      parameters:
+      - name: metadata_type
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  securitySchemes:
+    ClientCredentials:
+      type: oauth2
+      description: OAuth 2.0 Client Credentials flow for application-level access
+      flows:
+        clientCredentials:
+          tokenUrl: https://oauth.battle.net/token
+          scopes: {}
+    AuthorizationCode:
+      type: oauth2
+      description: OAuth 2.0 Authorization Code flow for user-scoped profile access
+      flows:
+        authorizationCode:
+          authorizationUrl: https://oauth.battle.net/authorize
+          tokenUrl: https://oauth.battle.net/token
+          scopes:
+            wow.profile: Access WoW character profile data
+            sc2.profile: Access StarCraft 2 profile data
+            openid: OpenID Connect identity
+  parameters:
+    Namespace:
+      name: namespace
+      in: query
+      required: true
+      description: Namespace identifier combining data category and region (e.g. `static-us`, `dynamic-eu`, `profile-kr`)
+      schema:
+        type: string
+    Locale:
+      name: locale
+      in: query
+      required: false
+      description: Locale for localized string fields (e.g. `en_US`, `de_DE`)
+      schema:
+        type: string
+        enum:
+        - en_US
+        - es_MX
+        - pt_BR
+        - de_DE
+        - en_GB
+        - es_ES
+        - fr_FR
+        - it_IT
+        - ru_RU
+        - ko_KR
+        - zh_TW
+        - zh_CN
+  schemas: {}

@@ -1,0 +1,26 @@
+# Captured live API responses — do not commit (may leak token artifacts or be stale)
+samples/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Node (if we pull in spectral/redoc-cli)
+node_modules/
+
+# dist/openapi.yaml IS committed for direct consumption via raw GitHub URL.
+# Only the rendered HTML preview is local-only.
+redoc-static.html
+
+# Editor
+.vscode/
+.idea/
+*.swp

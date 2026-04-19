@@ -1,0 +1,178 @@
+paths:
+  /hearthstone/cards:
+    get:
+      operationId: search_cards
+      summary: Search for Hearthstone cards.
+      tags:
+      - hearthstone
+      parameters:
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /hearthstone/cards/{id_or_slug}:
+    get:
+      operationId: get_card
+      summary: Get a Hearthstone card by ID or slug.
+      tags:
+      - hearthstone
+      parameters:
+      - name: id_or_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /hearthstone/cardbacks:
+    get:
+      operationId: search_card_backs
+      summary: Search for Hearthstone card backs (``cardBackCategory``,
+      tags:
+      - hearthstone
+      parameters:
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /hearthstone/cardbacks/{id_or_slug}:
+    get:
+      operationId: get_card_back
+      summary: Get a Hearthstone card back by ID or slug.
+      tags:
+      - hearthstone
+      parameters:
+      - name: id_or_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /hearthstone/deck/{deck_code}:
+    get:
+      operationId: get_deck
+      summary: Get a Hearthstone deck by full deck code (path form).
+      tags:
+      - hearthstone
+      parameters:
+      - name: deck_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /hearthstone/deck:
+    get:
+      operationId: get_deck_by_code
+      summary: Get a Hearthstone deck via the ``?code=`` query form.
+      tags:
+      - hearthstone
+      parameters:
+      - $ref: '#/components/parameters/Locale'
+      - name: code
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /hearthstone/metadata:
+    get:
+      operationId: get_metadata
+      summary: Get Hearthstone metadata (all types).
+      tags:
+      - hearthstone
+      parameters:
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /hearthstone/metadata/{metadata_type}:
+    get:
+      operationId: get_metadata_type
+      summary: Get Hearthstone metadata by type (``sets``, ``setGroups``,
+      tags:
+      - hearthstone
+      parameters:
+      - name: metadata_type
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found

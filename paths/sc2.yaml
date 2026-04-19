@@ -1,0 +1,456 @@
+paths:
+  /sc2/static/profile/{region_id}:
+    get:
+      operationId: get_static_profile
+      summary: Get static profile data for a StarCraft 2 region.
+      tags:
+      - sc2
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sc2/metadata/profile/{region_id}/{realm_id}/{profile_id}:
+    get:
+      operationId: get_metadata_profile
+      summary: Get metadata for a StarCraft 2 profile.
+      tags:
+      - sc2
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: realm_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: profile_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sc2/profile/{region_id}/{realm_id}/{profile_id}:
+    get:
+      operationId: get_profile
+      summary: Get a StarCraft 2 profile.
+      tags:
+      - sc2
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: realm_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: profile_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sc2/profile/{region_id}/{realm_id}/{profile_id}/ladder/summary:
+    get:
+      operationId: get_profile_ladder_summary
+      summary: Get ladder summary for a StarCraft 2 profile.
+      tags:
+      - sc2
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: realm_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: profile_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sc2/profile/{region_id}/{realm_id}/{profile_id}/ladder/{ladder_id}:
+    get:
+      operationId: get_profile_ladder
+      summary: Get a ladder for a StarCraft 2 profile.
+      tags:
+      - sc2
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: realm_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: profile_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: ladder_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sc2/ladder/grandmaster/{region_id}:
+    get:
+      operationId: get_grandmaster_leaderboard
+      summary: Get grandmaster leaderboard for a region.
+      tags:
+      - sc2
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sc2/ladder/season/{region_id}:
+    get:
+      operationId: get_season
+      summary: Get current ladder season data for a region.
+      tags:
+      - sc2
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sc2/player/{account_id}:
+    get:
+      operationId: get_player
+      summary: Get a StarCraft 2 player by account ID.
+      tags:
+      - sc2
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sc2/legacy/profile/{region_id}/{realm_id}/{profile_id}:
+    get:
+      operationId: get_legacy_profile
+      summary: Get legacy profile data.
+      tags:
+      - sc2
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: realm_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: profile_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sc2/legacy/profile/{region_id}/{realm_id}/{profile_id}/ladders:
+    get:
+      operationId: get_legacy_profile_ladders
+      summary: Get legacy profile ladder data.
+      tags:
+      - sc2
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: realm_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: profile_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sc2/legacy/profile/{region_id}/{realm_id}/{profile_id}/matches:
+    get:
+      operationId: get_legacy_profile_matches
+      summary: Get legacy profile match history.
+      tags:
+      - sc2
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: realm_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: profile_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sc2/legacy/ladder/{region_id}/{ladder_id}:
+    get:
+      operationId: get_legacy_ladder
+      summary: Get legacy ladder data.
+      tags:
+      - sc2
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: ladder_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sc2/legacy/data/achievements/{region_id}:
+    get:
+      operationId: get_legacy_achievements
+      summary: Get legacy achievements data.
+      tags:
+      - sc2
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sc2/legacy/data/rewards/{region_id}:
+    get:
+      operationId: get_legacy_rewards
+      summary: Get legacy rewards data.
+      tags:
+      - sc2
+      parameters:
+      - name: region_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/sc2/league/{season_id}/{queue_id}/{team_type}/{league_id}:
+    get:
+      operationId: get_league_data
+      summary: Get league data for a specific season, queue, team type, and league.
+      tags:
+      - sc2
+      parameters:
+      - name: season_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: queue_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: team_type
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: league_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found

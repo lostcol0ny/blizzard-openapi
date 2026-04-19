@@ -1,0 +1,102 @@
+openapi: 3.1.0
+info:
+  title: Blizzard Battle.net API
+  version: 0.1.0
+  description: |
+    Unofficial OpenAPI 3.1 specification for Blizzard's Battle.net APIs.
+    This specification is not affiliated with or endorsed by Blizzard Entertainment.
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  contact:
+    name: blizzard-openapi
+    url: https://github.com/lostcol0ny/blizzard-openapi
+
+servers:
+  - url: https://us.api.blizzard.com
+    description: US region
+  - url: https://eu.api.blizzard.com
+    description: EU region
+  - url: https://kr.api.blizzard.com
+    description: Korea region
+  - url: https://tw.api.blizzard.com
+    description: Taiwan region
+  - url: https://gateway.battlenet.com.cn
+    description: China region (separate infrastructure)
+
+tags:
+  - name: wow-game-data
+    description: World of Warcraft Game Data APIs
+  - name: wow-profile
+    description: World of Warcraft Profile APIs (requires user token)
+  - name: wow-classic
+    description: World of Warcraft Classic Game Data APIs
+  - name: diablo3-game-data
+    description: Diablo 3 Game Data APIs
+  - name: diablo3-community
+    description: Diablo 3 Community APIs
+  - name: sc2-game-data
+    description: StarCraft 2 Game Data APIs
+  - name: sc2-community
+    description: StarCraft 2 Community APIs
+  - name: hearthstone
+    description: Hearthstone Game Data APIs
+  - name: oauth
+    description: OAuth 2.0 authentication flows
+
+security:
+  - ClientCredentials: []
+
+paths: {}
+
+components:
+  securitySchemes:
+    ClientCredentials:
+      type: oauth2
+      description: OAuth 2.0 Client Credentials flow for application-level access
+      flows:
+        clientCredentials:
+          tokenUrl: https://oauth.battle.net/token
+          scopes: {}
+    AuthorizationCode:
+      type: oauth2
+      description: OAuth 2.0 Authorization Code flow for user-scoped profile access
+      flows:
+        authorizationCode:
+          authorizationUrl: https://oauth.battle.net/authorize
+          tokenUrl: https://oauth.battle.net/token
+          scopes:
+            wow.profile: Access WoW character profile data
+            sc2.profile: Access StarCraft 2 profile data
+            openid: OpenID Connect identity
+
+  parameters:
+    Namespace:
+      name: namespace
+      in: query
+      required: true
+      description: Namespace identifier combining data category and region (e.g. `static-us`, `dynamic-eu`, `profile-kr`)
+      schema:
+        type: string
+    Locale:
+      name: locale
+      in: query
+      required: false
+      description: Locale for localized string fields (e.g. `en_US`, `de_DE`)
+      schema:
+        type: string
+        enum:
+          - en_US
+          - es_MX
+          - pt_BR
+          - de_DE
+          - en_GB
+          - es_ES
+          - fr_FR
+          - it_IT
+          - ru_RU
+          - ko_KR
+          - zh_TW
+          - zh_CN
+
+  schemas: {}

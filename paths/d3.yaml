@@ -1,0 +1,496 @@
+paths:
+  /d3/profile/{battletag}/:
+    get:
+      operationId: get_account
+      summary: Get a D3 account profile by BattleTag (``Name#1234``).
+      tags:
+      - diablo3
+      parameters:
+      - name: battletag
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /d3/profile/{battletag}/hero/{hero_id}:
+    get:
+      operationId: get_hero
+      summary: Get a hero by BattleTag and hero ID.
+      tags:
+      - diablo3
+      parameters:
+      - name: battletag
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: hero_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /d3/profile/{battletag}/hero/{hero_id}/items:
+    get:
+      operationId: get_hero_items
+      summary: Get items for a hero.
+      tags:
+      - diablo3
+      parameters:
+      - name: battletag
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: hero_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /d3/profile/{battletag}/hero/{hero_id}/follower-items:
+    get:
+      operationId: get_hero_follower_items
+      summary: Get follower items for a hero.
+      tags:
+      - diablo3
+      parameters:
+      - name: battletag
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: hero_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /d3/data/act:
+    get:
+      operationId: get_act_index
+      summary: Get an index of D3 acts.
+      tags:
+      - diablo3
+      parameters:
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /d3/data/act/{act_id}:
+    get:
+      operationId: get_act
+      summary: Get a D3 act by ID.
+      tags:
+      - diablo3
+      parameters:
+      - name: act_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /d3/data/artisan/{artisan_slug}:
+    get:
+      operationId: get_artisan
+      summary: Get a D3 artisan by slug.
+      tags:
+      - diablo3
+      parameters:
+      - name: artisan_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /d3/data/artisan/{artisan_slug}/recipe/{recipe_slug}:
+    get:
+      operationId: get_recipe
+      summary: Get a D3 recipe for an artisan.
+      tags:
+      - diablo3
+      parameters:
+      - name: artisan_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: recipe_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /d3/data/follower/{follower_slug}:
+    get:
+      operationId: get_follower
+      summary: Get a D3 follower by slug.
+      tags:
+      - diablo3
+      parameters:
+      - name: follower_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /d3/data/hero/{class_slug}:
+    get:
+      operationId: get_character_class
+      summary: Get a D3 character class by slug.
+      tags:
+      - diablo3
+      parameters:
+      - name: class_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /d3/data/hero/{class_slug}/skill/{skill_slug}:
+    get:
+      operationId: get_api_skill
+      summary: Get a skill for a D3 character class.
+      tags:
+      - diablo3
+      parameters:
+      - name: class_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: skill_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /d3/data/item-type:
+    get:
+      operationId: get_item_type_index
+      summary: Get an index of D3 item types.
+      tags:
+      - diablo3
+      parameters:
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /d3/data/item-type/{item_type_slug}:
+    get:
+      operationId: get_item_type
+      summary: Get a D3 item type by slug.
+      tags:
+      - diablo3
+      parameters:
+      - name: item_type_slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /d3/data/item/{item_slug_and_id}:
+    get:
+      operationId: get_item
+      summary: Get a D3 item by combined slug and ID (``slug-12345``).
+      tags:
+      - diablo3
+      parameters:
+      - name: item_slug_and_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/d3/season/:
+    get:
+      operationId: get_season_index
+      summary: Get an index of D3 seasons.
+      tags:
+      - diablo3
+      parameters:
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/d3/season/{season_id}:
+    get:
+      operationId: get_season
+      summary: Get a D3 season by ID.
+      tags:
+      - diablo3
+      parameters:
+      - name: season_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/d3/season/{season_id}/leaderboard/{leaderboard}:
+    get:
+      operationId: get_season_leaderboard
+      summary: Get a D3 season leaderboard.
+      tags:
+      - diablo3
+      parameters:
+      - name: season_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: leaderboard
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/d3/era/:
+    get:
+      operationId: get_era_index
+      summary: Get an index of D3 eras.
+      tags:
+      - diablo3
+      parameters:
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/d3/era/{era_id}:
+    get:
+      operationId: get_era
+      summary: Get a D3 era by ID.
+      tags:
+      - diablo3
+      parameters:
+      - name: era_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /data/d3/era/{era_id}/leaderboard/{leaderboard}:
+    get:
+      operationId: get_era_leaderboard
+      summary: Get a D3 era leaderboard.
+      tags:
+      - diablo3
+      parameters:
+      - name: era_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: leaderboard
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Locale'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
