@@ -1,0 +1,569 @@
+Card:
+  properties:
+    artistName:
+      type: string
+    attack:
+      type: integer
+    cardSetId:
+      type: integer
+    cardTypeId:
+      type: integer
+    classId:
+      type: integer
+    collectible:
+      type: integer
+    copyOfCardId:
+      items:
+        type: integer
+      type: array
+    cropImage:
+      type: string
+    flavorText:
+      type: string
+    health:
+      type: integer
+    id:
+      type: integer
+    image:
+      type: string
+    imageGold:
+      type: string
+    isZilliaxCosmeticModule:
+      type: boolean
+    isZilliaxFunctionalModule:
+      type: boolean
+    keywordIds:
+      items:
+        type: integer
+      type: array
+    manaCost:
+      type: integer
+    multiClassIds:
+      items: {}
+      type: array
+    name:
+      type: string
+    rarityId:
+      type: integer
+    slug:
+      type: string
+    text:
+      type: string
+  required:
+  - artistName
+  - attack
+  - cardSetId
+  - cardTypeId
+  - classId
+  - collectible
+  - copyOfCardId
+  - cropImage
+  - flavorText
+  - health
+  - id
+  - image
+  - imageGold
+  - isZilliaxCosmeticModule
+  - isZilliaxFunctionalModule
+  - keywordIds
+  - manaCost
+  - multiClassIds
+  - name
+  - rarityId
+  - slug
+  - text
+  type: object
+Metadata:
+  properties:
+    arenaIds:
+      items:
+        type: integer
+      type: array
+    bgGameModes:
+      items:
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          slug:
+            type: string
+        required:
+        - id
+        - name
+        - slug
+        type: object
+      type: array
+    cardBackCategories:
+      items:
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          slug:
+            type: string
+        required:
+        - id
+        - name
+        - slug
+        type: object
+      type: array
+    classes:
+      items:
+        properties:
+          alternateHeroCardIds:
+            items:
+              type: integer
+            type: array
+          cardId:
+            type: integer
+          heroPowerCardId:
+            type: integer
+          id:
+            type: integer
+          name:
+            type: string
+          slug:
+            type: string
+        required:
+        - id
+        - name
+        - slug
+        type: object
+      type: array
+    factions:
+      items:
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          slug:
+            type: string
+        required:
+        - id
+        - name
+        - slug
+        type: object
+      type: array
+    filterableFields:
+      items:
+        type: string
+      type: array
+    gameModes:
+      items:
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          slug:
+            type: string
+        required:
+        - id
+        - name
+        - slug
+        type: object
+      type: array
+    keywords:
+      items:
+        properties:
+          gameModes:
+            items:
+              type: integer
+            type: array
+          id:
+            type: integer
+          name:
+            type: string
+          refText:
+            type: string
+          slug:
+            type: string
+          text:
+            type: string
+        required:
+        - gameModes
+        - id
+        - name
+        - refText
+        - slug
+        - text
+        type: object
+      type: array
+    mercenaryFactions:
+      items:
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          slug:
+            type: string
+        required:
+        - id
+        - name
+        - slug
+        type: object
+      type: array
+    mercenaryRoles:
+      items:
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          slug:
+            type: string
+        required:
+        - id
+        - name
+        - slug
+        type: object
+      type: array
+    minionTypes:
+      items:
+        properties:
+          gameModes:
+            items:
+              type: integer
+            type: array
+          id:
+            type: integer
+          name:
+            type: string
+          slug:
+            type: string
+        required:
+        - id
+        - name
+        - slug
+        type: object
+      type: array
+    numericFields:
+      items:
+        type: string
+      type: array
+    rarities:
+      items:
+        properties:
+          craftingCost:
+            items:
+              type:
+              - integer
+              - 'null'
+            type: array
+          dustValue:
+            items:
+              type:
+              - integer
+              - 'null'
+            type: array
+          id:
+            type: integer
+          name:
+            type: string
+          slug:
+            type: string
+        required:
+        - craftingCost
+        - dustValue
+        - id
+        - name
+        - slug
+        type: object
+      type: array
+    setGroups:
+      items:
+        properties:
+          cardSets:
+            items:
+              oneOf:
+              - {}
+              - type: string
+            type: array
+          icon:
+            type: string
+          name:
+            type: string
+          slug:
+            type: string
+          standard:
+            type: boolean
+          svg:
+            type:
+            - 'null'
+            - string
+          year:
+            type: integer
+          yearRange:
+            type: string
+        required:
+        - cardSets
+        - name
+        - slug
+        type: object
+      type: array
+    sets:
+      items:
+        properties:
+          aliasSetIds:
+            items:
+              type: integer
+            type: array
+          collectibleCount:
+            type: integer
+          collectibleRevealedCount:
+            type: integer
+          hyped:
+            type: boolean
+          id:
+            type: integer
+          name:
+            type: string
+          nonCollectibleCount:
+            type: integer
+          nonCollectibleRevealedCount:
+            type: integer
+          slug:
+            type: string
+          type:
+            type: string
+        required:
+        - collectibleCount
+        - collectibleRevealedCount
+        - hyped
+        - id
+        - name
+        - nonCollectibleCount
+        - nonCollectibleRevealedCount
+        - slug
+        - type
+        type: object
+      type: array
+    spellSchools:
+      items:
+        properties:
+          gameModes:
+            items:
+              type: integer
+            type: array
+          id:
+            type: integer
+          name:
+            type: string
+          slug:
+            type: string
+        required:
+        - gameModes
+        - id
+        - name
+        - slug
+        type: object
+      type: array
+    types:
+      items:
+        properties:
+          gameModes:
+            items:
+              type: integer
+            type: array
+          id:
+            type: integer
+          name:
+            type: string
+          slug:
+            type: string
+        required:
+        - gameModes
+        - id
+        - name
+        - slug
+        type: object
+      type: array
+  required:
+  - arenaIds
+  - bgGameModes
+  - cardBackCategories
+  - classes
+  - factions
+  - filterableFields
+  - gameModes
+  - keywords
+  - mercenaryFactions
+  - mercenaryRoles
+  - minionTypes
+  - numericFields
+  - rarities
+  - setGroups
+  - sets
+  - spellSchools
+  - types
+  type: object
+MetadataSets:
+  items:
+    properties:
+      aliasSetIds:
+        items:
+          type: integer
+        type: array
+      collectibleCount:
+        type: integer
+      collectibleRevealedCount:
+        type: integer
+      hyped:
+        type: boolean
+      id:
+        type: integer
+      name:
+        type: string
+      nonCollectibleCount:
+        type: integer
+      nonCollectibleRevealedCount:
+        type: integer
+      slug:
+        type: string
+      type:
+        type: string
+    required:
+    - collectibleCount
+    - collectibleRevealedCount
+    - hyped
+    - id
+    - name
+    - nonCollectibleCount
+    - nonCollectibleRevealedCount
+    - slug
+    - type
+    type: object
+  type: array
+SearchCardBacks:
+  properties:
+    cardBacks:
+      items:
+        properties:
+          id:
+            type: integer
+          image:
+            type: string
+          name:
+            type: string
+          slug:
+            type: string
+          sortCategory:
+            type: integer
+          text:
+            type: string
+        required:
+        - id
+        - image
+        - name
+        - slug
+        - sortCategory
+        - text
+        type: object
+      type: array
+    cardCount:
+      type: integer
+    page:
+      type: integer
+    pageCount:
+      type: integer
+  required:
+  - cardBacks
+  - cardCount
+  - page
+  - pageCount
+  type: object
+SearchCards:
+  properties:
+    cardCount:
+      type: integer
+    cards:
+      items:
+        properties:
+          artistName:
+            type: string
+          attack:
+            type: integer
+          cardSetId:
+            type: integer
+          cardTypeId:
+            type: integer
+          childIds:
+            items:
+              type: integer
+            type: array
+          classId:
+            type: integer
+          collectible:
+            type: integer
+          cropImage:
+            type: string
+          flavorText:
+            type: string
+          health:
+            type: integer
+          id:
+            type: integer
+          image:
+            type: string
+          imageGold:
+            type: string
+          isZilliaxCosmeticModule:
+            type: boolean
+          isZilliaxFunctionalModule:
+            type: boolean
+          keywordIds:
+            items:
+              type: integer
+            type: array
+          manaCost:
+            type: integer
+          minionTypeId:
+            type: integer
+          multiClassIds:
+            items: {}
+            type: array
+          name:
+            type: string
+          rarityId:
+            type: integer
+          slug:
+            type: string
+          text:
+            type: string
+        required:
+        - artistName
+        - attack
+        - cardSetId
+        - cardTypeId
+        - classId
+        - collectible
+        - cropImage
+        - flavorText
+        - health
+        - id
+        - image
+        - imageGold
+        - isZilliaxCosmeticModule
+        - isZilliaxFunctionalModule
+        - manaCost
+        - multiClassIds
+        - name
+        - rarityId
+        - slug
+        - text
+        type: object
+      type: array
+    page:
+      type: integer
+    pageCount:
+      type: integer
+  required:
+  - cardCount
+  - cards
+  - page
+  - pageCount
+  type: object

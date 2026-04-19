@@ -1,0 +1,1882 @@
+Achievement:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    category:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+      required:
+      - id
+      - key
+      - name
+      type: object
+    criteria:
+      properties:
+        amount:
+          type: integer
+        description:
+          type: string
+        id:
+          type: integer
+      required:
+      - amount
+      - description
+      - id
+      type: object
+    description:
+      type: string
+    display_order:
+      type: integer
+    id:
+      type: integer
+    is_account_wide:
+      type: boolean
+    media:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - id
+      - key
+      type: object
+    name:
+      type: string
+    next_achievement:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+      required:
+      - id
+      - key
+      - name
+      type: object
+    points:
+      type: integer
+  required:
+  - _links
+  - category
+  - criteria
+  - description
+  - display_order
+  - id
+  - is_account_wide
+  - media
+  - name
+  - next_achievement
+  - points
+  type: object
+AchievementCategoriesIndex:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    categories:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+    guild_categories:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+    root_categories:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+  required:
+  - _links
+  - categories
+  - guild_categories
+  - root_categories
+  type: object
+AchievementCategory:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    achievements:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+    aggregates_by_faction:
+      properties:
+        alliance:
+          properties:
+            points:
+              type: integer
+            quantity:
+              type: integer
+          required:
+          - points
+          - quantity
+          type: object
+        horde:
+          properties:
+            points:
+              type: integer
+            quantity:
+              type: integer
+          required:
+          - points
+          - quantity
+          type: object
+      required:
+      - alliance
+      - horde
+      type: object
+    display_order:
+      type: integer
+    id:
+      type: integer
+    is_guild_category:
+      type: boolean
+    name:
+      type: string
+    subcategories:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+  required:
+  - _links
+  - achievements
+  - aggregates_by_faction
+  - display_order
+  - id
+  - is_guild_category
+  - name
+  - subcategories
+  type: object
+AchievementMedia:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    assets:
+      items:
+        properties:
+          file_data_id:
+            type: integer
+          key:
+            type: string
+          value:
+            type: string
+        required:
+        - file_data_id
+        - key
+        - value
+        type: object
+      type: array
+    id:
+      type: integer
+  required:
+  - _links
+  - assets
+  - id
+  type: object
+AchievementsIndex:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    achievements:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+  required:
+  - _links
+  - achievements
+  type: object
+AuctionsCommodities:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    auctions:
+      items:
+        properties:
+          id:
+            type: integer
+          item:
+            properties:
+              id:
+                type: integer
+            required:
+            - id
+            type: object
+          quantity:
+            type: integer
+          time_left:
+            type: string
+          unit_price:
+            type: integer
+        required:
+        - id
+        - item
+        - quantity
+        - time_left
+        - unit_price
+        type: object
+      type: array
+  required:
+  - _links
+  - auctions
+  type: object
+ConnectedRealm:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    auctions:
+      properties:
+        href:
+          type: string
+      required:
+      - href
+      type: object
+    has_queue:
+      type: boolean
+    id:
+      type: integer
+    mythic_leaderboards:
+      properties:
+        href:
+          type: string
+      required:
+      - href
+      type: object
+    population:
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+      required:
+      - name
+      - type
+      type: object
+    realms:
+      items:
+        properties:
+          category:
+            type: string
+          connected_realm:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          id:
+            type: integer
+          is_tournament:
+            type: boolean
+          locale:
+            type: string
+          name:
+            type: string
+          region:
+            properties:
+              id:
+                type: integer
+              key:
+                properties:
+                  href:
+                    type: string
+                required:
+                - href
+                type: object
+              name:
+                type: string
+            required:
+            - id
+            - key
+            - name
+            type: object
+          slug:
+            type: string
+          timezone:
+            type: string
+          type:
+            properties:
+              name:
+                type: string
+              type:
+                type: string
+            required:
+            - name
+            - type
+            type: object
+        required:
+        - category
+        - connected_realm
+        - id
+        - is_tournament
+        - locale
+        - name
+        - region
+        - slug
+        - timezone
+        - type
+        type: object
+      type: array
+    status:
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+      required:
+      - name
+      - type
+      type: object
+  required:
+  - _links
+  - auctions
+  - has_queue
+  - id
+  - mythic_leaderboards
+  - population
+  - realms
+  - status
+  type: object
+ConnectedRealmsIndex:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    connected_realms:
+      items:
+        properties:
+          href:
+            type: string
+        required:
+        - href
+        type: object
+      type: array
+  required:
+  - _links
+  - connected_realms
+  type: object
+Item:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    appearances:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+        required:
+        - id
+        - key
+        type: object
+      type: array
+    id:
+      type: integer
+    inventory_type:
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+      required:
+      - name
+      - type
+      type: object
+    is_equippable:
+      type: boolean
+    is_stackable:
+      type: boolean
+    item_class:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+      required:
+      - id
+      - key
+      - name
+      type: object
+    item_subclass:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+      required:
+      - id
+      - key
+      - name
+      type: object
+    level:
+      type: integer
+    max_count:
+      type: integer
+    media:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - id
+      - key
+      type: object
+    name:
+      type: string
+    preview_item:
+      properties:
+        binding:
+          properties:
+            name:
+              type: string
+            type:
+              type: string
+          required:
+          - name
+          - type
+          type: object
+        bonus_list:
+          items:
+            type: integer
+          type: array
+        context:
+          type: integer
+        durability:
+          properties:
+            display_string:
+              type: string
+            value:
+              type: integer
+          required:
+          - display_string
+          - value
+          type: object
+        inventory_type:
+          properties:
+            name:
+              type: string
+            type:
+              type: string
+          required:
+          - name
+          - type
+          type: object
+        item:
+          properties:
+            id:
+              type: integer
+            key:
+              properties:
+                href:
+                  type: string
+              required:
+              - href
+              type: object
+          required:
+          - id
+          - key
+          type: object
+        item_class:
+          properties:
+            id:
+              type: integer
+            key:
+              properties:
+                href:
+                  type: string
+              required:
+              - href
+              type: object
+            name:
+              type: string
+          required:
+          - id
+          - key
+          - name
+          type: object
+        item_subclass:
+          properties:
+            id:
+              type: integer
+            key:
+              properties:
+                href:
+                  type: string
+              required:
+              - href
+              type: object
+            name:
+              type: string
+          required:
+          - id
+          - key
+          - name
+          type: object
+        level:
+          properties:
+            display_string:
+              type: string
+            value:
+              type: integer
+          required:
+          - display_string
+          - value
+          type: object
+        media:
+          properties:
+            id:
+              type: integer
+            key:
+              properties:
+                href:
+                  type: string
+              required:
+              - href
+              type: object
+          required:
+          - id
+          - key
+          type: object
+        name:
+          type: string
+        quality:
+          properties:
+            name:
+              type: string
+            type:
+              type: string
+          required:
+          - name
+          - type
+          type: object
+        requirements:
+          properties:
+            level:
+              properties:
+                display_string:
+                  type: string
+                value:
+                  type: integer
+              required:
+              - display_string
+              - value
+              type: object
+          required:
+          - level
+          type: object
+        spells:
+          items:
+            properties:
+              description:
+                type: string
+              spell:
+                properties:
+                  id:
+                    type: integer
+                  key:
+                    properties:
+                      href:
+                        type: string
+                    required:
+                    - href
+                    type: object
+                  name:
+                    type: string
+                required:
+                - id
+                - key
+                - name
+                type: object
+            required:
+            - description
+            - spell
+            type: object
+          type: array
+        stats:
+          items:
+            properties:
+              display:
+                properties:
+                  color:
+                    properties:
+                      a:
+                        type: number
+                      b:
+                        type: integer
+                      g:
+                        type: integer
+                      r:
+                        type: integer
+                    required:
+                    - a
+                    - b
+                    - g
+                    - r
+                    type: object
+                  display_string:
+                    type: string
+                required:
+                - color
+                - display_string
+                type: object
+              is_negated:
+                type: boolean
+              type:
+                properties:
+                  name:
+                    type: string
+                  type:
+                    type: string
+                required:
+                - name
+                - type
+                type: object
+              value:
+                type: integer
+            required:
+            - display
+            - type
+            - value
+            type: object
+          type: array
+        unique_equipped:
+          type: string
+        weapon:
+          properties:
+            attack_speed:
+              properties:
+                display_string:
+                  type: string
+                value:
+                  type: integer
+              required:
+              - display_string
+              - value
+              type: object
+            damage:
+              properties:
+                damage_class:
+                  properties:
+                    name:
+                      type: string
+                    type:
+                      type: string
+                  required:
+                  - name
+                  - type
+                  type: object
+                display_string:
+                  type: string
+                max_value:
+                  type: integer
+                min_value:
+                  type: integer
+              required:
+              - damage_class
+              - display_string
+              - max_value
+              - min_value
+              type: object
+            dps:
+              properties:
+                display_string:
+                  type: string
+                value:
+                  type: number
+              required:
+              - display_string
+              - value
+              type: object
+          required:
+          - attack_speed
+          - damage
+          - dps
+          type: object
+      required:
+      - binding
+      - bonus_list
+      - context
+      - durability
+      - inventory_type
+      - item
+      - item_class
+      - item_subclass
+      - level
+      - media
+      - name
+      - quality
+      - requirements
+      - spells
+      - stats
+      - unique_equipped
+      - weapon
+      type: object
+    purchase_price:
+      type: integer
+    purchase_quantity:
+      type: integer
+    quality:
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+      required:
+      - name
+      - type
+      type: object
+    required_level:
+      type: integer
+    sell_price:
+      type: integer
+  required:
+  - _links
+  - appearances
+  - id
+  - inventory_type
+  - is_equippable
+  - is_stackable
+  - item_class
+  - item_subclass
+  - level
+  - max_count
+  - media
+  - name
+  - preview_item
+  - purchase_price
+  - purchase_quantity
+  - quality
+  - required_level
+  - sell_price
+  type: object
+ItemClass:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    class_id:
+      type: integer
+    item_subclasses:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+    name:
+      type: string
+  required:
+  - _links
+  - class_id
+  - item_subclasses
+  - name
+  type: object
+ItemClassesIndex:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    item_classes:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+  required:
+  - _links
+  - item_classes
+  type: object
+ItemMedia:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    assets:
+      items:
+        properties:
+          file_data_id:
+            type: integer
+          key:
+            type: string
+          value:
+            type: string
+        required:
+        - file_data_id
+        - key
+        - value
+        type: object
+      type: array
+    id:
+      type: integer
+  required:
+  - _links
+  - assets
+  - id
+  type: object
+Mount:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    creature_displays:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+        required:
+        - id
+        - key
+        type: object
+      type: array
+    description:
+      type: string
+    faction:
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+      required:
+      - name
+      - type
+      type: object
+    id:
+      type: integer
+    name:
+      type: string
+    requirements:
+      properties:
+        faction:
+          properties:
+            name:
+              type: string
+            type:
+              type: string
+          required:
+          - name
+          - type
+          type: object
+      required:
+      - faction
+      type: object
+    source:
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+      required:
+      - name
+      - type
+      type: object
+  required:
+  - _links
+  - creature_displays
+  - description
+  - faction
+  - id
+  - name
+  - requirements
+  - source
+  type: object
+MountsIndex:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    mounts:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+  required:
+  - _links
+  - mounts
+  type: object
+Pet:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    abilities:
+      items:
+        properties:
+          ability:
+            properties:
+              id:
+                type: integer
+              key:
+                properties:
+                  href:
+                    type: string
+                required:
+                - href
+                type: object
+              name:
+                type: string
+            required:
+            - id
+            - key
+            - name
+            type: object
+          required_level:
+            type: integer
+          slot:
+            type: integer
+        required:
+        - ability
+        - required_level
+        - slot
+        type: object
+      type: array
+    battle_pet_type:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        type:
+          type: string
+      required:
+      - id
+      - name
+      - type
+      type: object
+    creature:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+      required:
+      - id
+      - key
+      - name
+      type: object
+    description:
+      type: string
+    icon:
+      type: string
+    id:
+      type: integer
+    is_alliance_only:
+      type: boolean
+    is_battlepet:
+      type: boolean
+    is_capturable:
+      type: boolean
+    is_horde_only:
+      type: boolean
+    is_random_creature_display:
+      type: boolean
+    is_tradable:
+      type: boolean
+    media:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - id
+      - key
+      type: object
+    name:
+      type: string
+    source:
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+      required:
+      - name
+      - type
+      type: object
+  required:
+  - _links
+  - abilities
+  - battle_pet_type
+  - creature
+  - description
+  - icon
+  - id
+  - is_alliance_only
+  - is_battlepet
+  - is_capturable
+  - is_horde_only
+  - is_random_creature_display
+  - is_tradable
+  - media
+  - name
+  - source
+  type: object
+PetsIndex:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    pets:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+  required:
+  - _links
+  - pets
+  type: object
+PlayableClass:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    gender_name:
+      properties:
+        female:
+          type: string
+        male:
+          type: string
+      required:
+      - female
+      - male
+      type: object
+    id:
+      type: integer
+    media:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - id
+      - key
+      type: object
+    name:
+      type: string
+    playable_races:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+    power_type:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+      required:
+      - id
+      - key
+      - name
+      type: object
+    pvp_talent_slots:
+      properties:
+        href:
+          type: string
+      required:
+      - href
+      type: object
+    specializations:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+  required:
+  - _links
+  - gender_name
+  - id
+  - media
+  - name
+  - playable_races
+  - power_type
+  - pvp_talent_slots
+  - specializations
+  type: object
+PlayableClassesIndex:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    classes:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+  required:
+  - _links
+  - classes
+  type: object
+PlayableRace:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    faction:
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+      required:
+      - name
+      - type
+      type: object
+    gender_name:
+      properties:
+        female:
+          type: string
+        male:
+          type: string
+      required:
+      - female
+      - male
+      type: object
+    id:
+      type: integer
+    is_allied_race:
+      type: boolean
+    is_selectable:
+      type: boolean
+    name:
+      type: string
+    playable_classes:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+    racial_spells:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+  required:
+  - _links
+  - faction
+  - gender_name
+  - id
+  - is_allied_race
+  - is_selectable
+  - name
+  - playable_classes
+  - racial_spells
+  type: object
+PlayableRacesIndex:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    races:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+  required:
+  - _links
+  - races
+  type: object
+Realm:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    category:
+      type: string
+    connected_realm:
+      properties:
+        href:
+          type: string
+      required:
+      - href
+      type: object
+    id:
+      type: integer
+    is_tournament:
+      type: boolean
+    locale:
+      type: string
+    name:
+      type: string
+    region:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+      required:
+      - id
+      - key
+      - name
+      type: object
+    slug:
+      type: string
+    timezone:
+      type: string
+    type:
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+      required:
+      - name
+      - type
+      type: object
+  required:
+  - _links
+  - category
+  - connected_realm
+  - id
+  - is_tournament
+  - locale
+  - name
+  - region
+  - slug
+  - timezone
+  - type
+  type: object
+RealmsIndex:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    realms:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+          slug:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        - slug
+        type: object
+      type: array
+  required:
+  - _links
+  - realms
+  type: object
+Region:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    id:
+      type: integer
+    name:
+      type: string
+    patch_string:
+      type: string
+    tag:
+      type: string
+  required:
+  - _links
+  - id
+  - name
+  - patch_string
+  - tag
+  type: object
+RegionsIndex:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    regions:
+      items:
+        properties:
+          href:
+            type: string
+        required:
+        - href
+        type: object
+      type: array
+  required:
+  - _links
+  - regions
+  type: object
+TokenIndex:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    last_updated_timestamp:
+      type: integer
+    price:
+      type: integer
+  required:
+  - _links
+  - last_updated_timestamp
+  - price
+  type: object

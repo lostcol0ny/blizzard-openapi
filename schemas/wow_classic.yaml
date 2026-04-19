@@ -1,0 +1,425 @@
+ClassicGetAchievement:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    category:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+      required:
+      - id
+      - key
+      - name
+      type: object
+    criteria:
+      properties:
+        amount:
+          type: integer
+        description:
+          type: string
+        id:
+          type: integer
+      required:
+      - amount
+      - description
+      - id
+      type: object
+    description:
+      type: string
+    display_order:
+      type: integer
+    id:
+      type: integer
+    is_account_wide:
+      type: boolean
+    media:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - id
+      - key
+      type: object
+    name:
+      type: string
+    next_achievement:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+      required:
+      - id
+      - key
+      - name
+      type: object
+    points:
+      type: integer
+  required:
+  - _links
+  - category
+  - criteria
+  - description
+  - display_order
+  - id
+  - is_account_wide
+  - media
+  - name
+  - next_achievement
+  - points
+  type: object
+ClassicGetAchievementsIndex:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    achievements:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+  required:
+  - _links
+  - achievements
+  type: object
+ClassicGetConnectedRealmsIndex:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    connected_realms:
+      items:
+        properties:
+          href:
+            type: string
+        required:
+        - href
+        type: object
+      type: array
+  required:
+  - _links
+  - connected_realms
+  type: object
+ClassicGetItemClassesIndex:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    item_classes:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+  required:
+  - _links
+  - item_classes
+  type: object
+ClassicGetPlayableClass:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    additional_power_types:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+    gender_name:
+      properties:
+        female:
+          type: string
+        male:
+          type: string
+      required:
+      - female
+      - male
+      type: object
+    id:
+      type: integer
+    media:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - id
+      - key
+      type: object
+    name:
+      type: string
+    playable_races:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+    power_type:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+      required:
+      - id
+      - key
+      - name
+      type: object
+    pvp_talent_slots:
+      properties:
+        href:
+          type: string
+      required:
+      - href
+      type: object
+    specializations:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+  required:
+  - _links
+  - additional_power_types
+  - gender_name
+  - id
+  - media
+  - name
+  - playable_races
+  - power_type
+  - pvp_talent_slots
+  - specializations
+  type: object
+ClassicGetPlayableClassesIndex:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    classes:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+  required:
+  - _links
+  - classes
+  type: object
+ClassicGetRealmsIndex:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    realms:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+          slug:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        - slug
+        type: object
+      type: array
+  required:
+  - _links
+  - realms
+  type: object

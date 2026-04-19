@@ -1,0 +1,130 @@
+GrandmasterLeaderboard:
+  properties:
+    ladderTeams:
+      items:
+        properties:
+          joinTimestamp:
+            type: integer
+          losses:
+            type: integer
+          mmr:
+            type: integer
+          points:
+            type: integer
+          previousRank:
+            type: integer
+          teamMembers:
+            items:
+              properties:
+                clanTag:
+                  type: string
+                displayName:
+                  type: string
+                favoriteRace:
+                  type: string
+                id:
+                  type: string
+                realm:
+                  type: integer
+                region:
+                  type: integer
+              required:
+              - displayName
+              - id
+              - realm
+              - region
+              type: object
+            type: array
+          wins:
+            type: integer
+        required:
+        - joinTimestamp
+        - losses
+        - points
+        - previousRank
+        - teamMembers
+        - wins
+        type: object
+      type: array
+  required:
+  - ladderTeams
+  type: object
+LeagueData:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    key:
+      properties:
+        league_id:
+          type: integer
+        queue_id:
+          type: integer
+        season_id:
+          type: integer
+        team_type:
+          type: integer
+      required:
+      - league_id
+      - queue_id
+      - season_id
+      - team_type
+      type: object
+    tier:
+      items:
+        properties:
+          division:
+            items:
+              properties:
+                id:
+                  type: integer
+                ladder_id:
+                  type: integer
+                member_count:
+                  type: integer
+              required:
+              - id
+              - ladder_id
+              - member_count
+              type: object
+            type: array
+          id:
+            type: integer
+        required:
+        - division
+        - id
+        type: object
+      type: array
+  required:
+  - _links
+  - key
+  - tier
+  type: object
+Sc2GetSeason:
+  properties:
+    endDate:
+      type: string
+    number:
+      type: integer
+    seasonId:
+      type: integer
+    startDate:
+      type: string
+    year:
+      type: integer
+  required:
+  - endDate
+  - number
+  - seasonId
+  - startDate
+  - year
+  type: object

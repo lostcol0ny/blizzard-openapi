@@ -1,0 +1,125 @@
+EraIndex:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    current_era:
+      type: integer
+    era:
+      items:
+        properties:
+          href:
+            type: string
+        required:
+        - href
+        type: object
+      type: array
+    generated_by:
+      type: string
+    last_update_time:
+      type: string
+  required:
+  - _links
+  - current_era
+  - era
+  - generated_by
+  - last_update_time
+  type: object
+Season:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    generated_by:
+      type: string
+    last_update_time:
+      type: string
+    leaderboard:
+      items:
+        properties:
+          hardcore:
+            type: boolean
+          hero_class_string:
+            type: string
+          ladder:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          team_size:
+            type: integer
+        required:
+        - ladder
+        type: object
+      type: array
+    season_id:
+      type: integer
+  required:
+  - _links
+  - generated_by
+  - last_update_time
+  - leaderboard
+  - season_id
+  type: object
+SeasonIndex:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    current_season:
+      type: integer
+    generated_by:
+      type: string
+    last_update_time:
+      type: string
+    season:
+      items:
+        properties:
+          href:
+            type: string
+        required:
+        - href
+        type: object
+      type: array
+    service_current_season:
+      type: integer
+    service_season_state:
+      type: string
+  required:
+  - _links
+  - current_season
+  - generated_by
+  - last_update_time
+  - season
+  - service_current_season
+  - service_season_state
+  type: object

@@ -9,9 +9,23 @@ Run with: ``uv run --with pyyaml python scripts/bundle.py``
 
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 import yaml
+
+_CAMEL_SNAKE_RE = re.compile(r"(^|_)(.)")
+
+
+def schema_name(operation_id: str) -> str:
+    """Derive a PascalCase schema name from an operation id.
+
+    Must stay in lockstep with the same function in scripts/infer_schemas.py.
+    """
+    base = operation_id
+    if base.startswith("get_"):
+        base = base[4:]
+    return _CAMEL_SNAKE_RE.sub(lambda m: m.group(2).upper(), base)
 
 ROOT = Path(__file__).resolve().parent.parent
 BASE = ROOT / "openapi.yaml"
@@ -66,6 +80,27 @@ def main() -> None:
                 continue
             base["components"]["schemas"][name] = schema
             schema_count += 1
+
+    # Wire inferred schemas into path responses. If ``components.schemas`` has
+    # a schema named after the operation (PascalCase), replace the placeholder
+    # ``{type: object}`` in the 200 response with a ``$ref`` pointer.
+    component_schema_names = set(base["components"]["schemas"].keys())
+    wired = 0
+    for path, item in base["paths"].items():
+        op = item.get("get", {})
+        op_id = op.get("operationId")
+        if not op_id:
+            continue
+        target = schema_name(op_id)
+        if target not in component_schema_names:
+            continue
+        ok = op.get("responses", {}).get("200", {}).get("content", {}).get("application/json", {})
+        if not ok:
+            continue
+        ok["schema"] = {"$ref": f"#/components/schemas/{target}"}
+        wired += 1
+    if wired:
+        print(f"[ok] wired {wired} path responses to component schemas")
 
     # Disambiguate operationId collisions across different paths. Python class
     # scope hid these — e.g. ``get_auctions`` exists on both WowGameData (retail)
