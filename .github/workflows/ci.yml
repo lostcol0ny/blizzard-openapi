@@ -1,0 +1,49 @@
+name: Validate spec
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Regenerate paths
+        run: uv run --with pyyaml python scripts/scaffold_paths.py
+
+      - name: Rebundle spec
+        run: uv run --with pyyaml python scripts/bundle.py
+
+      - name: Verify dist/openapi.yaml matches source
+        run: |
+          if ! git diff --quiet dist/openapi.yaml; then
+            echo "::error::dist/openapi.yaml is out of date. Run scripts/scaffold_paths.py and scripts/bundle.py locally and commit the result."
+            git --no-pager diff dist/openapi.yaml
+            exit 1
+          fi
+
+      - name: Validate with openapi-spec-validator
+        run: |
+          uv run --with openapi-spec-validator python -c "
+          from openapi_spec_validator import validate
+          from openapi_spec_validator.readers import read_from_filename
+          spec, _ = read_from_filename('dist/openapi.yaml')
+          validate(spec)
+          print('ok')
+          "
+
+      - name: Lint with Redocly
+        run: npx --yes @redocly/cli lint dist/openapi.yaml
