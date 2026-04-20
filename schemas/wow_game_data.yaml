@@ -1537,6 +1537,48 @@ CreatureTypesIndex:
   - _links
   - creature_types
   type: object
+Decor:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    id:
+      type: integer
+    items:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+      required:
+      - id
+      - key
+      - name
+      type: object
+    name:
+      type: string
+  required:
+  - _links
+  - id
+  - items
+  - name
+  type: object
 DecorIndex:
   properties:
     _links:
@@ -1574,6 +1616,71 @@ DecorIndex:
   required:
   - _links
   - decor_items
+  type: object
+Fixture:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    id:
+      type: integer
+    name:
+      type: string
+  required:
+  - _links
+  - id
+  - name
+  type: object
+FixtureHook:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    id:
+      type: integer
+    parent_fixture:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+      required:
+      - id
+      - key
+      - name
+      type: object
+    type_name:
+      type: string
+  required:
+  - _links
+  - id
+  - parent_fixture
+  - type_name
   type: object
 FixtureHookIndex:
   properties:
@@ -2676,6 +2783,156 @@ Item:
   - required_level
   - sell_price
   type: object
+ItemAppearance:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    id:
+      type: integer
+    item_class:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+      required:
+      - id
+      - key
+      - name
+      type: object
+    item_display_info_id:
+      type: integer
+    item_subclass:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+      required:
+      - id
+      - key
+      - name
+      type: object
+    items:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+    media:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - id
+      - key
+      type: object
+    slot:
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+      required:
+      - name
+      - type
+      type: object
+  required:
+  - _links
+  - id
+  - item_class
+  - item_display_info_id
+  - item_subclass
+  - items
+  - media
+  - slot
+  type: object
+ItemAppearanceSet:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    appearances:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+        required:
+        - id
+        - key
+        type: object
+      type: array
+    id:
+      type: integer
+    set_name:
+      type: string
+  required:
+  - _links
+  - appearances
+  - id
+  - set_name
+  type: object
 ItemClass:
   properties:
     _links:
@@ -3469,6 +3726,29 @@ JournalInstancesIndex:
   - _links
   - instances
   type: object
+ModifiedCraftingCategory:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    id:
+      type: integer
+    name:
+      type: string
+  required:
+  - _links
+  - id
+  - name
+  type: object
 ModifiedCraftingCategoryIndex:
   properties:
     _links:
@@ -3538,6 +3818,50 @@ ModifiedCraftingIndex:
   - _links
   - categories
   - slot_types
+  type: object
+ModifiedCraftingReagentSlotType:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    compatible_categories:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+    description:
+      type: string
+    id:
+      type: integer
+  required:
+  - _links
+  - compatible_categories
+  - description
+  - id
   type: object
 ModifiedCraftingReagentSlotTypeIndex:
   properties:
@@ -4442,6 +4766,98 @@ PetAbilitiesIndex:
   required:
   - _links
   - abilities
+  type: object
+PetAbility:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    battle_pet_type:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        type:
+          type: string
+      required:
+      - id
+      - name
+      - type
+      type: object
+    id:
+      type: integer
+    media:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - id
+      - key
+      type: object
+    name:
+      type: string
+    rounds:
+      type: integer
+  required:
+  - _links
+  - battle_pet_type
+  - id
+  - media
+  - name
+  - rounds
+  type: object
+PetAbilityMedia:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    assets:
+      items:
+        properties:
+          file_data_id:
+            type: integer
+          key:
+            type: string
+          value:
+            type: string
+        required:
+        - file_data_id
+        - key
+        - value
+        type: object
+      type: array
+    id:
+      type: integer
+  required:
+  - _links
+  - assets
+  - id
   type: object
 PetMedia:
   properties:
@@ -5774,6 +6190,75 @@ PvpSeasonsIndex:
   - current_season
   - seasons
   type: object
+PvpTalent:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    compatible_slots:
+      items:
+        type: integer
+      type: array
+    description:
+      type: string
+    id:
+      type: integer
+    playable_specialization:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+      required:
+      - id
+      - key
+      - name
+      type: object
+    spell:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+      required:
+      - id
+      - key
+      - name
+      type: object
+    unlock_player_level:
+      type: integer
+  required:
+  - _links
+  - compatible_slots
+  - description
+  - id
+  - playable_specialization
+  - spell
+  - unlock_player_level
+  type: object
 PvpTalentSlots:
   properties:
     _links:
@@ -6100,6 +6585,50 @@ Quest:
   - requirements
   - rewards
   - title
+  type: object
+QuestArea:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    area:
+      type: string
+    id:
+      type: integer
+    quests:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+  required:
+  - _links
+  - area
+  - id
+  - quests
   type: object
 QuestAreasIndex:
   properties:
@@ -6749,6 +7278,45 @@ ReputationFactionsIndex:
   - factions
   - root_factions
   type: object
+ReputationTiers:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    id:
+      type: integer
+    tiers:
+      items:
+        properties:
+          id:
+            type: integer
+          max_value:
+            type: integer
+          min_value:
+            type: integer
+          name:
+            type: string
+        required:
+        - id
+        - max_value
+        - min_value
+        - name
+        type: object
+      type: array
+  required:
+  - _links
+  - id
+  - tiers
+  type: object
 ReputationTiersIndex:
   properties:
     _links:
@@ -7049,6 +7617,74 @@ SpellMedia:
   - _links
   - assets
   - id
+  type: object
+Talent:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    id:
+      type: integer
+    playable_class:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - id
+      - key
+      type: object
+    rank_descriptions:
+      items:
+        properties:
+          description:
+            type: 'null'
+          rank:
+            type: integer
+        required:
+        - description
+        - rank
+        type: object
+      type: array
+    spell:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+      required:
+      - id
+      - key
+      - name
+      type: object
+  required:
+  - _links
+  - id
+  - playable_class
+  - rank_descriptions
+  - spell
   type: object
 TalentTree:
   properties:
@@ -8041,6 +8677,67 @@ TalentsIndex:
   - _links
   - talents
   type: object
+TechTalent:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    display_order:
+      type: integer
+    id:
+      type: integer
+    media:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - id
+      - key
+      type: object
+    name:
+      type: string
+    talent_tree:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - id
+      - key
+      type: object
+    tier:
+      type: integer
+  required:
+  - _links
+  - display_order
+  - id
+  - media
+  - name
+  - talent_tree
+  - tier
+  type: object
 TechTalentIndex:
   properties:
     _links:
@@ -8077,6 +8774,102 @@ TechTalentIndex:
       type: array
   required:
   - _links
+  - talents
+  type: object
+TechTalentMedia:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    assets:
+      items:
+        properties:
+          file_data_id:
+            type: integer
+          key:
+            type: string
+          value:
+            type: string
+        required:
+        - file_data_id
+        - key
+        - value
+        type: object
+      type: array
+  required:
+  - _links
+  - assets
+  type: object
+TechTalentTree:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    id:
+      type: integer
+    max_tiers:
+      type: integer
+    playable_class:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+      required:
+      - id
+      - key
+      - name
+      type: object
+    talents:
+      items:
+        properties:
+          id:
+            type: integer
+          key:
+            properties:
+              href:
+                type: string
+            required:
+            - href
+            type: object
+          name:
+            type: string
+        required:
+        - id
+        - key
+        - name
+        type: object
+      type: array
+  required:
+  - _links
+  - id
+  - max_tiers
+  - playable_class
   - talents
   type: object
 TechTalentTreeIndex:
@@ -8210,6 +9003,75 @@ TokenIndex:
   - _links
   - last_updated_timestamp
   - price
+  type: object
+Toy:
+  properties:
+    _links:
+      properties:
+        self:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - self
+      type: object
+    id:
+      type: integer
+    item:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+        name:
+          type: string
+      required:
+      - id
+      - key
+      - name
+      type: object
+    media:
+      properties:
+        id:
+          type: integer
+        key:
+          properties:
+            href:
+              type: string
+          required:
+          - href
+          type: object
+      required:
+      - id
+      - key
+      type: object
+    should_exclude_if_uncollected:
+      type: boolean
+    source:
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+      required:
+      - name
+      - type
+      type: object
+  required:
+  - _links
+  - id
+  - item
+  - media
+  - should_exclude_if_uncollected
+  - source
   type: object
 ToyIndex:
   properties:

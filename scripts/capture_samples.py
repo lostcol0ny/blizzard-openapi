@@ -85,8 +85,8 @@ WOW_GAME_DATA_SAMPLES: list[Sample] = [
     Sample("get_guild_crest_emblem_media", "/data/wow/media/guild-crest/emblem/0", "static-us"),
     Sample("get_heirloom_index", "/data/wow/heirloom/index", "static-us"),
     Sample("get_heirloom", "/data/wow/heirloom/1", "static-us"),
-    Sample("get_item_appearance", "/data/wow/item-appearance/1", "static-us"),
-    Sample("get_item_appearance_set", "/data/wow/item-appearance/set/1", "static-us"),
+    Sample("get_item_appearance", "/data/wow/item-appearance/5353", "static-us"),  # Thunderfury appearance
+    Sample("get_item_appearance_set", "/data/wow/item-appearance/set/51", "static-us"),
     Sample("get_item_classes_index", "/data/wow/item-class/index", "static-us"),
     Sample("get_item_class", "/data/wow/item-class/2", "static-us"),  # Weapon
     Sample("get_item_sets_index", "/data/wow/item-set/index", "static-us"),
@@ -103,9 +103,9 @@ WOW_GAME_DATA_SAMPLES: list[Sample] = [
     Sample("get_journal_instance_media", "/data/wow/media/journal-instance/63", "static-us"),
     Sample("get_modified_crafting_index", "/data/wow/modified-crafting/index", "static-us"),
     Sample("get_modified_crafting_category_index", "/data/wow/modified-crafting/category/index", "static-us"),
-    Sample("get_modified_crafting_category", "/data/wow/modified-crafting/category/2", "static-us"),
+    Sample("get_modified_crafting_category", "/data/wow/modified-crafting/category/8", "static-us"),
     Sample("get_modified_crafting_reagent_slot_type_index", "/data/wow/modified-crafting/reagent-slot-type/index", "static-us"),
-    Sample("get_modified_crafting_reagent_slot_type", "/data/wow/modified-crafting/reagent-slot-type/3", "static-us"),
+    Sample("get_modified_crafting_reagent_slot_type", "/data/wow/modified-crafting/reagent-slot-type/16", "static-us"),
     Sample("get_mounts_index", "/data/wow/mount/index", "static-us"),
     Sample("get_mount", "/data/wow/mount/6", "static-us"),  # Brown Horse
     Sample("get_mythic_keystone_affixes_index", "/data/wow/keystone-affix/index", "static-us"),
@@ -115,11 +115,11 @@ WOW_GAME_DATA_SAMPLES: list[Sample] = [
     Sample("get_mythic_keystone_dungeon", "/data/wow/mythic-keystone/dungeon/353", "dynamic-us"),  # Siege of Boralus
     Sample("get_mythic_keystone_index", "/data/wow/mythic-keystone/index", "dynamic-us"),
     Sample("get_mythic_keystone_periods_index", "/data/wow/mythic-keystone/period/index", "dynamic-us"),
-    Sample("get_mythic_keystone_period", "/data/wow/mythic-keystone/period/641", "dynamic-us"),
+    Sample("get_mythic_keystone_period", "/data/wow/mythic-keystone/period/1059", "dynamic-us"),
     Sample("get_mythic_keystone_seasons_index", "/data/wow/mythic-keystone/season/index", "dynamic-us"),
     Sample("get_mythic_keystone_season", "/data/wow/mythic-keystone/season/1", "dynamic-us"),
     Sample("get_mythic_keystone_leaderboards_index", "/data/wow/connected-realm/57/mythic-leaderboard/index", "dynamic-us"),
-    Sample("get_mythic_keystone_leaderboard", "/data/wow/connected-realm/57/mythic-leaderboard/353/period/641", "dynamic-us"),
+    Sample("get_mythic_keystone_leaderboard", "/data/wow/connected-realm/57/mythic-leaderboard/353/period/1059", "dynamic-us"),
     Sample("get_mythic_raid_leaderboard", "/data/wow/leaderboard/hall-of-fame/uldir/alliance", "dynamic-us"),
     Sample("get_neighborhood_map_index", "/data/wow/neighborhood-map/index", "static-us"),
     Sample("get_neighborhood_map", "/data/wow/neighborhood-map/1", "static-us"),
@@ -127,8 +127,8 @@ WOW_GAME_DATA_SAMPLES: list[Sample] = [
     Sample("get_pet", "/data/wow/pet/39", "static-us"),
     Sample("get_pet_media", "/data/wow/media/pet/39", "static-us"),
     Sample("get_pet_abilities_index", "/data/wow/pet-ability/index", "static-us"),
-    Sample("get_pet_ability", "/data/wow/pet-ability/1", "static-us"),
-    Sample("get_pet_ability_media", "/data/wow/media/pet-ability/1", "static-us"),
+    Sample("get_pet_ability", "/data/wow/pet-ability/110", "static-us"),  # Bite
+    Sample("get_pet_ability_media", "/data/wow/media/pet-ability/110", "static-us"),
     Sample("get_playable_classes_index", "/data/wow/playable-class/index", "static-us"),
     Sample("get_playable_class", "/data/wow/playable-class/1", "static-us"),  # Warrior
     Sample("get_playable_class_media", "/data/wow/media/playable-class/1", "static-us"),
@@ -150,7 +150,7 @@ WOW_GAME_DATA_SAMPLES: list[Sample] = [
     Sample("get_pvp_leaderboard", "/data/wow/pvp-season/37/pvp-leaderboard/3v3", "dynamic-us"),
     Sample("get_pvp_rewards_index", "/data/wow/pvp-season/37/pvp-reward/index", "dynamic-us"),
     Sample("get_pvp_talents_index", "/data/wow/pvp-talent/index", "static-us"),
-    Sample("get_pvp_talent", "/data/wow/pvp-talent/11", "static-us"),
+    Sample("get_pvp_talent", "/data/wow/pvp-talent/40", "static-us"),  # Life and Death
     Sample("get_pvp_tiers_index", "/data/wow/pvp-tier/index", "static-us"),
     Sample("get_pvp_tier", "/data/wow/pvp-tier/1", "static-us"),
     Sample("get_pvp_tier_media", "/data/wow/media/pvp-tier/1", "static-us"),
@@ -159,7 +159,7 @@ WOW_GAME_DATA_SAMPLES: list[Sample] = [
     Sample("get_quest_categories_index", "/data/wow/quest/category/index", "static-us"),
     Sample("get_quest_category", "/data/wow/quest/category/1", "static-us"),
     Sample("get_quest_areas_index", "/data/wow/quest/area/index", "static-us"),
-    Sample("get_quest_area", "/data/wow/quest/area/20", "static-us"),  # Dun Morogh
+    Sample("get_quest_area", "/data/wow/quest/area/1", "static-us"),  # Dun Morogh
     Sample("get_quest_types_index", "/data/wow/quest/type/index", "static-us"),
     Sample("get_quest_type", "/data/wow/quest/type/1", "static-us"),
     Sample("get_realms_index", "/data/wow/realm/index", "dynamic-us"),
@@ -171,32 +171,32 @@ WOW_GAME_DATA_SAMPLES: list[Sample] = [
     Sample("get_reputation_factions_index", "/data/wow/reputation-faction/index", "static-us"),
     Sample("get_reputation_faction", "/data/wow/reputation-faction/21", "static-us"),  # Booty Bay
     Sample("get_reputation_tiers_index", "/data/wow/reputation-tiers/index", "static-us"),
-    Sample("get_reputation_tiers", "/data/wow/reputation-tiers/6", "static-us"),
+    Sample("get_reputation_tiers", "/data/wow/reputation-tiers/0", "static-us"),
     Sample("get_spell", "/data/wow/spell/196607", "static-us"),
     Sample("get_spell_media", "/data/wow/media/spell/196607", "static-us"),
     Sample("get_talent_tree_index", "/data/wow/talent-tree/index", "static-us"),
     Sample("get_talent_tree", "/data/wow/talent-tree/658/playable-specialization/62", "static-us"),
     Sample("get_talent_tree_nodes", "/data/wow/talent-tree/658", "static-us"),
     Sample("get_talents_index", "/data/wow/talent/index", "static-us"),
-    Sample("get_talent", "/data/wow/talent/23106", "static-us"),
+    Sample("get_talent", "/data/wow/talent/47503", "static-us"),  # Illustrious Insight
     Sample("get_tech_talent_index", "/data/wow/tech-talent/index", "static-us"),
-    Sample("get_tech_talent", "/data/wow/tech-talent/857", "static-us"),
-    Sample("get_tech_talent_media", "/data/wow/media/tech-talent/857", "static-us"),
+    Sample("get_tech_talent", "/data/wow/tech-talent/39", "static-us"),  # Bloodlust
+    Sample("get_tech_talent_media", "/data/wow/media/tech-talent/39", "static-us"),
     Sample("get_tech_talent_tree_index", "/data/wow/tech-talent-tree/index", "static-us"),
-    Sample("get_tech_talent_tree", "/data/wow/tech-talent-tree/272", "static-us"),
+    Sample("get_tech_talent_tree", "/data/wow/tech-talent-tree/31", "static-us"),
     Sample("get_titles_index", "/data/wow/title/index", "static-us"),
     Sample("get_title", "/data/wow/title/1", "static-us"),
     Sample("get_toy_index", "/data/wow/toy/index", "static-us"),
-    Sample("get_toy", "/data/wow/toy/95", "static-us"),
+    Sample("get_toy", "/data/wow/toy/30", "static-us"),  # Murloc Costume
     Sample("get_token_index", "/data/wow/token/index", "dynamic-us"),
     Sample("get_commodities", "/data/wow/auctions/commodities", "dynamic-us"),
     # Housing (Midnight) — decor/fixture/room may not be live yet; failures are tolerated.
     Sample("get_decor_index", "/data/wow/decor/index", "static-us"),
-    Sample("get_decor", "/data/wow/decor/1", "static-us"),
+    Sample("get_decor", "/data/wow/decor/533", "static-us"),  # Sturdy Wooden Interior Pillar
     Sample("get_fixture_index", "/data/wow/fixture/index", "static-us"),
-    Sample("get_fixture", "/data/wow/fixture/1", "static-us"),
+    Sample("get_fixture", "/data/wow/fixture/5501", "static-us"),  # Woodland Dormer
     Sample("get_fixture_hook_index", "/data/wow/fixture-hook/index", "static-us"),
-    Sample("get_fixture_hook", "/data/wow/fixture-hook/1", "static-us"),
+    Sample("get_fixture_hook", "/data/wow/fixture-hook/21149", "static-us"),  # Window
     Sample("get_room_index", "/data/wow/room/index", "static-us"),
     Sample("get_room", "/data/wow/room/1", "static-us"),
 ]
@@ -330,7 +330,7 @@ WOW_PROFILE_SAMPLES: list[Sample] = [
     ),
     Sample(
         "get_character_pvp_bracket_statistics",
-        f"/profile/wow/character/{TEST_CHARACTER_REALM}/{TEST_CHARACTER_NAME}/pvp-bracket/3v3",
+        f"/profile/wow/character/{TEST_CHARACTER_REALM}/{TEST_CHARACTER_NAME}/pvp-bracket/2v2",
         "profile-us",
     ),
     Sample(
