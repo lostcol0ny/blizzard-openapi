@@ -17,6 +17,21 @@ import yaml
 _CAMEL_SNAKE_RE = re.compile(r"(^|_)(.)")
 
 
+# Disambiguation prefix per tag. Collapses subcategory tags ("diablo3-community",
+# "sc2-game-data") to their game family so renamed operationIds stay stable when
+# we re-tag paths. Keep in sync with samples/schemas naming.
+_TAG_COLLISION_PREFIX = {
+    "wow-game-data": "wow",
+    "wow-profile": "wow",
+    "wow-classic": "wow_classic",
+    "diablo3-game-data": "diablo3",
+    "diablo3-community": "diablo3",
+    "sc2-game-data": "sc2",
+    "sc2-community": "sc2",
+    "hearthstone": "hearthstone",
+}
+
+
 def schema_name(operation_id: str) -> str:
     """Derive a PascalCase schema name from an operation id.
 
@@ -92,9 +107,11 @@ def main() -> None:
         if not op_id:
             continue
         if op_id in seen and seen[op_id] != path:
-            # Prefix with first tag (domain) to disambiguate
+            # Prefix with first tag's game family to disambiguate
             tags = op.get("tags") or []
-            prefix = tags[0].replace("-", "_") + "_" if tags else "alt_"
+            first_tag = tags[0] if tags else ""
+            prefix_root = _TAG_COLLISION_PREFIX.get(first_tag, first_tag.replace("-", "_"))
+            prefix = f"{prefix_root}_" if prefix_root else "alt_"
             new_id = f"{prefix}{op_id}"
             op["operationId"] = new_id
             seen[new_id] = path

@@ -4,7 +4,7 @@ paths:
       operationId: get_static_profile
       summary: Get static profile data for a StarCraft 2 region.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: region_id
         in: path
@@ -29,7 +29,7 @@ paths:
       operationId: get_metadata_profile
       summary: Get metadata for a StarCraft 2 profile.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: region_id
         in: path
@@ -66,7 +66,7 @@ paths:
       operationId: get_profile
       summary: Get a StarCraft 2 profile.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: region_id
         in: path
@@ -103,7 +103,7 @@ paths:
       operationId: get_profile_ladder_summary
       summary: Get ladder summary for a StarCraft 2 profile.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: region_id
         in: path
@@ -140,7 +140,7 @@ paths:
       operationId: get_profile_ladder
       summary: Get a ladder for a StarCraft 2 profile.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: region_id
         in: path
@@ -183,7 +183,7 @@ paths:
       operationId: get_grandmaster_leaderboard
       summary: Get grandmaster leaderboard for a region.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: region_id
         in: path
@@ -208,7 +208,7 @@ paths:
       operationId: get_season
       summary: Get current ladder season data for a region.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: region_id
         in: path
@@ -233,7 +233,7 @@ paths:
       operationId: get_player
       summary: Get a StarCraft 2 player by account ID.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: account_id
         in: path
@@ -258,7 +258,7 @@ paths:
       operationId: get_legacy_profile
       summary: Get legacy profile data.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: region_id
         in: path
@@ -295,7 +295,7 @@ paths:
       operationId: get_legacy_profile_ladders
       summary: Get legacy profile ladder data.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: region_id
         in: path
@@ -332,7 +332,7 @@ paths:
       operationId: get_legacy_profile_matches
       summary: Get legacy profile match history.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: region_id
         in: path
@@ -369,7 +369,7 @@ paths:
       operationId: get_legacy_ladder
       summary: Get legacy ladder data.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: region_id
         in: path
@@ -400,7 +400,7 @@ paths:
       operationId: get_legacy_achievements
       summary: Get legacy achievements data.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: region_id
         in: path
@@ -425,7 +425,7 @@ paths:
       operationId: get_legacy_rewards
       summary: Get legacy rewards data.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: region_id
         in: path
@@ -450,7 +450,7 @@ paths:
       operationId: get_league_data
       summary: Get league data for a specific season, queue, team type, and league.
       tags:
-      - sc2
+      - sc2-game-data
       parameters:
       - name: season_id
         in: path

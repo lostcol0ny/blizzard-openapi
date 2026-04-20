@@ -5598,7 +5598,7 @@ paths:
       operationId: get_account
       summary: Get a D3 account profile by BattleTag (``Name#1234``).
       tags:
-      - diablo3
+      - diablo3-community
       parameters:
       - name: battletag
         in: path
@@ -5623,7 +5623,7 @@ paths:
       operationId: get_hero
       summary: Get a hero by BattleTag and hero ID.
       tags:
-      - diablo3
+      - diablo3-community
       parameters:
       - name: battletag
         in: path
@@ -5654,7 +5654,7 @@ paths:
       operationId: get_hero_items
       summary: Get items for a hero.
       tags:
-      - diablo3
+      - diablo3-community
       parameters:
       - name: battletag
         in: path
@@ -5685,7 +5685,7 @@ paths:
       operationId: get_hero_follower_items
       summary: Get follower items for a hero.
       tags:
-      - diablo3
+      - diablo3-community
       parameters:
       - name: battletag
         in: path
@@ -5716,7 +5716,7 @@ paths:
       operationId: get_act_index
       summary: Get an index of D3 acts.
       tags:
-      - diablo3
+      - diablo3-game-data
       parameters:
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -5735,7 +5735,7 @@ paths:
       operationId: get_act
       summary: Get a D3 act by ID.
       tags:
-      - diablo3
+      - diablo3-game-data
       parameters:
       - name: act_id
         in: path
@@ -5760,7 +5760,7 @@ paths:
       operationId: get_artisan
       summary: Get a D3 artisan by slug.
       tags:
-      - diablo3
+      - diablo3-game-data
       parameters:
       - name: artisan_slug
         in: path
@@ -5785,7 +5785,7 @@ paths:
       operationId: diablo3_get_recipe
       summary: Get a D3 recipe for an artisan.
       tags:
-      - diablo3
+      - diablo3-game-data
       parameters:
       - name: artisan_slug
         in: path
@@ -5816,7 +5816,7 @@ paths:
       operationId: get_follower
       summary: Get a D3 follower by slug.
       tags:
-      - diablo3
+      - diablo3-game-data
       parameters:
       - name: follower_slug
         in: path
@@ -5841,7 +5841,7 @@ paths:
       operationId: get_character_class
       summary: Get a D3 character class by slug.
       tags:
-      - diablo3
+      - diablo3-game-data
       parameters:
       - name: class_slug
         in: path
@@ -5866,7 +5866,7 @@ paths:
       operationId: get_api_skill
       summary: Get a skill for a D3 character class.
       tags:
-      - diablo3
+      - diablo3-game-data
       parameters:
       - name: class_slug
         in: path
@@ -5897,7 +5897,7 @@ paths:
       operationId: get_item_type_index
       summary: Get an index of D3 item types.
       tags:
-      - diablo3
+      - diablo3-game-data
       parameters:
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -5916,7 +5916,7 @@ paths:
       operationId: get_item_type
       summary: Get a D3 item type by slug.
       tags:
-      - diablo3
+      - diablo3-game-data
       parameters:
       - name: item_type_slug
         in: path
@@ -5941,7 +5941,7 @@ paths:
       operationId: diablo3_get_item
       summary: Get a D3 item by combined slug and ID (``slug-12345``).
       tags:
-      - diablo3
+      - diablo3-game-data
       parameters:
       - name: item_slug_and_id
         in: path
@@ -5966,7 +5966,7 @@ paths:
       operationId: get_season_index
       summary: Get an index of D3 seasons.
       tags:
-      - diablo3
+      - diablo3-game-data
       parameters:
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -5985,7 +5985,7 @@ paths:
       operationId: get_season
       summary: Get a D3 season by ID.
       tags:
-      - diablo3
+      - diablo3-game-data
       parameters:
       - name: season_id
         in: path
@@ -6010,7 +6010,7 @@ paths:
       operationId: get_season_leaderboard
       summary: Get a D3 season leaderboard.
       tags:
-      - diablo3
+      - diablo3-game-data
       parameters:
       - name: season_id
         in: path
@@ -6040,7 +6040,7 @@ paths:
       operationId: get_era_index
       summary: Get an index of D3 eras.
       tags:
-      - diablo3
+      - diablo3-game-data
       parameters:
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -6059,7 +6059,7 @@ paths:
       operationId: get_era
       summary: Get a D3 era by ID.
       tags:
-      - diablo3
+      - diablo3-game-data
       parameters:
       - name: era_id
         in: path
@@ -6084,7 +6084,7 @@ paths:
       operationId: get_era_leaderboard
       summary: Get a D3 era leaderboard.
       tags:
-      - diablo3
+      - diablo3-game-data
       parameters:
       - name: era_id
         in: path
@@ -6114,7 +6114,7 @@ paths:
       operationId: get_static_profile
       summary: Get static profile data for a StarCraft 2 region.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: region_id
         in: path
@@ -6139,7 +6139,7 @@ paths:
       operationId: get_metadata_profile
       summary: Get metadata for a StarCraft 2 profile.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: region_id
         in: path
@@ -6176,7 +6176,7 @@ paths:
       operationId: get_profile
       summary: Get a StarCraft 2 profile.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: region_id
         in: path
@@ -6213,7 +6213,7 @@ paths:
       operationId: get_profile_ladder_summary
       summary: Get ladder summary for a StarCraft 2 profile.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: region_id
         in: path
@@ -6250,7 +6250,7 @@ paths:
       operationId: get_profile_ladder
       summary: Get a ladder for a StarCraft 2 profile.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: region_id
         in: path
@@ -6293,7 +6293,7 @@ paths:
       operationId: get_grandmaster_leaderboard
       summary: Get grandmaster leaderboard for a region.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: region_id
         in: path
@@ -6318,7 +6318,7 @@ paths:
       operationId: sc2_get_season
       summary: Get current ladder season data for a region.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: region_id
         in: path
@@ -6343,7 +6343,7 @@ paths:
       operationId: get_player
       summary: Get a StarCraft 2 player by account ID.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: account_id
         in: path
@@ -6368,7 +6368,7 @@ paths:
       operationId: get_legacy_profile
       summary: Get legacy profile data.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: region_id
         in: path
@@ -6405,7 +6405,7 @@ paths:
       operationId: get_legacy_profile_ladders
       summary: Get legacy profile ladder data.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: region_id
         in: path
@@ -6442,7 +6442,7 @@ paths:
       operationId: get_legacy_profile_matches
       summary: Get legacy profile match history.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: region_id
         in: path
@@ -6479,7 +6479,7 @@ paths:
       operationId: get_legacy_ladder
       summary: Get legacy ladder data.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: region_id
         in: path
@@ -6510,7 +6510,7 @@ paths:
       operationId: get_legacy_achievements
       summary: Get legacy achievements data.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: region_id
         in: path
@@ -6535,7 +6535,7 @@ paths:
       operationId: get_legacy_rewards
       summary: Get legacy rewards data.
       tags:
-      - sc2
+      - sc2-community
       parameters:
       - name: region_id
         in: path
@@ -6560,7 +6560,7 @@ paths:
       operationId: get_league_data
       summary: Get league data for a specific season, queue, team type, and league.
       tags:
-      - sc2
+      - sc2-game-data
       parameters:
       - name: season_id
         in: path

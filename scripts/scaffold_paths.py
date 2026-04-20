@@ -31,10 +31,33 @@ MODULE_TAG = {
     "wow_game_data": "wow-game-data",
     "wow_profile": "wow-profile",
     "wow_classic": "wow-classic",
-    "d3": "diablo3",
-    "sc2": "sc2",
+    # d3 and sc2 split into "game-data" vs "community" by URL prefix; see tag_for_path.
+    "d3": "diablo3-game-data",
+    "sc2": "sc2-community",
     "hearthstone": "hearthstone",
 }
+
+
+def tag_for_path(module_name: str, path: str) -> str:
+    """Pick the OpenAPI tag for a given (module, path) pair.
+
+    Blizzard splits D3 and SC2 into "Game Data" and "Community" categories,
+    but blizzardapi3 keeps them in single modules. Re-derive the split from
+    URL structure so Redoc groups endpoints under the declared tags.
+    """
+    if module_name == "d3":
+        # Profile endpoints are the community API; everything under /d3/data
+        # or /data/d3 is game data.
+        if path.startswith("/d3/profile"):
+            return "diablo3-community"
+        return "diablo3-game-data"
+    if module_name == "sc2":
+        # Only the league data under /data/sc2 is game data; the rest
+        # (profile, ladder, metadata, player, legacy) is the community API.
+        if path.startswith("/data/sc2"):
+            return "sc2-game-data"
+        return "sc2-community"
+    return MODULE_TAG.get(module_name, module_name)
 
 # Maps helper name -> (namespace_type, needs_profile_auth). ``None`` namespace
 # means the game has no namespace concept (d3 / sc2 / hearthstone).
@@ -268,9 +291,9 @@ def build_path_item(endpoint: Endpoint, tag: str) -> dict:
 
 
 def build_paths_document(module_name: str, endpoints: list[Endpoint]) -> dict:
-    tag = MODULE_TAG.get(module_name, module_name)
     paths: dict[str, dict] = {}
     for ep in endpoints:
+        tag = tag_for_path(module_name, ep.path)
         # Merge entries that differ only by operationId collision (shouldn't happen after dedupe)
         existing = paths.get(ep.path)
         if existing is None:
