@@ -34,11 +34,13 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - name: character_id
         in: path
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -228,6 +230,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -261,6 +264,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -294,6 +298,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -327,6 +332,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -360,6 +366,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -393,6 +400,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -426,6 +434,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -459,6 +468,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -492,6 +502,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -525,6 +536,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -558,6 +570,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -591,6 +604,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -624,6 +638,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -657,6 +672,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -690,6 +706,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -723,6 +740,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -756,6 +774,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -789,6 +808,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -822,6 +842,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -855,6 +876,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -865,6 +887,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -893,6 +916,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -926,6 +950,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -964,6 +989,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -997,6 +1023,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -1030,6 +1057,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -1063,6 +1091,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -1096,6 +1125,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -1129,6 +1159,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -1162,6 +1193,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -1195,6 +1227,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -1228,6 +1261,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: character_name
         in: path
         required: true
@@ -1266,11 +1300,13 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: name_slug
         in: path
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -1299,11 +1335,13 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: name_slug
         in: path
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -1332,11 +1370,13 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: name_slug
         in: path
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -1365,11 +1405,13 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - name: name_slug
         in: path
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:

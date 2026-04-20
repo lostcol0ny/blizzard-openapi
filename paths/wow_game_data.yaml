@@ -31,6 +31,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -76,6 +77,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -101,6 +103,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -126,6 +129,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -191,6 +195,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -213,6 +218,9 @@ paths:
       parameters:
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
+      - $ref: '#/components/parameters/SearchPage'
+      - $ref: '#/components/parameters/SearchPageSize'
+      - $ref: '#/components/parameters/SearchOrderBy'
       responses:
         '200':
           description: Successful response
@@ -236,6 +244,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -281,6 +290,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -303,6 +313,9 @@ paths:
       parameters:
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
+      - $ref: '#/components/parameters/SearchPage'
+      - $ref: '#/components/parameters/SearchPageSize'
+      - $ref: '#/components/parameters/SearchOrderBy'
       responses:
         '200':
           description: Successful response
@@ -346,6 +359,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -371,6 +385,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -416,6 +431,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -461,6 +477,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -506,6 +523,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -531,6 +549,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -576,6 +595,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -601,6 +621,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -623,6 +644,9 @@ paths:
       parameters:
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
+      - $ref: '#/components/parameters/SearchPage'
+      - $ref: '#/components/parameters/SearchPageSize'
+      - $ref: '#/components/parameters/SearchOrderBy'
       responses:
         '200':
           description: Successful response
@@ -646,6 +670,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -691,6 +716,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -716,6 +742,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -761,6 +788,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -806,6 +834,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -828,6 +857,9 @@ paths:
       parameters:
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
+      - $ref: '#/components/parameters/SearchPage'
+      - $ref: '#/components/parameters/SearchPageSize'
+      - $ref: '#/components/parameters/SearchOrderBy'
       responses:
         '200':
           description: Successful response
@@ -871,6 +903,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -893,6 +926,9 @@ paths:
       parameters:
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
+      - $ref: '#/components/parameters/SearchPage'
+      - $ref: '#/components/parameters/SearchPageSize'
+      - $ref: '#/components/parameters/SearchOrderBy'
       responses:
         '200':
           description: Successful response
@@ -936,6 +972,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -958,6 +995,9 @@ paths:
       parameters:
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
+      - $ref: '#/components/parameters/SearchPage'
+      - $ref: '#/components/parameters/SearchPageSize'
+      - $ref: '#/components/parameters/SearchOrderBy'
       responses:
         '200':
           description: Successful response
@@ -1001,6 +1041,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -1023,6 +1064,9 @@ paths:
       parameters:
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
+      - $ref: '#/components/parameters/SearchPage'
+      - $ref: '#/components/parameters/SearchPageSize'
+      - $ref: '#/components/parameters/SearchOrderBy'
       responses:
         '200':
           description: Successful response
@@ -1046,6 +1090,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -1071,6 +1116,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -1158,6 +1204,9 @@ paths:
       parameters:
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
+      - $ref: '#/components/parameters/SearchPage'
+      - $ref: '#/components/parameters/SearchPageSize'
+      - $ref: '#/components/parameters/SearchOrderBy'
       responses:
         '200':
           description: Successful response
@@ -1201,6 +1250,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -1226,11 +1276,13 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - name: neighborhood_id
         in: path
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -1276,6 +1328,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -1321,6 +1374,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -1346,11 +1400,13 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - name: subclass_id
         in: path
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -1376,6 +1432,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -1401,6 +1458,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -1423,6 +1481,9 @@ paths:
       parameters:
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
+      - $ref: '#/components/parameters/SearchPage'
+      - $ref: '#/components/parameters/SearchPageSize'
+      - $ref: '#/components/parameters/SearchOrderBy'
       responses:
         '200':
           description: Successful response
@@ -1466,6 +1527,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -1511,6 +1573,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -1533,6 +1596,9 @@ paths:
       parameters:
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
+      - $ref: '#/components/parameters/SearchPage'
+      - $ref: '#/components/parameters/SearchPageSize'
+      - $ref: '#/components/parameters/SearchOrderBy'
       responses:
         '200':
           description: Successful response
@@ -1576,6 +1642,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -1601,6 +1668,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -1623,6 +1691,9 @@ paths:
       parameters:
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
+      - $ref: '#/components/parameters/SearchPage'
+      - $ref: '#/components/parameters/SearchPageSize'
+      - $ref: '#/components/parameters/SearchOrderBy'
       responses:
         '200':
           description: Successful response
@@ -1686,6 +1757,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -1731,6 +1803,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -1776,6 +1849,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -1798,6 +1872,9 @@ paths:
       parameters:
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
+      - $ref: '#/components/parameters/SearchPage'
+      - $ref: '#/components/parameters/SearchPageSize'
+      - $ref: '#/components/parameters/SearchOrderBy'
       responses:
         '200':
           description: Successful response
@@ -1841,6 +1918,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -1866,6 +1944,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -1911,6 +1990,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -1976,6 +2056,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2021,6 +2102,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2046,6 +2128,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2071,16 +2154,19 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - name: dungeon_id
         in: path
         required: true
         schema:
           type: integer
+          minimum: 1
       - name: period_id
         in: path
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2111,6 +2197,9 @@ paths:
         required: true
         schema:
           type: string
+          enum:
+          - alliance
+          - horde
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2156,6 +2245,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2181,6 +2271,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2226,6 +2317,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2251,6 +2343,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2296,6 +2389,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2321,6 +2415,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2346,6 +2441,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2391,6 +2487,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2436,6 +2533,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2461,6 +2559,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2506,6 +2605,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2551,6 +2651,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2576,6 +2677,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2601,11 +2703,13 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - name: skill_tier_id
         in: path
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2631,6 +2735,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2656,6 +2761,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2701,6 +2807,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2726,6 +2833,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2751,6 +2859,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - name: bracket
         in: path
         required: true
@@ -2781,6 +2890,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2826,6 +2936,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2851,6 +2962,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2896,6 +3008,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2941,6 +3054,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -2986,6 +3100,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -3031,6 +3146,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -3076,6 +3192,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -3098,6 +3215,9 @@ paths:
       parameters:
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
+      - $ref: '#/components/parameters/SearchPage'
+      - $ref: '#/components/parameters/SearchPageSize'
+      - $ref: '#/components/parameters/SearchOrderBy'
       responses:
         '200':
           description: Successful response
@@ -3141,6 +3261,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -3186,6 +3307,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -3231,6 +3353,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -3256,6 +3379,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -3281,6 +3405,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -3303,6 +3428,9 @@ paths:
       parameters:
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
+      - $ref: '#/components/parameters/SearchPage'
+      - $ref: '#/components/parameters/SearchPageSize'
+      - $ref: '#/components/parameters/SearchOrderBy'
       responses:
         '200':
           description: Successful response
@@ -3346,6 +3474,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -3391,6 +3520,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -3436,11 +3566,13 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - name: spec_id
         in: path
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -3466,6 +3598,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -3511,6 +3644,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -3556,6 +3690,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -3581,6 +3716,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -3626,6 +3762,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:
@@ -3671,6 +3808,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Namespace'
       - $ref: '#/components/parameters/Locale'
       responses:

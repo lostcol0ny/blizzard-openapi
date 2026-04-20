@@ -30,6 +30,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - $ref: '#/components/parameters/Locale'
       responses:
         '200':
@@ -73,6 +74,7 @@ paths:
         required: true
         schema:
           type: string
+          pattern: ^[a-z0-9-]+$
       - $ref: '#/components/parameters/Locale'
       responses:
         '200':

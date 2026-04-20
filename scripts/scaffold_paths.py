@@ -166,15 +166,44 @@ def parse_module(module_path: Path) -> list[Endpoint]:
     return list(endpoints.values())
 
 
-_INTEGER_PARAM_SUFFIXES = ("_id", "id")
+# Path-param schema refinements. Name-based because blizzardapi3 doesn't
+# carry richer type info through to the helper calls.
+_SLUG_PATTERN = r"^[a-z0-9-]+$"
+# battletag is URL-encoded as `Name-1234` (the `#` becomes `-`). Names can
+# contain letters/digits but not hyphens themselves; the discriminator is
+# 4-6 digits in practice.
+_BATTLETAG_PATTERN = r"^[^-]+-\d{4,6}$"
+
+_ENUM_PATH_PARAMS: dict[str, list[str]] = {
+    "faction": ["alliance", "horde"],
+}
 
 
-def _param_schema_type(name: str) -> str:
-    # Integer if the name clearly identifies a numeric id
+def _path_param_schema(name: str) -> dict:
+    """Infer a schema for a path parameter by name.
+
+    Conservative: only claim an enum/pattern when Blizzard's conventions make
+    it safe. Anything unrecognized falls back to bare ``string``.
+    """
     lower = name.lower()
+    if lower in _ENUM_PATH_PARAMS:
+        return {"type": "string", "enum": _ENUM_PATH_PARAMS[lower]}
     if lower.endswith("_id") or lower == "id":
-        return "integer"
-    return "string"
+        return {"type": "integer", "minimum": 1}
+    if lower.endswith("_slug") or lower == "slug":
+        return {"type": "string", "pattern": _SLUG_PATTERN}
+    if lower == "battletag":
+        return {"type": "string", "pattern": _BATTLETAG_PATTERN}
+    return {"type": "string"}
+
+
+def _is_search_path(path: str) -> bool:
+    """True if this path is one of Blizzard's search endpoints.
+
+    All search endpoints accept the standard pagination/ordering query params
+    (`_page`, `_pageSize`, `orderby`) plus arbitrary field filters.
+    """
+    return "/search/" in path
 
 
 def build_path_item(endpoint: Endpoint, tag: str) -> dict:
@@ -188,7 +217,7 @@ def build_path_item(endpoint: Endpoint, tag: str) -> dict:
                 "name": name,
                 "in": "path",
                 "required": True,
-                "schema": {"type": _param_schema_type(name)},
+                "schema": _path_param_schema(name),
             }
         )
 
@@ -197,6 +226,12 @@ def build_path_item(endpoint: Endpoint, tag: str) -> dict:
         parameters.append({"$ref": "#/components/parameters/Namespace"})
     # Locale is always present
     parameters.append({"$ref": "#/components/parameters/Locale"})
+
+    # Search endpoints accept standard pagination + ordering params
+    if _is_search_path(endpoint.path):
+        parameters.append({"$ref": "#/components/parameters/SearchPage"})
+        parameters.append({"$ref": "#/components/parameters/SearchPageSize"})
+        parameters.append({"$ref": "#/components/parameters/SearchOrderBy"})
 
     # Extra query params (e.g. access_token, or filter params like _page / _pageSize)
     for name in endpoint.extra_query_params:

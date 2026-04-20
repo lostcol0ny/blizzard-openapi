@@ -11,6 +11,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Locale'
       responses:
         '200':
@@ -35,16 +36,19 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - name: realm_id
         in: path
         required: true
         schema:
           type: integer
+          minimum: 1
       - name: profile_id
         in: path
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Locale'
       responses:
         '200':
@@ -69,16 +73,19 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - name: realm_id
         in: path
         required: true
         schema:
           type: integer
+          minimum: 1
       - name: profile_id
         in: path
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Locale'
       responses:
         '200':
@@ -103,16 +110,19 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - name: realm_id
         in: path
         required: true
         schema:
           type: integer
+          minimum: 1
       - name: profile_id
         in: path
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Locale'
       responses:
         '200':
@@ -137,21 +147,25 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - name: realm_id
         in: path
         required: true
         schema:
           type: integer
+          minimum: 1
       - name: profile_id
         in: path
         required: true
         schema:
           type: integer
+          minimum: 1
       - name: ladder_id
         in: path
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Locale'
       responses:
         '200':
@@ -176,6 +190,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Locale'
       responses:
         '200':
@@ -200,6 +215,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Locale'
       responses:
         '200':
@@ -224,6 +240,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Locale'
       responses:
         '200':
@@ -248,16 +265,19 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - name: realm_id
         in: path
         required: true
         schema:
           type: integer
+          minimum: 1
       - name: profile_id
         in: path
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Locale'
       responses:
         '200':
@@ -282,16 +302,19 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - name: realm_id
         in: path
         required: true
         schema:
           type: integer
+          minimum: 1
       - name: profile_id
         in: path
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Locale'
       responses:
         '200':
@@ -316,16 +339,19 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - name: realm_id
         in: path
         required: true
         schema:
           type: integer
+          minimum: 1
       - name: profile_id
         in: path
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Locale'
       responses:
         '200':
@@ -350,11 +376,13 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - name: ladder_id
         in: path
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Locale'
       responses:
         '200':
@@ -379,6 +407,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Locale'
       responses:
         '200':
@@ -403,6 +432,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Locale'
       responses:
         '200':
@@ -427,11 +457,13 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - name: queue_id
         in: path
         required: true
         schema:
           type: integer
+          minimum: 1
       - name: team_type
         in: path
         required: true
@@ -442,6 +474,7 @@ paths:
         required: true
         schema:
           type: integer
+          minimum: 1
       - $ref: '#/components/parameters/Locale'
       responses:
         '200':
