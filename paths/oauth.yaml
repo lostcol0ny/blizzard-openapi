@@ -1,0 +1,221 @@
+paths:
+  /authorize:
+    get:
+      operationId: oauth_authorize
+      summary: Start the Authorization Code flow.
+      description: |
+        Redirects the user to Blizzard's login screen. After the user consents,
+        Blizzard redirects back to `redirect_uri` with a `code` query parameter
+        that the client exchanges for an access token at `/token`.
+
+        This endpoint is not called directly by server code — the user's browser
+        is redirected here.
+      tags: [oauth]
+      servers:
+        - url: https://oauth.battle.net
+          description: Global OAuth server
+        - url: https://oauth.battlenet.com.cn
+          description: China OAuth server
+      security: []
+      parameters:
+        - name: client_id
+          in: query
+          required: true
+          description: Your Battle.net application's client ID.
+          schema:
+            type: string
+        - name: response_type
+          in: query
+          required: true
+          description: Must be `code` for the Authorization Code flow.
+          schema:
+            type: string
+            enum: [code]
+        - name: redirect_uri
+          in: query
+          required: true
+          description: Registered redirect URI to return the user to after consent.
+          schema:
+            type: string
+            format: uri
+        - name: scope
+          in: query
+          required: false
+          description: Space-separated list of scopes (`wow.profile`, `sc2.profile`, `openid`).
+          schema:
+            type: string
+        - name: state
+          in: query
+          required: false
+          description: Opaque value echoed back in the redirect; protects against CSRF.
+          schema:
+            type: string
+      responses:
+        '302':
+          description: Redirect to Blizzard's login/consent screen or back to `redirect_uri`.
+        '400':
+          description: Invalid request parameters (missing `client_id`, bad `response_type`, etc.).
+
+  /token:
+    post:
+      operationId: oauth_token
+      summary: Exchange credentials for an access token.
+      description: |
+        Issues access tokens for the Client Credentials and Authorization Code
+        flows. Clients authenticate via HTTP Basic auth (`client_id` / `client_secret`)
+        or by supplying those fields in the request body.
+      tags: [oauth]
+      servers:
+        - url: https://oauth.battle.net
+          description: Global OAuth server
+        - url: https://oauth.battlenet.com.cn
+          description: China OAuth server
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required: [grant_type]
+              properties:
+                grant_type:
+                  type: string
+                  enum: [client_credentials, authorization_code, refresh_token]
+                client_id:
+                  type: string
+                  description: Required if not using HTTP Basic auth.
+                client_secret:
+                  type: string
+                  description: Required if not using HTTP Basic auth.
+                code:
+                  type: string
+                  description: Authorization code from `/authorize` (Authorization Code flow only).
+                redirect_uri:
+                  type: string
+                  format: uri
+                  description: Must match the `/authorize` call (Authorization Code flow only).
+                scope:
+                  type: string
+                  description: Space-separated scope list (Client Credentials flow).
+                refresh_token:
+                  type: string
+                  description: Refresh token previously issued (Refresh Token flow).
+      responses:
+        '200':
+          description: Token issued.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [access_token, token_type, expires_in]
+                properties:
+                  access_token:
+                    type: string
+                  token_type:
+                    type: string
+                    example: bearer
+                  expires_in:
+                    type: integer
+                    description: Lifetime in seconds.
+                  scope:
+                    type: string
+                    description: Granted scopes, space-separated.
+                  sub:
+                    type: string
+                    description: Battle.net account id (Authorization Code flow).
+                  refresh_token:
+                    type: string
+        '400':
+          description: Invalid request (bad grant, missing fields, etc.).
+        '401':
+          description: Invalid client credentials.
+
+  /oauth/userinfo:
+    get:
+      operationId: oauth_userinfo
+      summary: Get the authenticated user's Battle.net identity.
+      description: |
+        OpenID Connect userinfo endpoint. Returns the Battle.net account id and
+        battletag for the user the access token was issued for. Requires the
+        `openid` scope on the token.
+      tags: [oauth]
+      servers:
+        - url: https://oauth.battle.net
+          description: Global OAuth server
+        - url: https://oauth.battlenet.com.cn
+          description: China OAuth server
+      security:
+        - AuthorizationCode: [openid]
+      responses:
+        '200':
+          description: User identity.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [sub, id, battletag]
+                properties:
+                  sub:
+                    type: string
+                    description: Stable subject identifier (Battle.net account id as string).
+                  id:
+                    type: integer
+                    description: Battle.net account id (numeric).
+                  battletag:
+                    type: string
+                    description: User's BattleTag (e.g. `Example#1234`).
+        '401':
+          description: Missing or invalid token.
+
+  /oauth/check_token:
+    post:
+      operationId: oauth_check_token
+      summary: Validate an access token and return its metadata.
+      description: |
+        Returns metadata about an access token (client id, scope, expiry,
+        associated account). Useful for servers that need to verify tokens
+        issued by Blizzard without introspecting them locally.
+      tags: [oauth]
+      servers:
+        - url: https://oauth.battle.net
+          description: Global OAuth server
+        - url: https://oauth.battlenet.com.cn
+          description: China OAuth server
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required: [token]
+              properties:
+                token:
+                  type: string
+                  description: Access token to validate.
+      responses:
+        '200':
+          description: Token is valid.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  exp:
+                    type: integer
+                    description: Expiration time (unix seconds).
+                  client_id:
+                    type: string
+                  scope:
+                    type: array
+                    items:
+                      type: string
+                  authorities:
+                    type: array
+                    items:
+                      type: string
+        '400':
+          description: Token missing or malformed.
+        '401':
+          description: Token invalid or expired.
